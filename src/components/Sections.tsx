@@ -133,23 +133,7 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
             />
-            <motion.div
-              className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] border border-[#e5e8ef] px-4 py-2 text-sm font-semibold text-[#0f1f38]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#0f1f38]/30">
-                <svg
-                  className="w-3.5 h-3.5 text-[#0f1f38]"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-              Play Video
-            </motion.div>
+       
           </div>
           <div className="mt-3">
             <p className="text-sm font-medium text-[#0f1f38]">{item.name}</p>
