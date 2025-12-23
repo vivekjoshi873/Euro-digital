@@ -99,7 +99,7 @@ function Hero() {
       </button>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 pt-32 pb-36 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 pt-36 md:pt-40 pb-40 md:pb-48 text-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -108,7 +108,7 @@ function Hero() {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-6xl font-semibold leading-tight tracking-tight drop-shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight drop-shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
               {slides[currentSlide].title.includes("Transform Your Business") ? (
                 <>
                   Unlock the Power of AI to
@@ -120,14 +120,14 @@ function Hero() {
               )}
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-8 text-lg md:text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
               {slides[currentSlide].description}
             </p>
           </motion.div>
         </AnimatePresence>
 
         {/* Buttons */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
           <Link to="/">
             <button 
               className="rounded-2xl font-semibold px-9 py-4 shadow-[0_14px_40px_rgba(0,0,0,0.25)] transition-colors text-lg cursor-pointer"

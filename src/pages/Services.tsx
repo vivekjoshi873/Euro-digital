@@ -106,18 +106,18 @@ function Services() {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-[72px]">
         {/* Service Navigation - Interactive */}
         <section style={{ background: 'linear-gradient(to right, rgba(24, 182, 227, 0.08), rgba(34, 211, 238, 0.08))' }}>
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="flex justify-center items-center gap-0 py-3">
+          <div className="max-w-[1425px] mx-auto px-6 md:px-12 py-6 md:py-8">
+            <div className="flex flex-wrap justify-center items-center gap-2">
               {services.map((service, index) => (
                 <button
                   key={service.id}
                   onClick={() => setActiveService(index)}
-                  className={`px-6 py-3 whitespace-nowrap text-sm font-medium border-r border-white/40 last:border-r-0 transition-all duration-300 cursor-pointer ${
+                  className={`px-4 md:px-6 py-3 md:py-3.5 whitespace-nowrap text-sm md:text-base font-medium rounded-lg transition-all duration-300 cursor-pointer ${
                     activeService === index 
-                      ? 'bg-cyan-400 text-slate-800' 
+                      ? 'bg-cyan-400 text-slate-800 shadow-lg' 
                       : 'bg-transparent text-blue-500 hover:bg-white/50'
                   }`}
                 >
@@ -129,58 +129,57 @@ function Services() {
         </section>
 
         {/* Service Content */}
-        <section className="py-16 md:py-24" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <section className="py-20 md:py-32" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
             <motion.div
               key={activeService}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="grid md:grid-cols-2 gap-12 items-center"
+              className="grid md:grid-cols-2 gap-12 md:gap-16 items-center"
             >
-              <div className="space-y-3">
-                <h1 className="text-4xl md:text-5xl font-semibold text-slate-800">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800 leading-tight">
                   {services[activeService].title}
                 </h1>
-                <p className="text-lg leading-relaxed text-slate-600">
+                <p className="text-base md:text-lg leading-relaxed text-slate-600">
                   {services[activeService].description}
                 </p>
                 
                 {services[activeService].features && (
-                  <div className="space-y-3 ml-4">
-                    <ul className="space-y-2">
+                  <div className="space-y-3 pt-2">
+                    <ul className="space-y-3">
                         {services[activeService].features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="text-xs mt-1 text-slate-500">●</span>
-                            <span className="text-slate-600">{feature}</span>
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-base mt-0.5 text-cyan-500 font-bold">●</span>
+                            <span className="text-slate-600 text-base leading-relaxed">{feature}</span>
                           </li>
                         ))}
                     </ul>
                   </div>
                 )}
                 {services[activeService].detailedDescription && (
-                  <p className="text-base leading-relaxed text-slate-500">
+                  <p className="text-base md:text-lg leading-relaxed text-slate-500 pt-2">
                     {services[activeService].detailedDescription}
                   </p>
                 )}
                 
-                <div className="flex gap-4 pt-4">
+                <div className="flex gap-5 pt-6">
                   <button 
-                    className="rounded-full bg-[#40BEF1] cursor-pointer text-black font-medium px-6 py-2 shadow-lg transition-all   "
+                    className="rounded-full bg-[#40BEF1] hover:bg-cyan-500 cursor-pointer text-black font-semibold px-8 py-3 shadow-lg transition-all hover:shadow-xl"
                   >
                     Try For Free
                   </button>
-                 
                 </div>
               </div>
 
-              <div className="relative ">
+              <div className="relative">
                 <motion.img
                   key={services[activeService].image}
                   src={services[activeService].image}
                   alt={services[activeService].title}
-                  className="w-full h-auto rounded-2xl shadow-2xl"
+                  className="w-full h-[500px] md:h-[600px] object-cover rounded-2xl shadow-2xl"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
@@ -191,81 +190,70 @@ function Services() {
         </section>
 
         {/* Full Width Image Section */}
-        <section className="w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10">
-          <img
-            src="/servicesImages/Ai-business-automation1.png"
-            alt="AI Business Automation"
-            className="w-full h-auto object-cover"
-            style={{ maxHeight: '600px' }}
-          />
+        <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="/servicesImages/Ai-business-automation1.png"
+              alt="AI Business Automation"
+              className="w-full h-auto object-cover"
+              style={{ maxHeight: '600px' }}
+            />
+          </div>
         </section>
 
         {/* Pricing Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-white to-cyan-50/30">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <section className="py-20 md:py-32 bg-gradient-to-b from-white to-cyan-50/30">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
             {/* Heading with Billing Toggle */}
-            <div className="flex justify-between items-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-800">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 md:mb-20">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 leading-tight">
                 Pay only for what you use
               </h1>
-              
-              <div className="flex items-center gap-8">
-                <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
-                  <div className="w-6 h-6 rounded-full border-2 border-gray-200 bg-gray-200"></div>
-                  <span className="text-lg font-medium text-gray-600">Yearly</span>
-                </div>
-                <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
-                  <div className="w-6 h-6 rounded-full border-2 border-cyan-400 bg-cyan-400 flex items-center justify-center">
-                    <div className="w-3 h-3 rounded-full bg-white"></div>
-                  </div>
-                  <span className="text-lg font-medium text-slate-800">Monthly</span>
-                </div>
-              </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 md:gap-10">
               {/* AI Startup Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gray-100 rounded-2xl p-8 min-h-[700px]"
+                className="bg-gray-100 rounded-2xl p-8 md:p-10 min-h-[700px] hover:shadow-xl transition-shadow duration-300"
               >
-                <h3 className="text-4xl font-bold mb-4 text-slate-800">
+                <h3 className="text-5xl font-bold mb-4 text-slate-800 whitespace-nowrap">
                   AI Startup
                 </h3>
-                <p className="text-gray-600 mb-6">
-                For startups and publishers
+                <p className="text-base md:text-lg text-gray-600 mb-6">
+                  For startups and publishers
                 </p>
-                <p className="text-sm font-semibold mb-4 text-slate-800">
-                  <span className="text-5xl text-slate-500">$399</span> Per Month
+                <p className="text-sm font-semibold mb-6 text-slate-800">
+                  <span className="text-5xl md:text-6xl text-slate-500">$399</span> <span className="text-lg">Per Month</span>
                 </p>
                 <div className="space-y-4 mb-8">
-                <button 
-                    className="w-34 rounded-md bg-[#40BEF1] text-black font-medium px-6 py-3 mt-5 cursor-pointer transition-all hover:shadow-lg "
+                  <button 
+                    className="w-full rounded-lg bg-[#40BEF1] hover:bg-cyan-500 text-black font-semibold px-6 py-3 cursor-pointer transition-all hover:shadow-lg"
                   >
-                   Learn More
+                    Learn More
                   </button>
-                  <div className="flex items-start gap-2 mt-10">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Basic dashboard</span>
+                  <div className="flex items-start gap-3 mt-10">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Basic dashboard</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Limited API access</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Limited API access</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Email Support</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Email Support</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">2 Agents</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">2 Agents</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Basic analytics</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Basic analytics</span>
                   </div>
                 </div>
               </motion.div>
@@ -276,50 +264,50 @@ function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-gray-100 rounded-2xl p-8 min-h-[700px] border-2 border-cyan-400"
+                className="bg-gray-100 rounded-2xl p-8 md:p-10 min-h-[700px] border-2 border-cyan-400 shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
-                <h3 className="text-4xl font-bold mb-4 text-slate-800">
+                <h3 className="text-5xl font-bold mb-4 text-slate-800 whitespace-nowrap">
                   AI Business
                 </h3>
-                <p className="text-gray-600 mb-6">
-                For rapidly scaling startups and publishers
+                <p className="text-base md:text-lg text-gray-600 mb-6">
+                  For rapidly scaling startups and publishers
                 </p>
-                <p className="text-sm font-semibold mb-4 text-slate-800">
-                  <span className="text-5xl text-slate-500">$699</span> Per Month
+                <p className="text-sm font-semibold mb-6 text-slate-800">
+                  <span className="text-5xl md:text-6xl text-slate-500">$699</span> <span className="text-lg">Per Month</span>
                 </p>
                 <div className="space-y-4 mb-8">
-                <button 
-                      className="w-34 rounded-md bg-[#40BEF1] text-black font-medium px-6 py-3 mt-5 transition-all hover:shadow-lg cursor-pointer"
+                  <button 
+                    className="w-full rounded-lg bg-[#40BEF1] hover:bg-cyan-500 text-black font-semibold px-6 py-3 transition-all hover:shadow-lg cursor-pointer"
                   >
                     Learn More
                   </button>
-                  <div className="flex items-start gap-2 mt-10">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Advanced dashboard</span>
+                  <div className="flex items-start gap-3 mt-10">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Advanced dashboard</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Priority API access</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Priority API access</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Live chat support</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Live chat support</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">5 Agents</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">5 Agents</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Advanced analytics</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Advanced analytics</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Custom branding</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Custom branding</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Call recording</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Call recording</span>
                   </div>
                 </div>
               </motion.div>
@@ -330,54 +318,54 @@ function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-gray-100 rounded-2xl p-8 min-h-[700px]"
+                className="bg-gray-100 rounded-2xl p-8 md:p-10 min-h-[700px] hover:shadow-xl transition-shadow duration-300"
               >
-                <h3 className="text-4xl font-bold mb-4 text-slate-800">
+                <h3 className="text-5xl font-bold mb-4 text-slate-800 whitespace-nowrap">
                   AI Enterprise
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-base md:text-lg text-gray-600 mb-6">
                   Advanced solutions for large enterprises with custom needs
                 </p>
-                <p className="text-sm font-semibold mb-4 text-slate-800">
-                  <span className="text-5xl text-slate-500">$Custom</span> 
+                <p className="text-sm font-semibold mb-6 text-slate-800">
+                  <span className="text-5xl md:text-6xl text-slate-500">Custom</span>
                 </p>
                 <div className="space-y-4 mb-8">
-                <button 
-                    className="w-34 rounded-md bg-[#40BEF1] text-black font-medium px-6 py-3 mt-5 transition-all hover:shadow-lg cursor-pointer"
+                  <button 
+                    className="w-full rounded-lg bg-[#40BEF1] hover:bg-cyan-500 text-black font-semibold px-6 py-3 transition-all hover:shadow-lg cursor-pointer"
                   >
                     Learn More
                   </button>
-                  <div className="flex items-start gap-2 mt-10">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Full-featured dashboard</span>
+                  <div className="flex items-start gap-3 mt-10">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Full-featured dashboard</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Unlimited API calls</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Unlimited API calls</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">24/7 dedicated support</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">24/7 dedicated support</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">5 + Customisation agents</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">5+ Customisation agents</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Advanced analytics</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Advanced analytics</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Custom AI models</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Custom AI models</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">SLA guarantee</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">SLA guarantee</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-[#6FAA2D] text-xl">✓</span>
-                    <span className="text-gray-500">Priority processing</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-[#6FAA2D] text-xl font-bold">✓</span>
+                    <span className="text-gray-600 text-base">Priority processing</span>
                   </div>
                 </div>
               </motion.div>

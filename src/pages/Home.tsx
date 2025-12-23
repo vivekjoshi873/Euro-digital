@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="min-h-screen text-white" style={{ backgroundColor: 'var(--bg-dark)' }}>
       <Header />
-      <main className="pt-20">
+      <main>
         <Hero />
         <Sections />
       </main>
