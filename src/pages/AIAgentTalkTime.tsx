@@ -125,58 +125,58 @@ function AIAgentTalkTime() {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="space-y-8">
               {/* AI Startup Talk Time Card */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-blue-50/40 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-blue-50/60 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src="/servicesImages/Ai_talk.png" 
-                    alt="AI Startup Talk Time"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-slate-800 mb-3">
-                    AI Startup Talk time
-                  </h3>
-                  <p className="text-slate-600 mb-6">
-                    For startups and publishers
-                  </p>
-                  
-                  <div className="mb-6">
-                    <span className="text-5xl font-bold text-slate-700">$99</span>
-                    <span className="text-lg text-slate-600 ml-2">Per Month</span>
-                  </div>
+                <div className="grid md:grid-cols-2 gap-0">
+                  {/* Left Side - Content */}
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <h3 className="text-3xl font-semibold text-slate-800 mb-3">
+                      AI Startup Talk time
+                    </h3>
+                    <p className="text-slate-600 mb-6">
+                      For startups and publishers
+                    </p>
+                    
+                    <div className="mb-6">
+                      <span className="text-6xl font-bold text-slate-700">$99</span>
+                      <span className="text-xl text-slate-600 ml-2">Per Month</span>
+                    </div>
 
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start gap-3">
-                      <span className="text-green-600 text-xl mt-1">✓</span>
-                      <span className="text-slate-600">1,000 AI Calling Minutes</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-green-600 text-xl mt-1">✓</span>
-                      <span className="text-slate-600">Basic Voice Customisation</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-green-600 text-xl mt-1">✓</span>
-                      <span className="text-slate-600">Standard Support</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-green-600 text-xl mt-1">✓</span>
-                      <span className="text-slate-600">Analytics Dashboard</span>
+                    <div className="space-y-3 mb-8">
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">1,000 AI Calling Minutes</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Basic Voice Customisation</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Standard Support</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Analytics Dashboard</span>
+                      </div>
                     </div>
                   </div>
 
-                  <button className="w-full bg-blue-500 text-white font-medium px-6 py-3 rounded-lg transition-all hover:bg-blue-600 hover:shadow-lg hover:scale-105">
-                    Get Started
-                  </button>
+                  {/* Right Side - Image */}
+                  <div className="relative h-full min-h-[400px]">
+                    <img 
+                      src="/servicesImages/Ai_talk.png" 
+                      alt="AI Startup Talk Time"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </motion.div>
 
@@ -188,61 +188,61 @@ function AIAgentTalkTime() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white rounded-3xl border-2 border-blue-400 hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
               >
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium z-10">
+                <div className="absolute top-6 left-8 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium z-10">
                   Most Popular
                 </div>
                 
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src="/servicesImages/Ai_talk1.png" 
-                    alt="AI Business Talk Time"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-slate-800 mb-3">
-                    AI Business Talk time
-                  </h3>
-                  <p className="text-slate-600 mb-6">
-                    For rapidly scaling startups
-                  </p>
-                  
-                  <div className="mb-6">
-                    <span className="text-5xl font-bold text-slate-700">$299</span>
-                    <span className="text-lg text-slate-600 ml-2">Per Month</span>
+                <div className="grid md:grid-cols-2 gap-0">
+                  {/* Left Side - Content */}
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <h3 className="text-3xl font-semibold text-slate-800 mb-3 mt-8">
+                      AI Business Talk time
+                    </h3>
+                    <p className="text-slate-600 mb-6">
+                      For rapidly scaling startups
+                    </p>
+                    
+                    <div className="mb-6">
+                      <span className="text-6xl font-bold text-slate-700">$299</span>
+                      <span className="text-xl text-slate-600 ml-2">Per Month</span>
+                    </div>
+
+                    <div className="space-y-3 mb-8">
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">5,000 AI Calling Minutes</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Advanced Voice Customisation</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Priority Support</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Advanced Analytics & Reporting</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Multi-language Support</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">CRM Integration</span>
+                      </div>
+                    </div>
                   </div>
 
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">5,000 AI Calling Minutes</span>
+                  {/* Right Side - Image */}
+                  <div className="relative h-full min-h-[400px]">
+                    <img 
+                      src="/servicesImages/Ai_talk1.png" 
+                      alt="AI Business Talk Time"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Advanced Voice Customisation</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Priority Support</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Advanced Analytics & Reporting</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Multi-language Support</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">CRM Integration</span>
-                  </div>
-                </div>
-
-                  <button className="w-full bg-blue-500 text-white font-medium px-6 py-3 rounded-lg transition-all hover:bg-blue-600 hover:shadow-lg hover:scale-105">
-                    Get Started
-                  </button>
                 </div>
               </motion.div>
 
@@ -252,58 +252,58 @@ function AIAgentTalkTime() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-blue-50/40 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-blue-50/60 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src="/servicesImages/Ai_talk2.png" 
-                    alt="AI Enterprise Talk Time"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-slate-800 mb-3">
-                    AI Enterprise Talk time
-                  </h3>
-                  <p className="text-slate-600 mb-6">
-                    For large enterprises
-                  </p>
-                  
-                  <div className="mb-6">
-                    <span className="text-5xl font-bold text-slate-700">Custom</span>
+                <div className="grid md:grid-cols-2 gap-0">
+                  {/* Left Side - Content */}
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <h3 className="text-3xl font-semibold text-slate-800 mb-3">
+                      AI Enterprise Talk time
+                    </h3>
+                    <p className="text-slate-600 mb-6">
+                      For large enterprises
+                    </p>
+                    
+                    <div className="mb-6">
+                      <span className="text-6xl font-bold text-slate-700">Custom</span>
+                    </div>
+
+                    <div className="space-y-3 mb-8">
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Unlimited AI Calling Minutes</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Custom Voice Personalities</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">24/7 Dedicated Support</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">Custom Analytics & APIs</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">White-label Solutions</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-green-600 text-xl">✓</span>
+                        <span className="text-slate-600">SLA Guarantee</span>
+                      </div>
+                    </div>
                   </div>
 
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Unlimited AI Calling Minutes</span>
+                  {/* Right Side - Image */}
+                  <div className="relative h-full min-h-[400px]">
+                    <img 
+                      src="/servicesImages/Ai_talk2.png" 
+                      alt="AI Enterprise Talk Time"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Custom Voice Personalities</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">24/7 Dedicated Support</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">Custom Analytics & APIs</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">White-label Solutions</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-600 text-xl mt-1">✓</span>
-                    <span className="text-slate-600">SLA Guarantee</span>
-                  </div>
-                </div>
-
-                  <button className="w-full bg-slate-800 text-white font-medium px-6 py-3 rounded-lg transition-all hover:bg-slate-700 hover:shadow-lg hover:scale-105">
-                    Contact Sales
-                  </button>
                 </div>
               </motion.div>
             </div>
