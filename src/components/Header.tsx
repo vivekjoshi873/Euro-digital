@@ -29,12 +29,6 @@ function Header() {
               <span className="absolute left-0 -bottom-1 w-0 h-px transition-all duration-300 ease-in-out group-hover:w-full" style={{ backgroundColor: 'var(--primary-navy)' }}></span>
             </span>
           </Link>
-          <Link to="/why-choose-us">
-            <span className="relative font-medium tracking-wide group" style={{ color: 'var(--primary-navy)' }}>
-              Why Choose Us
-              <span className="absolute left-0 -bottom-1 w-0 h-px transition-all duration-300 ease-in-out group-hover:w-full" style={{ backgroundColor: 'var(--primary-navy)' }}></span>
-            </span>
-          </Link>
           <Link to="/contact">
             <span className="relative font-medium tracking-wide group" style={{ color: 'var(--primary-navy)' }}>
               Contact

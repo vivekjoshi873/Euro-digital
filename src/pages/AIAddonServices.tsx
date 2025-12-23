@@ -12,14 +12,15 @@ function AIAddonServices() {
       "Our AI Add-on Services allow businesses to enhance their existing tools and platforms with advanced AI features. These add-ons are flexible, scalable, and designed to evolve with your business.",
     image: "/backgroundImages/ai_services.png",
     features: [
-      "Plug-and-play AI modules for existing systems",
-      "Custom API integrations with your current infrastructure",
-      "Scalable solutions that grow with your business needs",
-      "Regular updates and feature enhancements",
-      "Dedicated technical support and training",
-      "Cloud-based deployment for easy accessibility"
+      "Custom AI integrations",
+      "Speech-to-text and text-to-speech solutions",
+      "Advanced analytics and reporting",
+      "API-based AI enhancements",
+      "Workflow and system optimisation",
     ],
-    detailedDescription: "Enhance your existing business tools with powerful AI capabilities without the need for complete system overhaul. Our modular add-on services integrate seamlessly with your current technology stack, adding intelligence, automation, and advanced analytics to your workflows. Whether you need predictive insights, automated reporting, or smart recommendations, we have the right add-on for you."
+    detailedDescription: "EuroDigital ensures every add-on integrates smoothly into your current ecosystem.",
+    primaryButtonText: "Try For Free",
+    secondaryButtonText: "Learn More"
   };
 
   return (
@@ -68,7 +69,7 @@ function AIAddonServices() {
                     className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105"
                     style={{ backgroundColor: 'var(--primary-blue)' }}
                   >
-                    Try For Free
+                    {serviceData.primaryButtonText}
                   </button>
                   <button 
                     className="rounded-full font-medium px-6 py-2 transition-all hover:bg-gray-100"
@@ -79,7 +80,7 @@ function AIAddonServices() {
                       backgroundColor: 'transparent'
                     }}
                   >
-                    Learn More
+                    {serviceData.secondaryButtonText}
                   </button>
                 </div>
               </div>

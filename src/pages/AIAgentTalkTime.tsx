@@ -18,7 +18,9 @@ function AIAgentTalkTime() {
       "Appointment scheduling and follow-ups",
       "FAQ and knowledge base handling"
     ],
-    detailedDescription: "This ensures faster response times, improved customer satisfaction, and reduced support workload."
+    detailedDescription: "This ensures faster response times, improved customer satisfaction, and reduced support workload.",
+    primaryButtonText: "Try For Free",
+    secondaryButtonText: "Learn More"
   };
 
   return (
@@ -67,7 +69,7 @@ function AIAgentTalkTime() {
                     className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105"
                     style={{ backgroundColor: 'var(--primary-blue)' }}
                   >
-                    Try For Free
+                    {serviceData.primaryButtonText}
                   </button>
                   <button 
                     className="rounded-full font-medium px-6 py-2 transition-all hover:bg-gray-100"
@@ -78,7 +80,7 @@ function AIAgentTalkTime() {
                       backgroundColor: 'transparent'
                     }}
                   >
-                    Learn More
+                    {serviceData.secondaryButtonText}
                   </button>
                 </div>
               </div>

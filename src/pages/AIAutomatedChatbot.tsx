@@ -9,17 +9,17 @@ function AIAutomatedChatbot() {
     id: "ai-automated-chatbot",
     title: "AI Automated Chatbot",
     description:
-      "EuroDigital's AI Voice Agents manage real conversations with customers using natural, human-like speech. These agents can handle calls efficiently while maintaining a professional tone and consistency.",
+      "EuroDigital’s AI Voice Agents manage real conversations with customers using natural, human-like speech. These agents can handle calls efficiently while maintaining a professional tone and consistency.",
     image: "/backgroundImages/ai_bussiness.png",
     features: [
-      "Natural voice synthesis with human-like intonation",
-      "Real-time speech recognition and processing",
-      "Customizable voice personalities to match your brand",
-      "Multi-language voice support for global operations",
-      "Call routing and transfer capabilities",
-      "Detailed call analytics and performance metrics"
+      "Inbound customer inquiries",
+      "Outbound follow-up and reminder calls",
+      "Appointment confirmations",
+      "Support and service-related conversations",
     ],
-    detailedDescription: "Revolutionize your customer service with AI voice agents that sound and respond like real humans. Our voice technology handles high call volumes without compromising quality, ensuring every customer receives prompt, professional attention. From appointment scheduling to order tracking, our voice agents manage it all with natural conversation flow."
+    detailedDescription: "Our AI voice agents help businesses reduce call handling costs while ensuring no customer inquiry goes unanswered.",
+    primaryButtonText: "Try For Free",
+    secondaryButtonText: "Learn More"
   };
 
   return (
@@ -68,7 +68,7 @@ function AIAutomatedChatbot() {
                     className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105"
                     style={{ backgroundColor: 'var(--primary-blue)' }}
                   >
-                    Try For Free
+                    {serviceData.primaryButtonText}
                   </button>
                   <button 
                     className="rounded-full font-medium px-6 py-2 transition-all hover:bg-gray-100"
@@ -79,7 +79,7 @@ function AIAutomatedChatbot() {
                       backgroundColor: 'transparent'
                     }}
                   >
-                    Learn More
+                    {serviceData.secondaryButtonText}
                   </button>
                 </div>
               </div>

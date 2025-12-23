@@ -44,14 +44,13 @@ const services = [
       "Our AI-powered chatbots are designed to handle customer interactions accurately and professionally, around the clock. These chatbots are trained using your business data, ensuring responses remain relevant, reliable, and aligned with your brand voice.",
     image: "/backgroundImages/ai_agent.png",
     features: [
-      "Natural language processing for human-like conversations",
-      "Multi-language support for global customer base",
-      "Context-aware responses based on conversation history",
-      "Seamless handoff to human agents when needed",
-      "Learning capabilities that improve over time",
-      "Integration with CRM and ticketing systems"
+      "Website, WhatsApp, and platform-based chatbots",
+      "Customer support automation",
+      "Lead qualification and nurturing",
+      "Appointment scheduling and follow-ups",
+      "FAQ and knowledge base handling"
     ],
-    detailedDescription: "Our AI chatbots provide instant, accurate responses to customer queries 24/7, reducing wait times and improving customer satisfaction. Built with advanced NLP technology, these chatbots understand context, sentiment, and intent, delivering personalized experiences that feel natural and helpful. They handle routine inquiries efficiently while escalating complex issues to human agents."
+    detailedDescription: "This ensures faster response times, improved customer satisfaction, and reduced support workload."
   },
   {
     id: "ai-automated-chatbot",
@@ -60,14 +59,12 @@ const services = [
       "EuroDigital's AI Voice Agents manage real conversations with customers using natural, human-like speech. These agents can handle calls efficiently while maintaining a professional tone and consistency.",
     image: "/backgroundImages/ai_bussiness.png",
     features: [
-      "Natural voice synthesis with human-like intonation",
-      "Real-time speech recognition and processing",
-      "Customizable voice personalities to match your brand",
-      "Multi-language voice support for global operations",
-      "Call routing and transfer capabilities",
-      "Detailed call analytics and performance metrics"
+      "Inbound customer inquiries",
+      "Outbound follow-up and reminder calls",
+      "Appointment confirmations",
+      "Support and service-related conversations"
     ],
-    detailedDescription: "Revolutionize your customer service with AI voice agents that sound and respond like real humans. Our voice technology handles high call volumes without compromising quality, ensuring every customer receives prompt, professional attention. From appointment scheduling to order tracking, our voice agents manage it all with natural conversation flow."
+    detailedDescription: "Our AI voice agents help businesses reduce call handling costs while ensuring no customer inquiry goes unanswered."
   },
   {
     id: "ai-addon-services",
@@ -76,20 +73,19 @@ const services = [
       "Our AI Add-on Services allow businesses to enhance their existing tools and platforms with advanced AI features. These add-ons are flexible, scalable, and designed to evolve with your business.",
     image: "/backgroundImages/ai_services.png",
     features: [
-      "Plug-and-play AI modules for existing systems",
-      "Custom API integrations with your current infrastructure",
-      "Scalable solutions that grow with your business needs",
-      "Regular updates and feature enhancements",
-      "Dedicated technical support and training",
-      "Cloud-based deployment for easy accessibility"
+      "Custom AI integrations",
+      "Speech-to-text and text-to-speech solutions",
+      "Advanced analytics and reporting",
+      "API-based AI enhancements",
+      "Workflow and system optimisation"
     ],
-    detailedDescription: "Enhance your existing business tools with powerful AI capabilities without the need for complete system overhaul. Our modular add-on services integrate seamlessly with your current technology stack, adding intelligence, automation, and advanced analytics to your workflows. Whether you need predictive insights, automated reporting, or smart recommendations, we have the right add-on for you."
+    detailedDescription: "EuroDigital ensures every add-on integrates smoothly into your current ecosystem."
   },
   {
     id: "industry-specific",
     title: "Industry Specific AI Use Cases",
     description:
-      "We understand that every industry has unique challenges. That's why EuroDigital delivers AI solutions specifically designed for different business domains, ensuring practical and measurable impact.",
+      "Industry Specific AI Use Cases.",
     image: "/backgroundImages/ai_users.png",
     features: [
       "Healthcare: Patient management and diagnostic assistance systems",
@@ -99,7 +95,7 @@ const services = [
       "Education: Personalized learning and student performance tracking",
       "Hospitality: Guest experience management and booking automation"
     ],
-    detailedDescription: "Every industry faces unique challenges that require specialized solutions. Our industry-specific AI implementations are built on deep domain expertise and proven methodologies. We work closely with industry leaders to understand pain points and deliver solutions that address real business problems, ensuring quick adoption and tangible results that matter to your bottom line."
+    detailedDescription: "We understand that every industry has unique challenges. That’s why EuroDigital delivers AI solutions specifically designed for different business domains, ensuring practical and measurable impact."
   },
 ];
 
@@ -171,15 +167,11 @@ function Services() {
                 
                 <div className="flex gap-4 pt-4">
                   <button 
-                    className="rounded-full bg-blue-500 text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105 hover:bg-blue-600"
+                    className="rounded-full bg-[#40BEF1] cursor-pointer text-black font-medium px-6 py-2 shadow-lg transition-all   "
                   >
-                    Try For Sales
+                    Try For Free
                   </button>
-                  <button 
-                    className="rounded-full font-medium px-6 py-2 transition-all hover:bg-gray-100 border-2 border-slate-800 text-slate-800 bg-transparent"
-                  >
-                    Learn More
-                  </button>
+                 
                 </div>
               </div>
 
@@ -251,9 +243,9 @@ function Services() {
                 </p>
                 <div className="space-y-4 mb-8">
                 <button 
-                    className="w-full rounded-md bg-blue-500 text-white font-medium px-6 py-3 mt-5 cursor-pointer transition-all hover:shadow-lg hover:scale-105 hover:bg-blue-600"
+                    className="w-34 rounded-md bg-[#40BEF1] text-black font-medium px-6 py-3 mt-5 cursor-pointer transition-all hover:shadow-lg "
                   >
-                    Get Started
+                   Learn More
                   </button>
                   <div className="flex items-start gap-2 mt-10">
                     <span className="text-[#6FAA2D] text-xl">✓</span>
@@ -297,9 +289,9 @@ function Services() {
                 </p>
                 <div className="space-y-4 mb-8">
                 <button 
-                    className="w-full rounded-md bg-blue-500 text-white font-medium px-6 py-3 mt-5 transition-all hover:shadow-lg hover:scale-105 hover:bg-blue-600"
+                      className="w-34 rounded-md bg-[#40BEF1] text-black font-medium px-6 py-3 mt-5 transition-all hover:shadow-lg cursor-pointer"
                   >
-                    Get Started
+                    Learn More
                   </button>
                   <div className="flex items-start gap-2 mt-10">
                     <span className="text-[#6FAA2D] text-xl">✓</span>
@@ -351,9 +343,9 @@ function Services() {
                 </p>
                 <div className="space-y-4 mb-8">
                 <button 
-                    className="w-full rounded-md bg-blue-500 text-white font-medium px-6 py-3 mt-5 transition-all hover:shadow-lg hover:scale-105 hover:bg-blue-600"
+                    className="w-34 rounded-md bg-[#40BEF1] text-black font-medium px-6 py-3 mt-5 transition-all hover:shadow-lg cursor-pointer"
                   >
-                    Contact Sales
+                    Learn More
                   </button>
                   <div className="flex items-start gap-2 mt-10">
                     <span className="text-[#6FAA2D] text-xl">✓</span>

@@ -19,7 +19,9 @@ function AIBusinessAutomation() {
       "Task management and operational optimisation",
       "Industry Specific AI Use Cases"
     ],
-    detailedDescription: "Each automation is customised to your business needs, ensuring efficiency without disrupting your current operations."
+    detailedDescription: "Each automation is customised to your business needs, ensuring efficiency without disrupting your current operations.",
+    primaryButtonText: "Try For Free",
+    secondaryButtonText: "Learn More"
   };
 
   return (
@@ -67,7 +69,7 @@ function AIBusinessAutomation() {
                     className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105"
                     style={{ backgroundColor: 'var(--primary-blue)' }}
                   >
-                    Try For Free
+                    {serviceData.primaryButtonText}
                   </button>
                   <button 
                     className="rounded-full font-medium px-6 py-2 transition-all hover:bg-gray-100"
@@ -78,7 +80,7 @@ function AIBusinessAutomation() {
                       backgroundColor: 'transparent'
                     }}
                   >
-                    Learn More
+                    {serviceData.secondaryButtonText}
                   </button>
                 </div>
               </div>

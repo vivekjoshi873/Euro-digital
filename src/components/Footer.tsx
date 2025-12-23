@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const quickLinks = [
   "Services",
-  "Why Choose Us",
   "About Us",
   "Testimonials",
   "Pricing",

@@ -19,7 +19,9 @@ function IndustrySpecificAI() {
       "Education: Personalized learning and student performance tracking",
       "Hospitality: Guest experience management and booking automation"
     ],
-    detailedDescription: "Every industry faces unique challenges that require specialized solutions. Our industry-specific AI implementations are built on deep domain expertise and proven methodologies. We work closely with industry leaders to understand pain points and deliver solutions that address real business problems, ensuring quick adoption and tangible results that matter to your bottom line."
+    detailedDescription: "Every industry faces unique challenges that require specialized solutions. Our industry-specific AI implementations are built on deep domain expertise and proven methodologies.",
+    primaryButtonText: "Try For Free",
+    secondaryButtonText: "Learn More"
   };
 
   return (
@@ -68,7 +70,7 @@ function IndustrySpecificAI() {
                     className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105"
                     style={{ backgroundColor: 'var(--primary-blue)' }}
                   >
-                    Try For Free
+                    {serviceData.primaryButtonText}
                   </button>
                   <button 
                     className="rounded-full font-medium px-6 py-2 transition-all hover:bg-gray-100"
@@ -79,7 +81,7 @@ function IndustrySpecificAI() {
                       backgroundColor: 'transparent'
                     }}
                   >
-                    Learn More
+                    {serviceData.secondaryButtonText}
                   </button>
                 </div>
               </div>
