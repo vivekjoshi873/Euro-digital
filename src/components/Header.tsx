@@ -13,7 +13,7 @@ const services = [
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const timeoutRef = useRef(null); // Reference to store the timer
+  const timeoutRef = useRef<number | null>(null); // Reference to store the timer
 
   const handleMouseEnter = () => {
     // Clear any pending close timers so it doesn't close while we're entering

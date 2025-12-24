@@ -141,7 +141,8 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
 function Footer() {
   return (
     <>
-      {/* ... (Testimonial section remains the same) */}
+      {/* Testimonials carousel inserted above the footer */}
+      <TestimonialsSection testimonials={testimonials} />
 
       <footer
         className="w-full py-16 md:py-20 bg-cover bg-center bg-no-repeat"

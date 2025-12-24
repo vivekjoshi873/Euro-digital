@@ -33,28 +33,7 @@ const cards = [
   },
 ];
 
-const execSteps = [
-  {
-    step: "1",
-    title: "Monitor",
-    desc: "Continuously reviews incoming data, messages, and activities in real time to ensure nothing important is missed.",
-  },
-  {
-    step: "2",
-    title: "Identify",
-    desc: "Analyzes inputs instantly to recognize opportunities, patterns, or actions that require attention.",
-  },
-  {
-    step: "3",
-    title: "Notify",
-    desc: "Sends timely updates and smart alerts so you’re always informed at the right moment.",
-  },
-  {
-    step: "4",
-    title: "Execute",
-    desc: "Takes immediate action based on predefined rules—saving time and eliminating manual effort.",
-  },
-];
+// execSteps removed — it was unused and caused a TypeScript compile error
 
 const industries = [
   {
