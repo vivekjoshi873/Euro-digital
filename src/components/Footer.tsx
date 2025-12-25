@@ -1,6 +1,6 @@
-import { Linkedin, Facebook, Youtube, Twitter } from "lucide-react";
+import { Linkedin, Facebook, Youtube, Twitter, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const quickLinks = ["Services", "About Us", "Testimonials", "Pricing"];
 
@@ -9,42 +9,48 @@ const testimonials = [
     name: "James Patterson",
     role: "CEO & Founder",
     company: "Velocity Enterprises",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
     text: "Before working with EuroDigital, our business felt busy but not productive. We were putting in long hours, handling leads manually, following up late, and constantly switching between tools that never really worked together. On paper things looked fine, but behind the scenes it felt chaotic and exhausting.\n\nEuroDigital helped us step back and rebuild the foundation properly. They streamlined our workflows, automated the parts that slowed us down, and gave us clarity over our entire operation. For the first time, our systems actually supported our growth instead of holding it back. We now spend more time making decisions and less time fixing problems.",
   },
   {
     name: "Rachel Thompson",
     role: "Director of Sales",
     company: "Horizon Real Estate Group",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop",
     text: "We had no shortage of interest in our business, but we were losing opportunities simply because we couldn't respond fast enough. Messages were missed, follow-ups were delayed, and potential customers quietly moved on.\n\nOnce EuroDigital came in, everything shifted. Leads were handled instantly, conversations were tracked properly, and nothing slipped through the cracks. It didn’t feel automated — it felt intelligent, personal, and reliable.",
   },
   {
     name: "David Kim",
     role: "Operations Manager",
     company: "Peak Performance Logistics",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
     text: "Running the business used to feel like we were always reacting. Every day brought new fires to put out — repetitive tasks, manual processes, and inconsistent customer experiences.\n\nEuroDigital changed that dynamic completely. The business now feels calm, controlled, and scalable.",
   },
   {
     name: "Jennifer Martinez",
     role: "Chief Technology Officer",
     company: "NextGen Solutions",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop",
     text: "As our company grew, the cracks in our digital systems became impossible to ignore. What worked when we were small simply didn't scale.\n\nEuroDigital helped us grow smarter, not heavier.",
   },
   {
     name: "Michael Andrews",
     role: "Managing Director",
     company: "Summit Financial Partners",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop",
-    text: "We were already doing \"okay\" before EuroDigital, but deep down we knew we were operating below our potential.\n\nEuroDigital brought everything together into one clean, efficient system.",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop",
+    text: 'We were already doing "okay" before EuroDigital, but deep down we knew we were operating below our potential.\n\nEuroDigital brought everything together into one clean, efficient system.',
   },
   {
     name: "Sofia Laurent",
     role: "Founder & Managing Partner",
     company: "Aurora Consulting Group",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop",
     text: "We reached a point where growth started creating friction instead of momentum.\n\nEuroDigital aligned our systems, simplified our workflows, and gave us full clarity and control over our next phase of growth.",
   },
 ];
@@ -57,8 +63,13 @@ type Testimonial = {
   text: string;
 };
 
-function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
+function TestimonialsSection({
+  testimonials,
+}: {
+  testimonials: Testimonial[];
+}) {
   const [index, setIndex] = useState(0);
+  
   const visibleCards = 3;
   const totalPages = Math.ceil(testimonials.length / visibleCards);
 
@@ -93,13 +104,12 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
           }}
         >
           {testimonials.map((item, i) => (
-            <div
-              key={i}
-              className="w-full md:w-1/2 lg:w-1/3 shrink-0 px-3"
-            >
+            <div key={i} className="w-full md:w-1/2 lg:w-1/3 shrink-0 px-3">
               {/* Card - Added h-[500px] to fix height and flex-grow on text */}
               <div className="bg-white rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col h-[500px] text-center relative">
-                <div className="mb-4 text-blue-500 text-5xl font-serif opacity-50">“</div>
+                <div className="mb-4 text-blue-500 text-5xl font-serif opacity-50">
+                  “
+                </div>
 
                 <div className="flex-grow overflow-hidden">
                   <p className="text-[15px] leading-relaxed mb-6 whitespace-pre-line text-gray-600 italic line-clamp-[10]">
@@ -114,7 +124,9 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
                     className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md mb-3"
                   />
                   <h4 className="font-bold text-gray-900">{item.name}</h4>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{item.role}</p>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+                    {item.role}
+                  </p>
                   <p className="text-sm font-semibold text-blue-600">
                     {item.company}
                   </p>
@@ -124,13 +136,15 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
           ))}
         </div>
       </div>
-      
+
       {/* Page Indicators */}
       <div className="flex justify-center gap-2 mt-6">
         {[...Array(totalPages)].map((_, i) => (
-          <div 
-            key={i} 
-            className={`h-1.5 rounded-full transition-all duration-300 ${index === i ? 'w-8 bg-blue-500' : 'w-2 bg-gray-200'}`}
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              index === i ? "w-8 bg-blue-500" : "w-2 bg-gray-200"
+            }`}
           />
         ))}
       </div>
@@ -139,8 +153,47 @@ function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) 
 }
 
 function Footer() {
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedCert]);
+
   return (
     <>
+      {/* Certificate Modal */}
+      {selectedCert && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedCert(null)}
+        >
+          <div
+            className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-auto relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedCert(null)}
+              className="cursor-pointer absolute top-4 right-4 p-2 hover:bg-black rounded-lg z-10"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img
+              src={selectedCert}
+              alt="Certificate"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      )}
+
       {/* Testimonials carousel inserted above the footer */}
       <TestimonialsSection testimonials={testimonials} />
 
@@ -151,10 +204,8 @@ function Footer() {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-
           {/* MAIN GRID - 4 Column Layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 pb-16 border-t border-white/20">
-
             {/* COLUMN 1 — BRAND (Logo size increased significantly) */}
             <div className="space-y-6 flex flex-col items-start">
               <Link to="/">
@@ -190,31 +241,27 @@ function Footer() {
               </h3>
 
               <div className="flex flex-col items-center gap-6">
-                <a
-                  href="/logo/icv-certificate.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex justify-center"
+                <button
+                  onClick={() => setSelectedCert("/logo/icv-certificate.png")}
+                  className="group flex justify-center cursor-pointer"
                 >
                   <img
                     src="/logo/iclogo.png"
                     alt="ICV Certification"
                     className="h-16 md:h-20 opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition duration-300"
                   />
-                </a>
+                </button>
 
-                <a
-                  href="/logo/iso-certificate.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex justify-center"
+                <button
+                  onClick={() => setSelectedCert("/logo/iso-certificate.png")}
+                  className="group flex justify-center cursor-pointer"
                 >
                   <img
                     src="/logo/isologo.png"
                     alt="ISO Certification"
                     className="h-16 md:h-20 opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition duration-300"
                   />
-                </a>
+                </button>
               </div>
             </div>
 
@@ -245,9 +292,9 @@ function Footer() {
               </h3>
               <div className="space-y-4 text-[15px] text-white/70">
                 <p className="leading-relaxed">
+                  Euro Digital Technologies LLC <br />
                   Mussafah Shabiya MBZ-12, <br />
-                  Building No. C-201, <br />
-                  Office No. M-03, <br />
+                  Building No. C-201, Office No. M-03, <br />
                   Abu Dhabi, UAE
                 </p>
                 <div className="space-y-2">
@@ -260,7 +307,6 @@ function Footer() {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* ... (Bottom bar remains the same) */}
