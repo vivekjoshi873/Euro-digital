@@ -91,7 +91,7 @@ function Header() {
         </nav>
 
         <Link to="/">
-          <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95"
+          <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95 cursor-pointer"
             style={{ backgroundColor: 'var(--primary-blue)' }}>
             Book Consultation
           </button>
