@@ -3,37 +3,37 @@ import { Link } from "react-router-dom";
 const cards = [
   {
     title: "AI Business Automation",
-    desc: "Streamline Operations. Reduce Manual Work. Scale Faster.",
+    desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
     image: "/backgroundImages/ai_bussiness.png",
     link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
-    desc: "Smarter Marketing Powered by AI.",
+    desc: "Smarter Marketing Powered by AI. Leverage data-driven insights to create personalized campaigns that convert and engage your audience effectively.",
     image: "/backgroundImages/ai_promotion.png",
     link: "/services/ai-business-promotion",
   },
   {
     title: "AI Agent Talk Time",
-    desc: "Boost agent productivity with smart co-pilots.",
+    desc: "Boost agent productivity with smart co-pilots. Empower your team with real-time assistance and automated tools to handle complex queries with ease.",
     image: "/backgroundImages/ai_automation.png",
     link: "/services/ai-agent-talk-time",
   },
   {
     title: "AI Automated Chatbot",
-    desc: "Always-on support with human-like responses.",
+    desc: "Always-on support with human-like responses. Deliver instant, 24/7 customer service with intelligent chatbots that understand context and intent.",
     image: "/backgroundImages/ai_agent.png",
     link: "/services/ai-automated-chatbot",
   },
   {
     title: "AI add-on Services",
-    desc: "Extend capabilities with modular AI services.",
+    desc: "Extend capabilities with modular AI services. Integrate powerful AI tools into your existing systems to enhance functionality and performance.",
     image: "/backgroundImages/ai_services.png",
     link: "/services/ai-addon-services",
   },
   {
     title: "Industry Specific AI Use Cases",
-    desc: "Tailored accelerators for your vertical.",
+    desc: "Tailored accelerators for your vertical. Industry-specific solutions designed to address unique challenges and accelerate growth in your sector.",
     image: "/backgroundImages/ai_users.png",
     link: "/services/industry-specific",
   },

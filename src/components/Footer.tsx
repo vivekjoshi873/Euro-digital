@@ -217,7 +217,7 @@ function Footer() {
               </Link>
 
               <p className="text-[15px] leading-relaxed text-white/80">
-                Building corporation power for visionary entrepreneurs.
+                   visionary entrepreneurs.
                 Structure, compliance, and capital-ready business formation.
               </p>
 

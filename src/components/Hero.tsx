@@ -7,36 +7,49 @@ const slides = [
     title: "Unlock the Power of AI to Transform Your Business",
     description:
       "We help brands unlock growth with tailored strategies, innovative design, and data-driven insights that deliver real results.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
   },
   {
     title: "AI Business Automation",
     description:
       "EuroDigital’s AI Business Automation solutions are built to eliminate repetitive tasks and optimize your internal workflows. We analyze your business processes and design automation systems that save time, reduce errors, and allow your team to focus on high-value work.",
+    image: "/backgroundImages/bg-ai-automation.png",
+    link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
     description:
       "Our AI Business Promotion solutions help you reach the right audience at the right time with personalized, data-driven strategies. By leveraging AI, we improve engagement, increase conversions, and make your marketing efforts more efficient.",
+    image: "/backgroundImages/bg-ai-business.png",
+    link: "/services/ai-business-promotion",
   },
   {
     title: "AI Agent Talk Time",
     description:
       "Our AI-powered chatbots are designed to handle customer interactions accurately and professionally, around the clock. These chatbots are trained using your business data, ensuring responses remain relevant, reliable, and aligned with your brand voice.",
+    image: "/backgroundImages/aitalktime.png",
+    link: "/services/ai-agent-talk-time",
   },
   {
     title: "AI Automated Chatbot",
     description:
       "EuroDigital’s AI Voice Agents manage real conversations with customers using natural, human-like speech. These agents can handle calls efficiently while maintaining a professional tone and consistency.",
+    image: "/backgroundImages/ai-chatbot.jpg",
+    link: "/services/ai-automated-chatbot",
   },
   {
     title: "AI Add-on Services",
     description:
       "Our AI Add-on Services allow businesses to enhance their existing tools and platforms with advanced AI features. These add-ons are flexible, scalable, and designed to evolve with your business.",
+    image: "/backgroundImages/addons.png",
+    link: "/services/ai-addon-services",
   },
   {
     title: "Industry Specific AI Use Cases",
     description:
       "We understand that every industry has unique challenges. That’s why EuroDigital delivers AI solutions specifically designed for different business domains, ensuring practical and measurable impact.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+    link: "/services/industry-specific",
   },
 ];
 
@@ -52,10 +65,30 @@ function Hero() {
   };
 
   return (
-    <section className="relative min-h-[75vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_20%,#1c2e6c_0%,#0d1438_30%,#0c1235_52%,#0d1e64_72%,#2a78ff_100%)] text-white">
-      {/* Atmospheric overlays */}
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#0b1233]/55 to-[#2d78ff]/65" />
-      <div className="absolute inset-x-0 bottom-0 h-[30vh] bg-linear-to-t from-[#2f83ff]/45 to-transparent" />
+    <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden text-white">
+      {/* Background Image with AnimatePresence */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          />
+        </AnimatePresence>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0b1233]/90 via-transparent to-[#0b1233]/30" />
+      </div>
+
+      {/* Atmospheric overlays - Removed to clarify image */}
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b1233]/10 to-[#2d78ff]/10 z-1" /> */}
+      {/* <div className="absolute inset-x-0 bottom-0 h-[30vh] bg-gradient-to-t from-[#2f83ff]/10 to-transparent z-1" /> */}
+
+      {/* Navigation Arrows */}
 
       {/* Navigation Arrows */}
       <button
@@ -129,10 +162,10 @@ function Hero() {
         {/* Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
           <Link to="/">
-            <button 
+            <button
               className="rounded-2xl font-semibold px-9 py-4 shadow-[0_14px_40px_rgba(0,0,0,0.25)] transition-colors text-lg cursor-pointer"
-              style={{ 
-                backgroundColor: 'var(--primary-green)', 
+              style={{
+                backgroundColor: 'var(--primary-green)',
                 color: 'var(--primary-navy)',
                 borderColor: 'var(--primary-green-dark)',
                 borderWidth: '1px'
@@ -143,7 +176,7 @@ function Hero() {
               Book A Demo
             </button>
           </Link>
-          <Link to="/">
+          <Link to={slides[currentSlide].link}>
             <button className="rounded-2xl border border-white/60 text-white hover:bg-white/10 font-semibold px-9 py-4 transition-all text-lg flex items-center gap-2 group bg-white/0 cursor-pointer">
               Explore
               <svg
@@ -169,11 +202,10 @@ function Hero() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                index === currentSlide
-                  ? "bg-white w-8"
-                  : "bg-white/40 hover:bg-white/60"
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${index === currentSlide
+                ? "bg-white w-8"
+                : "bg-white/40 hover:bg-white/60"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

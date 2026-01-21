@@ -8,7 +8,7 @@ function AIBusinessAutomation() {
     title: "AI Business Automation",
     description:
       "EuroDigital's AI Business Automation solutions are built to eliminate repetitive tasks and optimize your internal workflows. We analyze your business processes and design automation systems that save time, reduce errors, and allow your team to focus on high-value work.",
-    image: "/servicesImages/Ai-business-automation.png",
+    video: "/videos/irfan1.mp4",
     features: [
       "Lead capture, routing, and automated follow-ups",
       "CRM automation and third-party tool integrations",
@@ -32,7 +32,7 @@ function AIBusinessAutomation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid md:grid-cols-[49%_60%] gap-12 items-center"
           >
             <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl font-semibold " style={{ color: 'var(--primary-navy)' }}>
@@ -80,13 +80,17 @@ function AIBusinessAutomation() {
             </div>
 
             <div className="relative ">
-              <motion.img
-                src={serviceData.image}
-                alt={serviceData.title}
+              <motion.video
+                src={serviceData.video}
                 className="w-full h-auto rounded-2xl shadow-2xl"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
+                autoPlay
+                loop
+                muted
+                controls
+                playsInline
               />
             </div>
           </motion.div>
@@ -95,14 +99,11 @@ function AIBusinessAutomation() {
 
       {/* Full Width Video Section */}
       <section className="w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl">
-        <video
-          src="/videos/irfan1.mp4"
+        <img
+          src="/servicesImages/Ai-business-automation.png"
+          alt="AI Business Automation"
           className="w-full h-auto object-cover"
           style={{ maxHeight: '800px', width: '100%' }}
-          autoPlay
-          loop
-          controls
-          playsInline
         />
       </section>
 
