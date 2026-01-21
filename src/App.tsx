@@ -12,29 +12,33 @@ import AIAutomatedChatbot from './pages/AIAutomatedChatbot'
 import IndustrySpecificAI from './pages/IndustrySpecificAI'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/why-choose-us" element={<Home />} />
-      <Route path="/contact" element={<Contact />} />
-      
-      {/* Services with Nested Routes */}
-      <Route path="/services" element={<ServicesLayout />}>
-        <Route index element={<Services />} />
-        <Route path="ai-business-automation" element={<AIBusinessAutomation />} />
-        <Route path="ai-business-promotion" element={<AIBusinessPromotion />} />
-        <Route path="ai-agent-talk-time" element={<AIAgentTalkTime />} />
-        <Route path="ai-automated-chatbot" element={<AIAutomatedChatbot />} />
-        <Route path="ai-addon-services" element={<AIAddonServices />} />
-        <Route path="industry-specific" element={<IndustrySpecificAI />} />
-      </Route>
-      
-      {/* Legal Pages */}
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="/terms" element={<TermsAndConditions />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/why-choose-us" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+
+        {/* Services with Nested Routes */}
+        <Route path="/services" element={<ServicesLayout />}>
+          <Route index element={<Services />} />
+          <Route path="ai-business-automation" element={<AIBusinessAutomation />} />
+          <Route path="ai-business-promotion" element={<AIBusinessPromotion />} />
+          <Route path="ai-agent-talk-time" element={<AIAgentTalkTime />} />
+          <Route path="ai-automated-chatbot" element={<AIAutomatedChatbot />} />
+          <Route path="ai-addon-services" element={<AIAddonServices />} />
+          <Route path="industry-specific" element={<IndustrySpecificAI />} />
+        </Route>
+
+        {/* Legal Pages */}
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+      </Routes>
+    </>
   )
 }
 
