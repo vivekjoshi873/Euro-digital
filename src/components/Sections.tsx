@@ -69,7 +69,7 @@ function Sections() {
       </section>
 
       {/* Personal Secretary grid - UPDATED FOR CONSISTENCY */}
-      <section className="bg-white py-20 md:py-16" style={{ color: 'var(--primary-navy)' }}>
+      <section id="services" className="bg-white py-20 md:py-16 scroll-mt-32" style={{ color: 'var(--primary-navy)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-6 text-center mb-14 md:mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold" style={{ color: 'var(--text-primary)' }}>
             Everything Your Personal Secretary Should Do

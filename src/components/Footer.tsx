@@ -1,8 +1,21 @@
 import { Linkedin, Facebook, Youtube, Twitter, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const quickLinks = ["Services", "About Us", "Testimonials", "Pricing"];
+const quickLinks = [
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/#services" },
+  { name: "About Us", path: "/why-choose-us" },
+  { name: "Testimonials", path: "/#testimonials" },
+  { name: "Pricing", path: "/services/ai-business-automation#pricing" },
+];
+
+const socialLinks = [
+  { Icon: Linkedin, href: "https://www.linkedin.com/company/euro-digital-technologies-llc/" },
+  { Icon: Facebook, href: "https://www.facebook.com/EuroDigitalUAE/" },
+  { Icon: Youtube, href: "https://www.youtube.com/watch?v=oXOzAl0Cbkc" },
+  { Icon: Twitter, href: "https://x.com/eurodigitaluae" },
+];
 
 const testimonials = [
   {
@@ -69,7 +82,7 @@ function TestimonialsSection({
   testimonials: Testimonial[];
 }) {
   const [index, setIndex] = useState(0);
-  
+
   const visibleCards = 3;
   const totalPages = Math.ceil(testimonials.length / visibleCards);
 
@@ -77,7 +90,7 @@ function TestimonialsSection({
   const next = () => setIndex((i) => Math.min(i + 1, totalPages - 1));
 
   return (
-    <div className="relative mt-12 md:mt-16 max-w-7xl mx-auto px-12">
+    <div id="testimonials" className="relative mt-12 md:mt-16 max-w-7xl mx-auto px-12 scroll-mt-32">
       {/* Arrows - Fixed visibility with z-index, shadow, and text color */}
       <button
         onClick={prev}
@@ -142,9 +155,8 @@ function TestimonialsSection({
         {[...Array(totalPages)].map((_, i) => (
           <div
             key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              index === i ? "w-8 bg-blue-500" : "w-2 bg-gray-200"
-            }`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${index === i ? "w-8 bg-blue-500" : "w-2 bg-gray-200"
+              }`}
           />
         ))}
       </div>
@@ -207,25 +219,30 @@ function Footer() {
           {/* MAIN GRID - 4 Column Layout */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pt-12 pb-16 border-t border-white/20">
             {/* COLUMN 1 — BRAND (Logo size increased significantly) */}
-            <div className="space-y-6 flex flex-col items-start">
+            <div className="space-y-4 flex flex-col items-start">
               <Link to="/">
                 <img
-                  src="/logo/logo.svg"
+                  src="/logo/euro-transparent.png"
                   alt="Euro Digital Technologies"
-                  className="h-20 md:h-24 w-auto object-contain" // Even larger logo
+                  className="h-20 md:h-36 w-auto object-contain" // Even larger logo
+
                 />
               </Link>
 
               <p className="text-[15px] leading-relaxed text-white/80">
-                   visionary entrepreneurs.
+                visionary entrepreneurs.
                 Structure, compliance, and capital-ready business formation.
               </p>
 
+
+
               <div className="flex items-center gap-3">
-                {[Linkedin, Facebook, Youtube, Twitter].map((Icon, i) => (
+                {socialLinks.map(({ Icon, href }, i) => (
                   <a
                     key={i}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-10 h-10 flex items-center justify-center rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all"
                   >
                     <Icon className="w-5 h-5" />
@@ -272,12 +289,12 @@ function Footer() {
               </h3>
               <ul className="space-y-4 text-left">
                 {quickLinks.map((link) => (
-                  <li key={link}>
+                  <li key={link.name}>
                     <Link
-                      to="/"
+                      to={link.path}
                       className="group inline-block text-[15px] text-white/70 hover:text-white"
                     >
-                      {link}
+                      {link.name}
                       <span className="block h-px bg-white w-0 group-hover:w-full transition-all duration-300"></span>
                     </Link>
                   </li>

@@ -108,7 +108,7 @@ function AIBusinessAutomation() {
       </section>
 
       {/* Pricing Cards Section */}
-      <section className="py-16 md:py-16 bg-gradient-to-b from-white to-cyan-50/30">
+      <section id="pricing" className="py-16 md:py-16 bg-gradient-to-b from-white to-cyan-50/30 scroll-mt-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Heading with Billing Toggle */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 md:mb-20 ">
