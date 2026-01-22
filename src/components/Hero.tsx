@@ -2,12 +2,20 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-const slides = [
+type Slide = {
+  title: string;
+  description: string;
+  image: string;
+  link?: string;
+};
+
+const slides: Slide[] = [
   {
     title: "Unlock the Power of AI to Transform Your Business",
     description:
       "We help brands unlock growth with tailored strategies, innovative design, and data-driven insights that deliver real results.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
   },
   {
     title: "AI Business Automation",
@@ -48,7 +56,8 @@ const slides = [
     title: "Industry Specific AI Use Cases",
     description:
       "We understand that every industry has unique challenges. That’s why EuroDigital delivers AI solutions specifically designed for different business domains, ensuring practical and measurable impact.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
     link: "/services/industry-specific",
   },
 ];
@@ -66,7 +75,7 @@ function Hero() {
 
   return (
     <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden text-white">
-      {/* Background Image with AnimatePresence */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -76,19 +85,16 @@ function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+            style={{
+              backgroundImage: `url(${slides[currentSlide].image})`,
+            }}
           />
         </AnimatePresence>
-        {/* Overlay to ensure text readability */}
+
+        {/* Overlays */}
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-linear-to-t from-[#0b1233]/90 via-transparent to-[#0b1233]/30" />
       </div>
-
-      {/* Atmospheric overlays - Removed to clarify image */}
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b1233]/10 to-[#2d78ff]/10 z-1" /> */}
-      {/* <div className="absolute inset-x-0 bottom-0 h-[30vh] bg-gradient-to-t from-[#2f83ff]/10 to-transparent z-1" /> */}
-
-      {/* Navigation Arrows */}
 
       {/* Navigation Arrows */}
       <button
@@ -142,7 +148,9 @@ function Hero() {
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight drop-shadow-[0_10px_40px_rgba(0,0,0,0.35)] mt-20">
-              {slides[currentSlide].title.includes("Transform Your Business") ? (
+              {slides[currentSlide].title.includes(
+                "Transform Your Business"
+              ) ? (
                 <>
                   Unlock the Power of AI to
                   <br className="hidden md:block" />
@@ -165,35 +173,45 @@ function Hero() {
             <button
               className="rounded-2xl font-semibold px-9 py-4 shadow-[0_14px_40px_rgba(0,0,0,0.25)] transition-colors text-lg cursor-pointer"
               style={{
-                backgroundColor: 'var(--primary-green)',
-                color: 'var(--primary-navy)',
-                borderColor: 'var(--primary-green-dark)',
-                borderWidth: '1px'
+                backgroundColor: "var(--primary-green)",
+                color: "var(--primary-navy)",
+                borderColor: "var(--primary-green-dark)",
+                borderWidth: "1px",
               }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--primary-green-dark)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary-green)'}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "var(--primary-green-dark)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "var(--primary-green)")
+              }
             >
               Book A Demo
             </button>
           </Link>
-          <Link to={slides[currentSlide].link}>
-            <button className="rounded-2xl border border-white/60 text-white hover:bg-white/10 font-semibold px-9 py-4 transition-all text-lg flex items-center gap-2 group bg-white/0 cursor-pointer">
-              Explore
-              <svg
-                className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M7 17l10-10m0 0H9m8 0v8"
-                />
-              </svg>
-            </button>
-          </Link>
+
+          {/* ✅ Fix #1: Only render Explore if link exists */}
+          {slides[currentSlide].link && (
+            <Link to={slides[currentSlide].link}>
+              <button className="rounded-2xl border border-white/60 text-white hover:bg-white/10 font-semibold px-9 py-4 transition-all text-lg flex items-center gap-2 group bg-white/0 cursor-pointer">
+                Explore
+                <svg
+                  className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 17l10-10m0 0H9m8 0v8"
+                  />
+                </svg>
+              </button>
+            </Link>
+          )}
         </div>
 
         {/* Slide Indicators */}
@@ -202,10 +220,11 @@ function Hero() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${index === currentSlide
-                ? "bg-white w-8"
-                : "bg-white/40 hover:bg-white/60"
-                }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                index === currentSlide
+                  ? "bg-white w-8"
+                  : "bg-white/40 hover:bg-white/60"
+              }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
