@@ -6,9 +6,11 @@ interface ModalProps {
     onClose: () => void;
     title: string;
     children: React.ReactNode;
+    ctaUrl?: string;
+    ctaText?: string;
 }
 
-const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, title, children, ctaUrl, ctaText }: ModalProps) => {
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -65,13 +67,23 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
                         </div>
 
                         {/* Footer */}
-                        <div className="px-8 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-end">
+                        <div className="px-8 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-end gap-3">
                             <button
                                 onClick={onClose}
-                                className="px-6 py-2 bg-slate-800 text-white font-semibold rounded-full hover:bg-slate-700 transition-colors"
+                                className="px-6 py-2 bg-slate-100 text-slate-700 font-semibold rounded-full hover:bg-slate-200 transition-colors"
                             >
                                 Close
                             </button>
+                            {ctaUrl && (
+                                <a
+                                    href={ctaUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-6 py-2 bg-slate-800 text-white font-semibold rounded-full hover:bg-slate-700 transition-colors inline-block text-center"
+                                >
+                                    {ctaText || "Contact Sale"}
+                                </a>
+                            )}
                         </div>
                     </motion.div>
                 </div>

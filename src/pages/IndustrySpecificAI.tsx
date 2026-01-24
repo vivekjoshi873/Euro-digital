@@ -399,6 +399,8 @@ function IndustrySpecificAI() {
         isOpen={!!selectedIndustry}
         onClose={closeModal}
         title={selectedIndustry ? industryDetails[selectedIndustry].title : ""}
+        ctaUrl="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+        ctaText="Contact Sale"
       >
         {selectedIndustry && (
           <div className="space-y-6">
