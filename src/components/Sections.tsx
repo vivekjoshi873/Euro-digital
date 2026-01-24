@@ -4,7 +4,7 @@ const cards = [
   {
     title: "AI Business Automation",
     desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
-    image: "/backgroundImages/ai_bussiness.png",
+    image: "/videos/irfan1.mp4",
     link: "/services/ai-business-automation",
   },
   {
@@ -74,7 +74,7 @@ function Sections() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold" style={{ color: 'var(--text-primary)' }}>
             Everything Your Personal Secretary Should Do
           </h2>
-          <p className="text-base md:text-[19px] max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-base md:text-[19px] max-w-3xl mx-auto leading-relaxed capitalize" style={{ color: 'var(--text-secondary)' }}>
             Baseten delivers the infrastructure, tooling, and expertise needed
             to bring great AI products to market - fast.
           </p>
@@ -90,11 +90,24 @@ function Sections() {
                 className="rounded-2xl flex flex-col p-5 md:p-6 hover:shadow-2xl transition-shadow duration-300 h-full"
                 style={{ backgroundColor: 'var(--bg-secondary)' }}
               >
-                {/* Fixed Image Height: h-72 md:h-80 for ALL cards */}
-                <div
-                  className="w-full h-72 md:h-80 bg-center bg-cover rounded-xl shadow-lg shrink-0"
-                  style={{ backgroundImage: `url('${card.image}')` }}
-                />
+                {/* Media Area: Supports both Images and Videos */}
+                <div className="w-full h-72 md:h-80 rounded-xl shadow-lg shrink-0 overflow-hidden">
+                  {card.image.endsWith('.mp4') ? (
+                    <video
+                      src={card.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full bg-center bg-cover"
+                      style={{ backgroundImage: `url('${card.image}')` }}
+                    />
+                  )}
+                </div>
 
                 {/* Content Area: flex-grow ensures this fills space to push buttons down */}
                 <div className="pt-6 md:pt-8 flex flex-col flex-grow">
@@ -116,7 +129,7 @@ function Sections() {
                   </div>
 
                   {/* Description area */}
-                  <p className="text-base md:text-lg leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-base md:text-lg leading-relaxed mb-4 capitalize" style={{ color: 'var(--text-secondary)' }}>
                     {card.desc}
                   </p>
                 </div>

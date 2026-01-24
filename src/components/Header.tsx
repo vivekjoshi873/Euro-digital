@@ -25,7 +25,7 @@ function Header() {
     // Start the 150ms "Grace Period" timer
     timeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
-    }, 150); 
+    }, 150);
   };
 
   return (
@@ -46,9 +46,9 @@ function Header() {
               <span className="absolute left-0 -bottom-1 w-0 h-px transition-all duration-300 ease-in-out group-hover:w-full" style={{ backgroundColor: 'var(--primary-navy)' }}></span>
             </span>
           </Link>
-          
+
           {/* Services Dropdown */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -64,15 +64,15 @@ function Header() {
             <div className={`absolute left-0 w-72 pt-3 transition-all duration-300 ${isDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible pointer-events-none'}`}>
               <div className="bg-white border border-gray-100 shadow-2xl rounded-xl py-2 overflow-hidden">
                 {services.map((service) => (
-                  <Link 
-                    key={service.id} 
+                  <Link
+                    key={service.id}
                     to={service.path}
                     onClick={() => setIsDropdownOpen(false)}
                     className="group flex items-center px-5 py-3 text-[14px] font-medium transition-all duration-200 hover:bg-slate-50"
                   >
                     {/* Highlighter Dot */}
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mr-3 opacity-0 -ml-2 transition-all duration-300 group-hover:opacity-100 group-hover:ml-0" />
-                    
+
                     <span className="text-slate-700 group-hover:text-blue-600 transition-colors">
                       {service.title}
                     </span>

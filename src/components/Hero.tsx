@@ -21,14 +21,14 @@ const slides: Slide[] = [
     title: "AI Business Automation",
     description:
       "EuroDigital’s AI Business Automation solutions are built to eliminate repetitive tasks and optimize your internal workflows. We analyze your business processes and design automation systems that save time, reduce errors, and allow your team to focus on high-value work.",
-    image: "/backgroundImages/bg-ai-automation.png",
+    image: "/servicesImages/Ai-business-automation.png",
     link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
     description:
       "Our AI Business Promotion solutions help you reach the right audience at the right time with personalized, data-driven strategies. By leveraging AI, we improve engagement, increase conversions, and make your marketing efforts more efficient.",
-    image: "/backgroundImages/bg-ai-business.png",
+    image: "/servicesImages/Ai-business-promotion.png",
     link: "/services/ai-business-promotion",
   },
   {
@@ -42,14 +42,14 @@ const slides: Slide[] = [
     title: "AI Automated Chatbot",
     description:
       "EuroDigital’s AI Voice Agents manage real conversations with customers using natural, human-like speech. These agents can handle calls efficiently while maintaining a professional tone and consistency.",
-    image: "/backgroundImages/ai-chatbot.jpg",
+    image: "/backgroundImages/ai_bussiness.png",
     link: "/services/ai-automated-chatbot",
   },
   {
     title: "AI Add-on Services",
     description:
       "Our AI Add-on Services allow businesses to enhance their existing tools and platforms with advanced AI features. These add-ons are flexible, scalable, and designed to evolve with your business.",
-    image: "/backgroundImages/addons.png",
+    image: "/servicesImages/ai_addon.png",
     link: "/services/ai-addon-services",
   },
   {
@@ -161,7 +161,7 @@ function Hero() {
               )}
             </h1>
 
-            <p className="mt-8 text-lg md:text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+            <p className="mt-8 text-lg md:text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed capitalize">
               {slides[currentSlide].description}
             </p>
           </motion.div>
@@ -179,12 +179,12 @@ function Hero() {
                 borderWidth: "1px",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor =
-                  "var(--primary-green-dark)")
+              (e.currentTarget.style.backgroundColor =
+                "var(--primary-green-dark)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor =
-                  "var(--primary-green)")
+              (e.currentTarget.style.backgroundColor =
+                "var(--primary-green)")
               }
             >
               Book A Demo
@@ -220,11 +220,10 @@ function Hero() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                index === currentSlide
+              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${index === currentSlide
                   ? "bg-white w-8"
                   : "bg-white/40 hover:bg-white/60"
-              }`}
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

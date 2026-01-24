@@ -91,6 +91,7 @@ function TestimonialsSection({
 
   return (
     <div id="testimonials" className="relative mt-12 md:mt-16 max-w-7xl mx-auto px-12 scroll-mt-32">
+      <h1 className="text-5xl font-bold mb-6 text-slate-400 text-center">Testimonials</h1>
       {/* Arrows - Fixed visibility with z-index, shadow, and text color */}
       <button
         onClick={prev}
@@ -222,14 +223,14 @@ function Footer() {
             <div className="space-y-4 flex flex-col items-start">
               <Link to="/">
                 <img
-                  src="/logo/euro-transparent.png"
+                  src="/logo/euro-digital-black-white.png"
                   alt="Euro Digital Technologies"
                   className="h-20 md:h-36 w-auto object-contain" // Even larger logo
 
                 />
               </Link>
 
-              <p className="text-[15px] leading-relaxed text-white/80">
+              <p className="text-[15px] leading-relaxed text-white/80 capitalize">
                 visionary entrepreneurs.
                 Structure, compliance, and capital-ready business formation.
               </p>
