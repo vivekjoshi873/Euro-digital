@@ -139,9 +139,11 @@ function AIAutomatedChatbot() {
 
                   <div className="mb-8">
                     <span className="text-6xl md:text-7xl font-bold text-slate-700">$600</span>
-                    <div className="text-base text-slate-600 mt-2">
+                    <span className="text-xl text-slate-600 ml-3">Per Month</span>
+
+                    {/* <div className="text-base text-slate-600 mt-2">
                       • ($29 / Month GHL Subscription)
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="space-y-4">

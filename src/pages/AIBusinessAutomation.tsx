@@ -75,9 +75,9 @@ function AIBusinessAutomation() {
                 </p>
               )}
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-4 ">
                 <button
-                  className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105"
+                  className="rounded-full text-white font-medium px-6 py-2 shadow-lg transition-all hover:shadow-xl hover:scale-105 "
                   style={{ backgroundColor: 'var(--primary-blue)' }}
                 >
                   {serviceData.primaryButtonText}
@@ -130,7 +130,7 @@ function AIBusinessAutomation() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden"
             >
-              <div className="p-8 pb-4">
+              <div className="p-8 pb-4 mt-11">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">AI Startup</h3>
                 <p className="text-[15px] text-slate-600 mb-6 min-h-[40px]">
                   For startups and publishers looking to automate basic operations.
@@ -141,7 +141,7 @@ function AIBusinessAutomation() {
                 </div>
 
                 <div className="flex gap-3 mb-8">
-                  <button className="bg-slate-900 text-white px-5 py-2 rounded font-semibold text-sm hover:bg-slate-800 transition-colors cursor-pointer">
+                  <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer">
                     Buy now
                   </button>
                   <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
@@ -178,7 +178,8 @@ function AIBusinessAutomation() {
               className="bg-white rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all flex flex-col overflow-hidden relative"
             >
               {/* Dark Header Banner */}
-              <div className="bg-[#001B3D] text-white py-2 px-6 text-center text-[13px] font-bold">
+              <div className="bg-[#18b6e3] text-white py-2 px-6 text-center text-[13px] font-extrabold leading-6"
+              >
                 Save up to 35% when you add AI Business Promotion.
               </div>
 
@@ -193,7 +194,7 @@ function AIBusinessAutomation() {
                 </div>
 
                 <div className="flex gap-3 mb-8">
-                  <button className="bg-slate-900 text-white px-5 py-2 rounded font-semibold text-sm hover:bg-slate-800 transition-colors cursor-pointer">
+                  <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer">
                     Buy now
                   </button>
                   <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
@@ -231,9 +232,9 @@ function AIBusinessAutomation() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden"
             >
-              <div className="p-8 pb-4">
+              <div className="p-8 pb-4 mt-11  ">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">AI Enterprise</h3>
-                <p className="text-[15px] text-slate-600 mb-6 min-h-[40px]">
+                <p className="text-[15px] text-slate-600 mb-6 min-h-[40px] ">
                   Advanced solutions for large enterprises with custom needs.
                 </p>
                 <div className="mb-4">
@@ -243,7 +244,7 @@ function AIBusinessAutomation() {
                 <div className="h-4"></div> {/* Spacer to match price line height */}
 
                 <div className="flex gap-3 mb-8">
-                  <button className="bg-slate-900 text-white px-5 py-2 rounded font-semibold text-sm hover:bg-slate-800 transition-colors cursor-pointer">
+                  <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm transition-colors cursor-pointer">
                     Contact Sales
                   </button>
                   <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
