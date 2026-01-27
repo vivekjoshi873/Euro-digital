@@ -22,6 +22,17 @@ function AIAddonServices() {
 
   return (
     <>
+      {/* Full Width Image Section */}
+      <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
+        <div className="rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="/servicesImages/Ai-business-automation1.png"
+            alt="AI add-on Services"
+            className="w-full h-auto object-cover"
+            style={{ maxHeight: '600px' }}
+          />
+        </div>
+      </section>
       {/* Service Content */}
       <section className="py-16 md:py-24" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -83,17 +94,7 @@ function AIAddonServices() {
         </div>
       </section>
 
-      {/* Full Width Image Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
-        <div className="rounded-3xl overflow-hidden shadow-2xl">
-          <img
-            src="/servicesImages/Ai-business-automation1.png"
-            alt="AI add-on Services"
-            className="w-full h-auto object-cover"
-            style={{ maxHeight: '600px' }}
-          />
-        </div>
-      </section>
+    
 
       {/* Stacking Cards Section */}
       <section className="py-16 md:py-24 bg-white">
