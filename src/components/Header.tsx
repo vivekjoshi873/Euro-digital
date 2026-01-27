@@ -90,12 +90,12 @@ function Header() {
           </Link>
         </nav>
 
-        <Link to="/">
+        <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
           <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95 cursor-pointer"
             style={{ backgroundColor: 'var(--primary-blue)' }}>
             Book Consultation
           </button>
-        </Link>
+        </a>
       </div>
     </header>
   );
