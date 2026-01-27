@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
+import { useState, useRef } from "react";
 
 const cards = [
   {
@@ -82,25 +84,59 @@ function Sections() {
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-8 md:gap-10">
           {cards.map((card) => {
-            // We removed the conditional logic that made one card taller than others
-            // to ensure a perfectly level grid.
+            const videoRef = useRef<HTMLVideoElement>(null);
+            const [isPlaying, setIsPlaying] = useState(false);
+
+            const togglePlayback = () => {
+              if (videoRef.current) {
+                if (videoRef.current.paused) {
+                  videoRef.current.play();
+                  videoRef.current.muted = false;
+                  setIsPlaying(true);
+                } else {
+                  videoRef.current.pause();
+                  setIsPlaying(false);
+                }
+              }
+            };
+
             return (
               <div
                 key={card.title}
-                className="rounded-2xl flex flex-col p-5 md:p-6 hover:shadow-2xl transition-shadow duration-300 h-full"
+                className="group rounded-2xl flex flex-col p-5 md:p-6 hover:shadow-2xl transition-shadow duration-300 h-full"
                 style={{ backgroundColor: 'var(--bg-secondary)' }}
               >
                 {/* Media Area: Supports both Images and Videos */}
-                <div className="w-full h-72 md:h-80 rounded-xl shadow-lg shrink-0 overflow-hidden">
+                <div className="relative w-full h-72 md:h-80 rounded-xl shadow-lg shrink-0 overflow-hidden">
                   {card.image.endsWith('.mp4') ? (
-                    <video
-                      src={card.image}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
+                    <>
+                      <video
+                        ref={videoRef}
+                        src={card.image}
+                        muted
+                        playsInline
+                        onEnded={() => setIsPlaying(false)}
+                        className="w-full h-full object-cover"
+                      />
+                      <div
+                        onClick={togglePlayback}
+                        className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all duration-300 cursor-pointer"
+                      >
+                        <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full border border-white/30 transform transition-transform group-hover:scale-110">
+                          {isPlaying ? (
+                            <div className="flex gap-1.5">
+                              <div className="w-2.5 h-10 bg-white rounded-full" />
+                              <div className="w-2.5 h-10 bg-white rounded-full" />
+                            </div>
+                          ) : (
+                            <Play
+                              className="w-10 h-10 text-white fill-white"
+                            />
+                          )}
+
+                        </div>
+                      </div>
+                    </>
                   ) : (
                     <div
                       className="w-full h-full bg-center bg-cover"

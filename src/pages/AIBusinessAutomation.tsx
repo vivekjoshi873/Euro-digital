@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import FAQ from "../components/FAQ";
 import { getFAQsByServiceId } from "../data/faqData";
 
@@ -22,10 +23,12 @@ function AIBusinessAutomation() {
     secondaryButtonText: "Talk to Sales"
   };
 
+  const [hasEnded, setHasEnded] = useState(false);
+
   return (
     <>
       {/* Service Content */}
-      <section className="w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl">
+      <section className="relative w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl group">
         <motion.video
           src={serviceData.video}
           className="w-full h-auto object-cover"
@@ -34,12 +37,50 @@ function AIBusinessAutomation() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           autoPlay
-          loop
           muted
           controls
           playsInline
+          onEnded={() => setHasEnded(true)}
         />
+
+        <AnimatePresence>
+          {hasEnded && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] z-10"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", damping: 15 }}
+                className="text-center p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Ready to Automate Your Business?</h3>
+                <a
+                  href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-[#18b6e3] text-white font-bold px-10 py-4 text-xl shadow-[0_0_20px_rgba(24,182,227,0.4)] transition-all hover:scale-105 hover:bg-[#159fca] hover:shadow-[0_0_30px_rgba(24,182,227,0.6)]"
+                >
+                  Book Demo
+                </a>
+                <button
+                  onClick={() => {
+                    setHasEnded(false);
+                    const video = document.querySelector('video');
+                    if (video) video.play();
+                  }}
+                  className="block mt-4 text-white/70 hover:text-white text-sm font-medium transition-colors underline underline-offset-4"
+                >
+                  Watch Again
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
+
       <section className="py-16 md:py-28" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <motion.div
@@ -107,9 +148,6 @@ function AIBusinessAutomation() {
           </motion.div>
         </div>
       </section>
-
-      {/* Full Width Video Section */}
-
 
       {/* Pricing Cards Section */}
       <section id="pricing" className="py-16 md:py-24 bg-white scroll-mt-32">
