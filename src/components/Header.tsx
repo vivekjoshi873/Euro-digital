@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
-import { ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 const services = [
   { id: "ai-business-automation", title: "AI Business Automation", path: "/services/ai-business-automation" },
@@ -13,7 +13,29 @@ const services = [
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const timeoutRef = useRef<number | null>(null); // Reference to store the timer
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
+
+  // Close mobile menu when window is resized to desktop width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
 
   const handleMouseEnter = () => {
     // Clear any pending close timers so it doesn't close while we're entering
@@ -29,12 +51,12 @@ function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-4 bg-white shadow-sm border-b border-black/5">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-3 md:py-4 bg-white shadow-sm border-b border-black/5">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center cursor-pointer">
-          <Link to="/">
-            <img src="/logo/logo.svg" alt="Logo" className="h-18" />
+        <div className="flex items-center cursor-pointer z-50">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/logo/logo.svg" alt="Logo" className="h-12 md:h-18 transition-all" />
           </Link>
         </div>
 
@@ -75,7 +97,7 @@ function Header() {
 
                     <span className="text-slate-700 group-hover:text-blue-600 transition-colors">
                       {service.title}
-                  </span>
+                    </span>
                   </Link>
                 ))}
               </div>
@@ -90,12 +112,84 @@ function Header() {
           </Link>
         </nav>
 
-        <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
-          <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95 cursor-pointer"
-            style={{ backgroundColor: 'var(--primary-blue)' }}>
-            Book Consultation
-          </button>
-        </a>
+        <div className="hidden md:block">
+          <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+            <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95 cursor-pointer"
+              style={{ backgroundColor: 'var(--primary-blue)' }}>
+              Book Consultation
+            </button>
+          </a>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden p-2 z-50 transition-colors text-slate-700"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Sidebar */}
+      <div className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out md:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col h-full pt-24 px-6 overflow-y-auto">
+          <nav className="flex flex-col gap-6 text-lg font-medium">
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-2 border-b border-gray-100"
+              style={{ color: 'var(--primary-navy)' }}
+            >
+              Home
+            </Link>
+
+            <div className="flex flex-col">
+              <button
+                className="flex items-center justify-between py-2 border-b border-gray-100 outline-none"
+                style={{ color: 'var(--primary-navy)' }}
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+              >
+                <span>Services</span>
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <div className={`flex flex-col gap-4 mt-4 pl-4 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                {services.map((service) => (
+                  <Link
+                    key={service.id}
+                    to={service.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-slate-600 hover:text-blue-600 font-medium py-1"
+                  >
+                    {service.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              to="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-2 border-b border-gray-100"
+              style={{ color: 'var(--primary-navy)' }}
+            >
+              Contact
+            </Link>
+          </nav>
+
+          <div className="mt-10 mb-8">
+            <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+              <button
+                className="w-full rounded-xl text-white font-semibold py-4 shadow-lg transition-all"
+                style={{ backgroundColor: 'var(--primary-blue)' }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Book Consultation
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
     </header>
   );

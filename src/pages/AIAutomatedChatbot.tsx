@@ -124,26 +124,19 @@ function AIAutomatedChatbot() {
           <div className="space-y-8">
             {/* Card 1 - WhatsApp AI Automated Chatbot */}
             <div
-              className="sticky top-24 bg-gradient-to-br from-cyan-50 to-blue-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="md:sticky md:top-24 bg-gradient-to-br from-cyan-50 to-blue-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 10 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Left Side - Content */}
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     WhatsApp AI Automated Chatbot
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    Beautiful analytics that update as your AI agents work
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">$600</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">$600</span>
                     <span className="text-xl text-slate-600 ml-3">Per Month</span>
-
-                    {/* <div className="text-base text-slate-600 mt-2">
-                      • ($29 / Month GHL Subscription)
-                    </div> */}
                   </div>
 
                   <div className="space-y-4">
@@ -167,7 +160,7 @@ function AIAutomatedChatbot() {
                 </div>
 
                 {/* Right Side - Image */}
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_bussiness.png"
                     alt="WhatsApp AI Chatbot"
@@ -177,22 +170,19 @@ function AIAutomatedChatbot() {
               </div>
             </div>
 
-            {/* Card 2 - Advanced WhatsApp AI */}
+            {/* Card 2 - Instagram AI Chatbot */}
             <div
-              className="sticky top-32 bg-gradient-to-br from-purple-50 to-pink-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="md:sticky md:top-32 bg-gradient-to-br from-purple-50 to-pink-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 20 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     Instagram AI Chatbot
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For businesses scaling with automation
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">$600</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">$600</span>
                     <span className="text-xl text-slate-600 ml-3">Per Month</span>
                   </div>
 
@@ -220,7 +210,7 @@ function AIAutomatedChatbot() {
                   </div>
                 </div>
 
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_agent.png"
                     alt="Instagram AI Chatbot"
@@ -230,22 +220,19 @@ function AIAutomatedChatbot() {
               </div>
             </div>
 
-            {/* Card 3 - Professional WhatsApp AI */}
+            {/* Card 3 - Facebook Messenger AI Chatbot */}
             <div
-              className="sticky top-40 bg-gradient-to-br from-green-50 to-teal-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="md:sticky md:top-40 bg-gradient-to-br from-green-50 to-teal-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 30 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     Facebook Messenger AI Chatbot
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For established businesses with high volume
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">$600</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">$600</span>
                     <span className="text-xl text-slate-600 ml-3">Per Month</span>
                   </div>
 
@@ -277,7 +264,7 @@ function AIAutomatedChatbot() {
                   </div>
                 </div>
 
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_services.png"
                     alt="Facebook Messenger AI Chatbot"
@@ -289,20 +276,17 @@ function AIAutomatedChatbot() {
 
             {/* Card 4 - Enterprise WhatsApp AI */}
             <div
-              className="sticky top-48 bg-gradient-to-br from-orange-50 to-amber-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="md:sticky md:top-48 bg-gradient-to-br from-orange-50 to-amber-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 40 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     Enterprise level chatbot solution
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For large enterprises with custom needs
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">Custom</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">Custom</span>
                   </div>
 
                   <div className="space-y-4">
@@ -337,7 +321,7 @@ function AIAutomatedChatbot() {
                   </div>
                 </div>
 
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/agent.png"
                     alt="Enterprise level chatbot solution"

@@ -113,26 +113,19 @@ function AIAgentTalkTime() {
 
           <div className="space-y-8">
             {/* Card 1 - AI Startup Talk time */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ duration: 0.5 }}
-              className="sticky top-24 bg-gradient-to-br from-cyan-50 to-blue-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            <div
+              className="md:sticky md:top-24 bg-gradient-to-br from-cyan-50 to-blue-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 10 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Left Side - Content */}
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     AI Startup Talk time
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For startups and publishers
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">$99</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">$99</span>
                     <span className="text-xl text-slate-600 ml-3">Per Month</span>
                   </div>
 
@@ -157,7 +150,7 @@ function AIAgentTalkTime() {
                 </div>
 
                 {/* Right Side - Image */}
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_agent.png"
                     alt="AI Startup Talk time"
@@ -165,28 +158,21 @@ function AIAgentTalkTime() {
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Card 2 - AI Business Talk time */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ duration: 0.5 }}
-              className="sticky top-32 bg-gradient-to-br from-purple-50 to-pink-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            <div
+              className="md:sticky md:top-32 bg-gradient-to-br from-purple-50 to-pink-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 20 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     AI Business Talk time
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For rapidly scaling startups
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">$299</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">$299</span>
                     <span className="text-xl text-slate-600 ml-3">Per Month</span>
                   </div>
 
@@ -214,7 +200,7 @@ function AIAgentTalkTime() {
                   </div>
                 </div>
 
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_bussiness.png"
                     alt="AI Business Talk time"
@@ -222,28 +208,21 @@ function AIAgentTalkTime() {
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Card 3 - AI Professional Talk time */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ duration: 0.5 }}
-              className="sticky top-40 bg-gradient-to-br from-green-50 to-teal-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            <div
+              className="md:sticky md:top-40 bg-gradient-to-br from-green-50 to-teal-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 30 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     AI Professional Talk time
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For established businesses
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">$599</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">$599</span>
                     <span className="text-xl text-slate-600 ml-3">Per Month</span>
                   </div>
 
@@ -275,7 +254,7 @@ function AIAgentTalkTime() {
                   </div>
                 </div>
 
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_services.png"
                     alt="AI Professional Talk time"
@@ -283,28 +262,21 @@ function AIAgentTalkTime() {
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Card 4 - AI Enterprise Talk time */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ duration: 0.5 }}
-              className="sticky top-48 bg-gradient-to-br from-orange-50 to-amber-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            <div
+              className="md:sticky md:top-48 bg-gradient-to-br from-orange-50 to-amber-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
               style={{ zIndex: 40 }}
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="text-4xl font-bold text-slate-800 mb-3">
+                <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                  <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                     AI Enterprise Talk time
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
-                    For large enterprises with custom needs
-                  </p>
 
                   <div className="mb-8">
-                    <span className="text-6xl md:text-7xl font-bold text-slate-700">Custom</span>
+                    <span className="text-5xl md:text-7xl font-bold text-slate-700">Custom</span>
                   </div>
 
                   <div className="space-y-4">
@@ -339,7 +311,7 @@ function AIAgentTalkTime() {
                   </div>
                 </div>
 
-                <div className="relative h-full min-h-[550px] md:min-h-[650px]">
+                <div className="relative h-full min-h-[300px] md:min-h-[650px] order-1 md:order-2">
                   <img
                     src="/backgroundImages/ai_users.png"
                     alt="AI Enterprise Talk time"
@@ -347,7 +319,7 @@ function AIAgentTalkTime() {
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

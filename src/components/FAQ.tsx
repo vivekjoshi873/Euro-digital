@@ -1,4 +1,4 @@
-import { useState } from "react";
+ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
@@ -20,16 +20,16 @@ function FAQ({ faqs, title = "Frequently Asked Questions", subtitle }: FAQProps)
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid md:grid-cols-2 gap-15 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Left Side - Title and Subtitle */}
-          <div className="sticky top-24">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--primary-navy)' }}>
+          <div className="md:sticky md:top-24 z-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: 'var(--primary-navy)' }}>
               {title}
             </h2>
             {subtitle && (
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-lg leading-relaxed mb-8 md:mb-0" style={{ color: 'var(--text-secondary)' }}>
                 {subtitle}
               </p>
             )}
