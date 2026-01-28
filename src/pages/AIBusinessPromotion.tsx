@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import FAQ from "../components/FAQ";
 import { getFAQsByServiceId } from "../data/faqData";
+import { Link } from "react-router-dom";
 
 function AIBusinessPromotion() {
   const serviceData = {
@@ -193,9 +194,11 @@ function AIBusinessPromotion() {
                   <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer">
                     Buy now
                   </button>
-                  <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
-                    Request a Demo
-                  </button>
+                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                    <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
+                      Request a Demo
+                    </button>
+                  </a>
                 </div>
               </div>
 
@@ -245,9 +248,11 @@ function AIBusinessPromotion() {
                   <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer ">
                     Buy now
                   </button>
-                  <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
-                    Request a Demo
-                  </button>
+                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                    <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
+                      Request a Demo
+                    </button>
+                  </a>
                 </div>
               </div>
 
@@ -295,9 +300,11 @@ function AIBusinessPromotion() {
                   <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer">
                     Contact Sales
                   </button>
-                  <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
-                    Request a Demo
-                  </button>
+                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                    <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
+                      Request a Demo
+                    </button>
+                  </a>
                 </div>
               </div>
 
