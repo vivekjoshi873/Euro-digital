@@ -88,7 +88,7 @@ function AIBusinessPromotion() {
                     const video = document.querySelector('video');
                     if (video) video.play();
                   }}
-                  className="block mt-4 text-white/70 hover:text-white text-sm font-medium transition-colors underline underline-offset-4"
+                  className="block mt-4 text-white/70 hover:text-white text-sm font-medium transition-colors underline underline-offset-4 cursor-pointer"
                 >
                   Watch Again
                 </button>
