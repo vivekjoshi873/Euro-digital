@@ -169,7 +169,7 @@ function Hero() {
 
         {/* Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
-          <Link to="/">
+          <Link to="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj">
             <button
               className="rounded-2xl font-semibold px-9 py-4 shadow-[0_14px_40px_rgba(0,0,0,0.25)] transition-colors text-lg cursor-pointer"
               style={{
