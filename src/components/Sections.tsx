@@ -7,7 +7,7 @@ const cards = [
     title: "AI Business Automation",
     desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
     image: "/videos/irfan1.mp4",
-    link: "/services/ai-business-automation",
+    link: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
   },
   {
     title: "AI Business Promotion",
