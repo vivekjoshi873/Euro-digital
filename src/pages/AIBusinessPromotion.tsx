@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import FAQ from "../components/FAQ";
 import { getFAQsByServiceId } from "../data/faqData";
-import { Link } from "react-router-dom";
 
 function AIBusinessPromotion() {
   const serviceData = {
