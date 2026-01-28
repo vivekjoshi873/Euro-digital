@@ -6,13 +6,13 @@ const cards = [
   {
     title: "AI Business Automation",
     desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
-    image: "/videos/irfan1.mp4",
-    link: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
+    video: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
+    link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
     desc: "Smarter Marketing Powered by AI. Leverage data-driven insights to create personalized campaigns that convert and engage your audience effectively.",
-    image: "/backgroundImages/ai_promotion.png",
+    video: "https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4",
     link: "/services/ai-business-promotion",
   },
   {
@@ -108,11 +108,11 @@ function Sections() {
               >
                 {/* Media Area: Supports both Images and Videos */}
                 <div className="relative w-full h-72 md:h-80 rounded-xl shadow-lg shrink-0 overflow-hidden">
-                  {card.image.endsWith('.mp4') ? (
+                  {card.video ? (
                     <>
                       <video
                         ref={videoRef}
-                        src={card.image}
+                        src={card.video}
                         muted
                         playsInline
                         onEnded={() => setIsPlaying(false)}
@@ -137,12 +137,12 @@ function Sections() {
                         </div>
                       </div>
                     </>
-                  ) : (
+                  ) : card.image ? (
                     <div
                       className="w-full h-full bg-center bg-cover"
                       style={{ backgroundImage: `url('${card.image}')` }}
                     />
-                  )}
+                  ) : null}
                 </div>
 
                 {/* Content Area: flex-grow ensures this fills space to push buttons down */}

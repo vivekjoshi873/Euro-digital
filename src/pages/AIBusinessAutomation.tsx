@@ -24,6 +24,7 @@ function AIBusinessAutomation() {
   };
 
   const [hasEnded, setHasEnded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   return (
     <>
@@ -36,12 +37,28 @@ function AIBusinessAutomation() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          autoPlay
           muted
           controls
           playsInline
           onEnded={() => setHasEnded(true)}
+          onError={(e) => {
+            console.error('Video failed to load:', e);
+            console.error('Video URL:', serviceData.video);
+            setVideoError(true);
+          }}
+          onLoadStart={() => console.log('Video loading started...')}
+          onLoadedData={() => console.log('Video loaded successfully!')}
         />
+
+        {videoError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-red-100 border-2 border-red-500">
+            <div className="text-center p-8">
+              <p className="text-red-800 font-bold text-xl mb-2">Video Failed to Load</p>
+              <p className="text-red-600 text-sm">Please check console for details</p>
+              <p className="text-red-600 text-xs mt-2 break-all">{serviceData.video}</p>
+            </div>
+          </div>
+        )}
 
         <AnimatePresence>
           {hasEnded && (
