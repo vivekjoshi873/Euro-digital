@@ -28,7 +28,7 @@ function AIBusinessPromotion() {
       {/* Service Content */}
       <section className="relative w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl group">
         <motion.video
-          src="/videos/Irfan2.mp4"
+          src="https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4"
           className="w-full h-auto object-cover"
           style={{ maxHeight: '800px', width: '100%' }}
           initial={{ opacity: 0, scale: 0.95 }}

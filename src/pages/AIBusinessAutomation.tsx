@@ -9,7 +9,7 @@ function AIBusinessAutomation() {
     title: "AI Business Automation",
     description:
       "EuroDigital's AI Business Automation solutions are built to eliminate repetitive tasks and optimize your internal workflows. We analyze your business processes and design automation systems that save time, reduce errors, and allow your team to focus on high-value work.",
-    video: "/videos/irfan1.mp4",
+    video: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
     features: [
       "Lead capture, routing, and automated follow-ups",
       "CRM automation and third-party tool integrations",
