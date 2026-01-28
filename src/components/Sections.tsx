@@ -63,6 +63,34 @@ const industries = [
 
 
 function Sections() {
+  const [currentlyPlayingIndex, setCurrentlyPlayingIndex] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const pauseAllVideos = () => {
+    videoRefs.current.forEach((video) => {
+      if (video && !video.paused) {
+        video.pause();
+      }
+    });
+  };
+
+  const handleVideoPlay = (index: number) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
+
+    // If this video is currently playing, just pause it
+    if (currentlyPlayingIndex === index && !video.paused) {
+      video.pause();
+      setCurrentlyPlayingIndex(null);
+    } else {
+      // Pause all videos first, then play the selected one
+      pauseAllVideos();
+      video.play();
+      video.muted = false;
+      setCurrentlyPlayingIndex(index);
+    }
+  };
+
   return (
     <div className="bg-[#0b1538] text-white">
       {/* Overview Section - Kept as is */}
@@ -83,22 +111,8 @@ function Sections() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-8 md:gap-10">
-          {cards.map((card) => {
-            const videoRef = useRef<HTMLVideoElement>(null);
-            const [isPlaying, setIsPlaying] = useState(false);
-
-            const togglePlayback = () => {
-              if (videoRef.current) {
-                if (videoRef.current.paused) {
-                  videoRef.current.play();
-                  videoRef.current.muted = false;
-                  setIsPlaying(true);
-                } else {
-                  videoRef.current.pause();
-                  setIsPlaying(false);
-                }
-              }
-            };
+          {cards.map((card, index) => {
+            const isPlaying = currentlyPlayingIndex === index;
 
             return (
               <div
@@ -111,15 +125,15 @@ function Sections() {
                   {card.video ? (
                     <>
                       <video
-                        ref={videoRef}
+                        ref={(el) => { videoRefs.current[index] = el; }}
                         src={card.video}
                         muted
                         playsInline
-                        onEnded={() => setIsPlaying(false)}
+                        onEnded={() => setCurrentlyPlayingIndex(null)}
                         className="w-full h-full object-cover"
                       />
                       <div
-                        onClick={togglePlayback}
+                        onClick={() => handleVideoPlay(index)}
                         className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all duration-300 cursor-pointer"
                       >
                         <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full border border-white/30 transform transition-transform group-hover:scale-110">
