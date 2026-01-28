@@ -381,7 +381,7 @@ function AIBusinessAutomation() {
                 </div>
 
                 <div className="flex flex-col gap-2 pt-2">
-                  <button className="bg-[#001B3D] text-white py-2 px-4 rounded font-bold text-sm hover:bg-[#002a5d] transition-colors cursor-pointer">
+                  <button className="bg-[#18b6e3] text-white py-2 px-4 rounded font-bold text-sm  transition-colors cursor-pointer">
                     {plan.name === "AI Enterprise" ? "Contact Sales" : "Buy now"}
                   </button>
                   <button className="bg-white text-slate-900 border border-slate-300 py-2 px-4 rounded font-bold text-sm hover:bg-slate-50 transition-colors cursor-pointer">

@@ -99,11 +99,11 @@ function Hero() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-7 md:left-10 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/15 border border-white/20 flex items-center justify-center hover:bg-white/25 transition-all z-10 shadow-[0_10px_40px_rgba(0,0,0,0.35)] cursor-pointer"
+        className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 border border-white/30 flex items-center justify-center hover:bg-white/30 active:bg-white/40 transition-all z-20 shadow-[0_10px_40px_rgba(0,0,0,0.35)] cursor-pointer touch-manipulation"
         aria-label="Previous slide"
       >
         <svg
-          className="w-5 h-5 text-white"
+          className="w-5 h-5 md:w-6 md:h-6 text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ function Hero() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={2.5}
             d="M14 18l-6-6 6-6"
           />
         </svg>
@@ -119,11 +119,11 @@ function Hero() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-7 md:right-10 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/15 border border-white/20 flex items-center justify-center hover:bg-white/25 transition-all z-10 shadow-[0_10px_40px_rgba(0,0,0,0.35)] cursor-pointer"
+        className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 border border-white/30 flex items-center justify-center hover:bg-white/30 active:bg-white/40 transition-all z-20 shadow-[0_10px_40px_rgba(0,0,0,0.35)] cursor-pointer touch-manipulation"
         aria-label="Next slide"
       >
         <svg
-          className="w-5 h-5 text-white"
+          className="w-5 h-5 md:w-6 md:h-6 text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -131,7 +131,7 @@ function Hero() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={2.5}
             d="M10 6l6 6-6 6"
           />
         </svg>
@@ -221,8 +221,8 @@ function Hero() {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${index === currentSlide
-                  ? "bg-white w-8"
-                  : "bg-white/40 hover:bg-white/60"
+                ? "bg-white w-8"
+                : "bg-white/40 hover:bg-white/60"
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />

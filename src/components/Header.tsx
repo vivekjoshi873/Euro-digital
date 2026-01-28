@@ -177,18 +177,6 @@ function Header() {
               Contact
             </Link>
           </nav>
-
-          <div className="mt-10 mb-8">
-            <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
-              <button
-                className="w-full rounded-xl text-white font-semibold py-4 shadow-lg transition-all"
-                style={{ backgroundColor: 'var(--primary-blue)' }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Book Consultation
-              </button>
-            </a>
-          </div>
         </div>
       </div>
     </header>

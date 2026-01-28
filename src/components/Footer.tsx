@@ -82,21 +82,39 @@ function TestimonialsSection({
   testimonials: Testimonial[];
 }) {
   const [index, setIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(1);
 
-  const visibleCards = 3;
+  // Update visible cards based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setVisibleCards(3); // Desktop: 3 cards
+      } else if (window.innerWidth >= 768) {
+        setVisibleCards(2); // Tablet: 2 cards
+      } else {
+        setVisibleCards(1); // Mobile: 1 card
+      }
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const totalPages = Math.ceil(testimonials.length / visibleCards);
 
   const prev = () => setIndex((i) => Math.max(i - 1, 0));
   const next = () => setIndex((i) => Math.min(i + 1, totalPages - 1));
 
   return (
-    <div id="testimonials" className="relative mt-12 md:mt-16 max-w-7xl mx-auto px-12 scroll-mt-32">
-      <h1 className="text-5xl font-bold mb-6 text-slate-400 text-center">Testimonials</h1>
+    <div id="testimonials" className="relative mt-12 md:mt-16 max-w-7xl mx-auto px-4 md:px-12 scroll-mt-32">
+      <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-400 text-center">Testimonials</h1>
       {/* Arrows - Fixed visibility with z-index, shadow, and text color */}
       <button
         onClick={prev}
         disabled={index === 0}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.15)] disabled:opacity-20 disabled:cursor-not-allowed hover:bg-gray-50 transition-all flex items-center justify-center text-gray-900 text-3xl pb-1"
+        className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.15)] disabled:opacity-20 disabled:cursor-not-allowed hover:bg-gray-50 active:bg-gray-100 transition-all flex items-center justify-center text-gray-900 text-2xl md:text-3xl pb-1 touch-manipulation"
+        aria-label="Previous testimonials"
       >
         ‹
       </button>
@@ -104,29 +122,30 @@ function TestimonialsSection({
       <button
         onClick={next}
         disabled={index === totalPages - 1}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.15)] disabled:opacity-20 disabled:cursor-not-allowed hover:bg-gray-50 transition-all flex items-center justify-center text-gray-900 text-3xl pb-1"
+        className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.15)] disabled:opacity-20 disabled:cursor-not-allowed hover:bg-gray-50 active:bg-gray-100 transition-all flex items-center justify-center text-gray-900 text-2xl md:text-3xl pb-1 touch-manipulation"
+        aria-label="Next testimonials"
       >
         ›
       </button>
 
       {/* Carousel Container */}
-      <div className="overflow-hidden py-4">
+      <div className="overflow-hidden py-4 mx-8 md:mx-12">
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{
-            transform: `translateX(-${index * 100}%)`,
+            transform: `translateX(-${index * (100 / visibleCards)}%)`,
           }}
         >
           {testimonials.map((item, i) => (
             <div key={i} className="w-full md:w-1/2 lg:w-1/3 shrink-0 px-3">
               {/* Card - Added h-[500px] to fix height and flex-grow on text */}
-              <div className="bg-white rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col h-[500px] text-center relative">
+              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col h-[500px] text-center relative">
                 <div className="mb-4 text-blue-500 text-5xl font-serif opacity-50">
-                  “
+                  "
                 </div>
 
                 <div className="flex-grow overflow-hidden">
-                  <p className="text-[15px] leading-relaxed mb-6 whitespace-pre-line text-gray-600 italic line-clamp-[10]">
+                  <p className="text-sm md:text-[15px] leading-relaxed mb-6 whitespace-pre-line text-gray-600 italic line-clamp-[10]">
                     {item.text}
                   </p>
                 </div>
