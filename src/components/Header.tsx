@@ -75,7 +75,7 @@ function Header() {
 
                     <span className="text-slate-700 group-hover:text-blue-600 transition-colors">
                       {service.title}
-                    </span>
+                  </span>
                   </Link>
                 ))}
               </div>

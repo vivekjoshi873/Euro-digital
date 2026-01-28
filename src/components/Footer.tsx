@@ -223,7 +223,7 @@ function Footer() {
             <div className="space-y-4 flex flex-col items-start">
               <Link to="/">
                 <img
-                  src="/logo/euro-digital-black-white.png"
+                  src="/logo/euro-digital-white.png"
                   alt="Euro Digital Technologies"
                   className="h-20 md:h-36 w-auto object-contain" // Even larger logo
 
