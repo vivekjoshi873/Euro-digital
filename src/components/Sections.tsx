@@ -24,7 +24,7 @@ const cards = [
   {
     title: "AI Automated Chatbot",
     desc: "Always-on support with human-like responses. Deliver instant, 24/7 customer service with intelligent chatbots that understand context and intent.",
-    image: "/backgroundImages/ai_agent.png",
+    video: "https://48yfcqwona.ucarecd.net/21cd7b64-9315-44bb-b375-d304d389e96e/Irfan3.mp4",
     link: "/services/ai-automated-chatbot",
   },
   {
