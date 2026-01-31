@@ -40,6 +40,7 @@ function AIAutomatedChatbot() {
           muted
           controls
           playsInline
+          poster="/backgroundImages/ai-automation.png"
           onEnded={() => setHasEnded(true)}
           onError={(e) => {
             console.error('Video failed to load:', e);

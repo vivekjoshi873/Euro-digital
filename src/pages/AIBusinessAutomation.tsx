@@ -40,6 +40,7 @@ function AIBusinessAutomation() {
           muted
           controls
           playsInline
+          poster="/servicesImages/Ai-business-automation.png"
           onEnded={() => setHasEnded(true)}
           onError={(e) => {
             console.error('Video failed to load:', e);

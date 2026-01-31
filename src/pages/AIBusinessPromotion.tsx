@@ -40,6 +40,7 @@ function AIBusinessPromotion() {
           muted
           controls
           playsInline
+          poster="/servicesImages/Ai-business-promotion.png"
           onEnded={() => setHasEnded(true)}
           onError={(e) => {
             console.error('Video failed to load:', e);

@@ -39,6 +39,7 @@ function AIAddonServices() {
           muted
           controls
           playsInline
+          poster="/servicesImages/ai_addon.png"
           onEnded={() => setHasEnded(true)}
           onError={(e) => {
             console.error('Video failed to load:', e);
