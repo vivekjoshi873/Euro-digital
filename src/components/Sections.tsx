@@ -30,7 +30,7 @@ const cards = [
   {
     title: "AI add-on Services",
     desc: "Extend capabilities with modular AI services. Integrate powerful AI tools into your existing systems to enhance functionality and performance.",
-    image: "/backgroundImages/ai_services.png",
+    video: "https://48yfcqwona.ucarecd.net/2f627cbe-b460-4c59-a853-f2752b5e6f97/Irfan4.mp4",
     link: "/services/ai-addon-services",
   },
   {
