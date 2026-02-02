@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import FAQ from "../components/FAQ";
 import { getFAQsByServiceId } from "../data/faqData";
+import ServiceHeroVideo from "../components/ServiceHeroVideo";
 
 function AIAutomatedChatbot() {
   const serviceData = {
@@ -21,83 +22,17 @@ function AIAutomatedChatbot() {
     secondaryButtonText: "Talk to Sales"
   };
 
-  const [hasEnded, setHasEnded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
 
   const videoUrl = "https://48yfcqwona.ucarecd.net/21cd7b64-9315-44bb-b375-d304d389e96e/Irfan3.mp4";
 
   return (
     <>
-      {/* Full Width Video Section */}
-      <section className="relative w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl group">
-        <motion.video
-          src={videoUrl}
-          className="w-full h-auto object-cover"
-          style={{ maxHeight: '800px', width: '100%' }}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          muted
-          controls
-          playsInline
-          poster="/backgroundImages/ai-automation.png"
-          onEnded={() => setHasEnded(true)}
-          onError={(e) => {
-            console.error('Video failed to load:', e);
-            console.error('Video URL:', videoUrl);
-            setVideoError(true);
-          }}
-          onLoadStart={() => console.log('Video loading started...')}
-          onLoadedData={() => console.log('Video loaded successfully!')}
-        />
-
-        {videoError && (
-          <div className="absolute inset-0 flex items-center justify-center bg-red-100 border-2 border-red-500">
-            <div className="text-center p-8">
-              <p className="text-red-800 font-bold text-xl mb-2">Video Failed to Load</p>
-              <p className="text-red-600 text-sm">Please check console for details</p>
-              <p className="text-red-600 text-xs mt-2 break-all">{videoUrl}</p>
-            </div>
-          </div>
-        )}
-
-        <AnimatePresence>
-          {hasEnded && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] z-10"
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", damping: 15 }}
-                className="text-center p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl"
-              >
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Ready to Automate Your Business?</h3>
-                <a
-                  href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-[#18b6e3] text-white font-bold px-10 py-4 text-xl shadow-[0_0_20px_rgba(24,182,227,0.4)] transition-all hover:scale-105 hover:bg-[#159fca] hover:shadow-[0_0_30px_rgba(24,182,227,0.6)]"
-                >
-                  Book Demo
-                </a>
-                <button
-                  onClick={() => {
-                    setHasEnded(false);
-                    const video = document.querySelector('video');
-                    if (video) video.play();
-                  }}
-                  className="block mt-4 text-white/70 hover:text-white text-sm font-medium transition-colors underline underline-offset-4 cursor-pointer"
-                >
-                  Watch Again
-                </button>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
+      <ServiceHeroVideo
+        videoUrl={videoUrl}
+        poster="/backgroundImages/ai-automation.png"
+        overlayTitle="Ready to Automate Your Business?"
+        ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+      />
       {/* Service Content */}
       <section className="py-16 md:py-24" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8">

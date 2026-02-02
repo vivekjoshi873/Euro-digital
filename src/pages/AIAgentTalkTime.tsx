@@ -8,7 +8,7 @@ function AIAgentTalkTime() {
     title: "AI Agent Talk Time",
     description:
       "Our AI-powered chatbots are designed to handle customer interactions accurately and professionally, around the clock. These chatbots are trained using your business data, ensuring responses remain relevant, reliable, and aligned with your brand voice.",
-    image: "/backgroundImages/aitalktime.png",
+    image: "/backgroundImages/aitalk-time.png",
     features: [
       "Website, WhatsApp, and platform-based chatbots",
       "Customer support automation",
@@ -84,14 +84,14 @@ function AIAgentTalkTime() {
       </section>
 
       {/* Full Width Image Section */}
-      <section className="w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10">
+      {/* <section className="w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10">
         <img
           src="/servicesImages/Ai-business-automation1.png"
           alt="AI Agent Talk Time"
           className="w-full h-auto object-cover"
           style={{ maxHeight: '600px' }}
         />
-      </section>
+      </section> */}
 
       {/* Stacking Cards Section with Scroll Effect */}
       <section className="py-16 md:py-24 bg-white">
