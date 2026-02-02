@@ -1,5 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import FAQ from "../components/FAQ";
 import { getFAQsByServiceId } from "../data/faqData";
 import ServiceHeroVideo from "../components/ServiceHeroVideo";
