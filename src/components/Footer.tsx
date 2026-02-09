@@ -283,7 +283,7 @@ function Footer() {
                   className="group flex justify-center cursor-pointer"
                 >
                   <img
-                    src="/logo/iso-1.png"
+                    src="/logo/iclogo.png"
                     alt="ICV Certification"
                     className="h-16 md:h-20 opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition duration-300"
                   />
@@ -294,9 +294,9 @@ function Footer() {
                   className="group flex justify-center cursor-pointer"
                 >
                   <img
-                    src="/logo/logo.png"
+                    src="/logo/iso-1.png"
                     alt="ISO Certification"
-                    className="h-16 md:h-14 opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition duration-300"
+                    className="h-16 md:h-20 opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition duration-300"
                   />
                 </button>
               </div>
