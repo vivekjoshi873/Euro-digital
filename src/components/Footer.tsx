@@ -335,7 +335,7 @@ function Footer() {
                   Abu Dhabi, UAE
                 </p>
                 <div className="space-y-2">
-                  <p className="hover:text-white transition-colors cursor-pointer">
+                  <p className="hover:text-white transition-coLoading...rs cursor-pointer">
                     support@eurodigital.site
                   </p>
                   <p className="hover:text-white transition-colors cursor-pointer">

@@ -27,7 +27,6 @@ function AIAddonServices() {
     <>
       <ServiceHeroVideo
         videoUrl={serviceData.video}
-        poster="/servicesImages/ai_addon.png"
         overlayTitle="Ready to Enhance Your Tools with AI?"
         ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
       />

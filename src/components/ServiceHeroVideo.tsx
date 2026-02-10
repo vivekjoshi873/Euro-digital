@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
-import { RotateCcw } from "lucide-react";
+import { RotateCcw, Play, Pause } from "lucide-react";
 
 interface ServiceHeroVideoProps {
     videoUrl: string;
@@ -11,18 +11,38 @@ interface ServiceHeroVideoProps {
 
 const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHeroVideoProps) => {
     const [hasEnded, setHasEnded] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [videoError, setVideoError] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    const handlePlayVideo = () => {
+        if (videoRef.current) {
+            videoRef.current.play().then(() => {
+                setIsPlaying(true);
+            }).catch(err => {
+                console.error("Playback failed:", err);
+            });
+        }
+    };
+
+    const handlePauseVideo = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (videoRef.current) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        }
+    };
 
     const handleWatchAgain = () => {
         setHasEnded(false);
         if (videoRef.current) {
             videoRef.current.play();
+            setIsPlaying(true);
         }
     };
 
     return (
-        <section className="relative w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl group">
+        <section className="relative w-full max-w-[1425px] mx-auto rounded-3xl overflow-hidden mt-10 shadow-xl group cursor-pointer">
             <motion.video
                 ref={videoRef}
                 src={videoUrl}
@@ -31,15 +51,78 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                controls
+                controls={isPlaying}
                 playsInline
                 poster={poster}
-                onEnded={() => setHasEnded(true)}
+                onEnded={() => {
+                    setHasEnded(true);
+                    setIsPlaying(false);
+                }}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onClick={(e) => {
+                    if (isPlaying) {
+                        handlePauseVideo(e);
+                    } else {
+                        handlePlayVideo();
+                    }
+                }}
                 onError={(e) => {
                     console.error('Video failed to load:', e);
                     setVideoError(true);
                 }}
             />
+
+            {/* Custom Play Button Overlay */}
+            <AnimatePresence>
+                {!isPlaying && !hasEnded && !videoError && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors z-20"
+                        onClick={handlePlayVideo}
+                    >
+                        <motion.button
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="bg-[#18b6e3] w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center text-white shadow-[0_0_30px_rgba(24,182,227,0.4)] border-4 border-white/20"
+                        >
+                            <Play className="w-8 h-8 md:w-12 md:h-12 fill-white ml-1" />
+                        </motion.button>
+
+                        <div className="absolute top-8 left-8">
+                            <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                                <p className="text-white text-sm font-semibold uppercase tracking-wider">Service Overview</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Custom Pause/Stop Button Overlay (Visible on Hover when playing) */}
+            <AnimatePresence>
+                {isPlaying && !hasEnded && !videoError && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity z-20"
+                        onClick={handlePauseVideo}
+                    >
+                        <motion.button
+                            initial={{ scale: 0.8 }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="bg-white/20 hover:bg-white/30 backdrop-blur-md w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center text-white border-2 border-white/40 shadow-2xl"
+                        >
+                            <Pause className="w-8 h-8 md:w-12 md:h-12 fill-white" />
+                        </motion.button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {videoError && (
                 <div className="absolute inset-0 flex items-center justify-center bg-red-100/10 backdrop-blur-sm border-2 border-red-500/50 rounded-3xl">
@@ -55,7 +138,7 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-[4px] z-10"
+                        className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-[4px] z-30"
                     >
                         <motion.div
                             initial={{ scale: 0.8, opacity: 0 }}

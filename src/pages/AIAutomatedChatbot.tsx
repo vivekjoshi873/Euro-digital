@@ -28,7 +28,6 @@ function AIAutomatedChatbot() {
     <>
       <ServiceHeroVideo
         videoUrl={videoUrl}
-        poster="/backgroundImages/ai-automation.png"
         overlayTitle="Ready to Automate Your Business?"
         ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
       />
