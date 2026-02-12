@@ -40,7 +40,7 @@ const testimonials = [
     company: "Peak Performance Logistics",
     image:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
-    text: "Running the business used to feel like we were always reacting. Every day brought new fires to put out — repetitive tasks, manual processes, and inconsistent customer experiences.\n\nEuroDigital changed that dynamic completely. The business now feels calm, controlled, and scalable.",
+    text: "Running the business used to feel like we were always reacting. Every day brought new fires to put out repetitive tasks, manual processes, and inconsistent customer experiences.\n\nEuroDigital changed that dynamic completely. The business now feels calm, controlled, and scalable.",
   },
   {
     name: "Jennifer Martinez",

@@ -88,7 +88,7 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
                             animate={{ scale: 1, opacity: 1 }}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="bg-[#18b6e3] w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center text-white shadow-[0_0_30px_rgba(24,182,227,0.4)] border-4 border-white/20"
+                            className="bg-white/20 backdrop-blur-sm w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center text-white border border-white/30"
                         >
                             <Play className="w-8 h-8 md:w-12 md:h-12 fill-white ml-1" />
                         </motion.button>
