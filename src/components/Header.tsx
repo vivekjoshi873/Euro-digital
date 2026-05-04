@@ -23,7 +23,8 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
-  const timeoutRef = useRef<number | null>(null);
+  const servicesTimeoutRef = useRef<number | null>(null);
+  const productsTimeoutRef = useRef<number | null>(null);
 
   // Close mobile menu when window is resized to desktop width
   useEffect(() => {
@@ -43,28 +44,34 @@ function Header() {
     } else {
       document.body.style.overflow = 'unset';
     }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isMobileMenuOpen]);
 
   const handleMouseEnter = () => {
-    // Clear any pending close timers so it doesn't close while we're entering
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
+    if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
+    setIsProductsDropdownOpen(false);
     setIsDropdownOpen(true);
   };
 
   const handleMouseLeave = () => {
-    // Start the 150ms "Grace Period" timer
-    timeoutRef.current = setTimeout(() => {
+    servicesTimeoutRef.current = window.setTimeout(() => {
       setIsDropdownOpen(false);
     }, 150);
   };
 
   const handleProductsMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
+    if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
+    setIsDropdownOpen(false);
     setIsProductsDropdownOpen(true);
   };
 
   const handleProductsMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
+    productsTimeoutRef.current = window.setTimeout(() => {
       setIsProductsDropdownOpen(false);
     }, 150);
   };
