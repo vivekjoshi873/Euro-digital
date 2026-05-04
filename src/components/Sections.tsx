@@ -16,12 +16,14 @@ const cards: Card[] = [
     title: "AI Business Automation",
     desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
     video: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
+    poster: "/servicesImages/Ai-business-automation.png",
     link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
     desc: "Smarter Marketing Powered by AI. Leverage data-driven insights to create personalized campaigns that convert and engage your audience effectively.",
     video: "https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4",
+    poster: "/servicesImages/Ai-business-promotion.png",
     link: "/services/ai-business-promotion",
   },
   {
@@ -34,18 +36,21 @@ const cards: Card[] = [
     title: "AI Automated Chatbot",
     desc: "Always-on support with human-like responses. Deliver instant, 24/7 customer service with intelligent chatbots that understand context and intent.",
     video: "https://48yfcqwona.ucarecd.net/21cd7b64-9315-44bb-b375-d304d389e96e/Irfan3.mp4",
+    poster: "/backgroundImages/ai-automation.png",
     link: "/services/ai-automated-chatbot",
   },
   {
     title: "AI add-on Services",
     desc: "Extend capabilities with modular AI services. Integrate powerful AI tools into your existing systems to enhance functionality and performance.",
     video: "https://48yfcqwona.ucarecd.net/2f627cbe-b460-4c59-a853-f2752b5e6f97/Irfan4.mp4",
+    poster: "/servicesImages/ai_addon.png",
     link: "/services/ai-addon-services",
   },
   {
     title: "Industry Specific AI Use Cases",
     desc: "Tailored accelerators for your vertical. Industry-specific solutions designed to address unique challenges and accelerate growth in your sector.",
-    image: "/backgroundImages/ai_users.png",
+    video: "https://2c3wn7zfav.ucarecd.net/89c0b95c-c651-42a0-a61e-4b22c91f3a3b/irfan5.mp4",
+    poster: "/backgroundImages/ai_users.png",
     link: "/services/industry-specific",
   },
 ];
@@ -74,6 +79,7 @@ const industries = [
 
 function Sections() {
   const [currentlyPlayingIndex, setCurrentlyPlayingIndex] = useState<number | null>(null);
+  const [bufferingVideoIndex, setBufferingVideoIndex] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const pauseAllVideos = () => {
@@ -92,12 +98,18 @@ function Sections() {
     if (currentlyPlayingIndex === index && !video.paused) {
       video.pause();
       setCurrentlyPlayingIndex(null);
+      setBufferingVideoIndex(null);
     } else {
       // Pause all videos first, then play the selected one
       pauseAllVideos();
-      video.play();
       video.muted = false;
-      setCurrentlyPlayingIndex(index);
+      setBufferingVideoIndex(index);
+      video.play().then(() => {
+        setCurrentlyPlayingIndex(index);
+      }).catch((error) => {
+        console.error("Video playback failed:", error);
+        setBufferingVideoIndex(null);
+      });
     }
   };
 
@@ -123,6 +135,7 @@ function Sections() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-8 md:gap-10">
           {cards.map((card, index) => {
             const isPlaying = currentlyPlayingIndex === index;
+            const isBuffering = bufferingVideoIndex === index;
 
             return (
               <div
@@ -140,8 +153,22 @@ function Sections() {
                         poster={card.poster}
                         muted
                         playsInline
-                        preload="metadata"
-                        onEnded={() => setCurrentlyPlayingIndex(null)}
+                        preload="none"
+                        onCanPlay={() => {
+                          if (bufferingVideoIndex === index) {
+                            setBufferingVideoIndex(null);
+                          }
+                        }}
+                        onPlaying={() => {
+                          setCurrentlyPlayingIndex(index);
+                          setBufferingVideoIndex(null);
+                        }}
+                        onWaiting={() => setBufferingVideoIndex(index)}
+                        onStalled={() => setBufferingVideoIndex(index)}
+                        onEnded={() => {
+                          setCurrentlyPlayingIndex(null);
+                          setBufferingVideoIndex(null);
+                        }}
                         className="w-full h-full object-cover"
                       />
                       <div
@@ -149,7 +176,9 @@ function Sections() {
                         className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all duration-300 cursor-pointer"
                       >
                         <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full border border-white/30 transform transition-transform group-hover:scale-110">
-                          {isPlaying ? (
+                          {isBuffering ? (
+                            <div className="h-10 w-10 rounded-full border-4 border-white/35 border-t-white animate-spin" />
+                          ) : isPlaying ? (
                             <div className="flex gap-1.5">
                               <div className="w-2.5 h-10 bg-white rounded-full" />
                               <div className="w-2.5 h-10 bg-white rounded-full" />

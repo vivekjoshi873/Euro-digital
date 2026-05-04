@@ -12,15 +12,19 @@ interface ServiceHeroVideoProps {
 const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHeroVideoProps) => {
     const [hasEnded, setHasEnded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isBuffering, setIsBuffering] = useState(false);
     const [videoError, setVideoError] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const handlePlayVideo = () => {
         if (videoRef.current) {
+            setHasEnded(false);
+            setIsBuffering(true);
             videoRef.current.play().then(() => {
                 setIsPlaying(true);
             }).catch(err => {
                 console.error("Playback failed:", err);
+                setIsBuffering(false);
             });
         }
     };
@@ -30,14 +34,20 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
         if (videoRef.current) {
             videoRef.current.pause();
             setIsPlaying(false);
+            setIsBuffering(false);
         }
     };
 
     const handleWatchAgain = () => {
         setHasEnded(false);
+        setIsBuffering(true);
         if (videoRef.current) {
-            videoRef.current.play();
-            setIsPlaying(true);
+            videoRef.current.play().then(() => {
+                setIsPlaying(true);
+            }).catch(err => {
+                console.error("Playback failed:", err);
+                setIsBuffering(false);
+            });
         }
     };
 
@@ -54,12 +64,24 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
                 controls={isPlaying}
                 playsInline
                 poster={poster}
+                preload="metadata"
                 onEnded={() => {
                     setHasEnded(true);
                     setIsPlaying(false);
+                    setIsBuffering(false);
                 }}
                 onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
+                onPlaying={() => {
+                    setIsPlaying(true);
+                    setIsBuffering(false);
+                }}
+                onCanPlay={() => setIsBuffering(false)}
+                onWaiting={() => setIsBuffering(true)}
+                onStalled={() => setIsBuffering(true)}
+                onPause={() => {
+                    setIsPlaying(false);
+                    setIsBuffering(false);
+                }}
                 onClick={(e) => {
                     if (isPlaying) {
                         handlePauseVideo(e);
@@ -70,12 +92,26 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
                 onError={(e) => {
                     console.error('Video failed to load:', e);
                     setVideoError(true);
+                    setIsBuffering(false);
                 }}
             />
 
+            <AnimatePresence>
+                {isBuffering && !hasEnded && !videoError && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 z-30 flex items-center justify-center bg-black/20 backdrop-blur-[2px] pointer-events-none"
+                    >
+                        <div className="h-12 w-12 rounded-full border-4 border-white/35 border-t-white animate-spin" />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* Custom Play Button Overlay */}
             <AnimatePresence>
-                {!isPlaying && !hasEnded && !videoError && (
+                {!isPlaying && !hasEnded && !videoError && !isBuffering && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}

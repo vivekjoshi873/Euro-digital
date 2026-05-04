@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import FAQ from "../components/FAQ";
 import { getFAQsByServiceId } from "../data/faqData";
 import Modal from "../components/ui/Modal";
+import ServiceHeroVideo from "../components/ServiceHeroVideo";
 
 interface IndustryContent {
   title: string;
@@ -123,54 +124,12 @@ function IndustrySpecificAI() {
 
   return (
     <>
-      {/* Hero Section with Full Background Image */}
-      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
-          <img
-            src="/backgroundImages/ai_users.png"
-            alt="Industry Specific AI Background"
-            className="w-full h-full object-cover"
-          />
-          {/* Blue Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-600/60"></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center">
-          {/* Icon Circle */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-full mb-8 shadow-xl"
-          >
-            <svg className="w-12 h-12 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-          >
-            Industry Specific AI Use Cases
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
-          >
-            We understand that every industry has unique challenges. That's why EuroDigital delivers AI solutions specifically designed for different business domains, ensuring practical and measurable impact.
-          </motion.p>
-        </div>
-      </section>
+      <ServiceHeroVideo
+        videoUrl="https://2c3wn7zfav.ucarecd.net/89c0b95c-c651-42a0-a61e-4b22c91f3a3b/irfan5.mp4"
+        poster="/backgroundImages/ai_users.png"
+        overlayTitle="Ready to Explore Industry Specific AI?"
+        ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+      />
 
       {/* Industry Use Cases Section */}
       <section className="py-16 md:py-24 bg-white">

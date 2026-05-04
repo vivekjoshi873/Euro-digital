@@ -11,10 +11,18 @@ const services = [
   { id: "industry-specific", title: "Industry Specific AI Use Cases", path: "/services/industry-specific" },
 ];
 
+const products = [
+  { id: "funnel-builder", title: "AI Funnel Builder", path: "/products/funnel-builder" },
+  { id: "edcrm", title: "ED-CRM", path: "/products/edcrm" },
+  { id: "ai-builder", title: "Emotion AI", path: "/products/ai-builder" },
+];
+
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
   // Close mobile menu when window is resized to desktop width
@@ -47,6 +55,17 @@ function Header() {
     // Start the 150ms "Grace Period" timer
     timeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
+    }, 150);
+  };
+
+  const handleProductsMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setIsProductsDropdownOpen(true);
+  };
+
+  const handleProductsMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsProductsDropdownOpen(false);
     }, 150);
   };
 
@@ -97,6 +116,38 @@ function Header() {
 
                     <span className="text-slate-700 group-hover:text-blue-600 transition-colors">
                       {service.title}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Products Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={handleProductsMouseEnter}
+            onMouseLeave={handleProductsMouseLeave}
+          >
+            <button className="flex items-center gap-1 py-2 font-medium tracking-wide outline-none" style={{ color: 'var(--primary-navy)' }}>
+              AI Tools
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
+              <span className={`absolute left-0 bottom-1 h-px transition-all duration-300 ${isProductsDropdownOpen ? 'w-full' : 'w-0'}`} style={{ backgroundColor: 'var(--primary-navy)' }}></span>
+            </button>
+
+            <div className={`absolute left-0 w-56 pt-3 transition-all duration-300 ${isProductsDropdownOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible pointer-events-none'}`}>
+              <div className="bg-white border border-gray-100 shadow-2xl rounded-xl py-2 overflow-hidden">
+                {products.map((product) => (
+                  <Link
+                    key={product.id}
+                    to={product.path}
+                    onClick={() => setIsProductsDropdownOpen(false)}
+                    className="group flex w-full items-center px-5 py-3 text-left text-[14px] font-medium transition-all duration-200 hover:bg-slate-50 cursor-pointer"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mr-3 opacity-0 -ml-2 transition-all duration-300 group-hover:opacity-100 group-hover:ml-0" />
+
+                    <span className="text-slate-700 group-hover:text-blue-600 transition-colors">
+                      {product.title}
                     </span>
                   </Link>
                 ))}
@@ -163,6 +214,30 @@ function Header() {
                     className="text-slate-600 hover:text-blue-600 font-medium py-1"
                   >
                     {service.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <button
+                className="flex items-center justify-between py-2 border-b border-gray-100 outline-none"
+                style={{ color: 'var(--primary-navy)' }}
+                onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+              >
+                <span>AI Tools</span>
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileProductsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <div className={`flex flex-col gap-4 mt-4 pl-4 overflow-hidden transition-all duration-300 ${isMobileProductsOpen ? 'max-h-[240px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                {products.map((product) => (
+                  <Link
+                    key={product.id}
+                    to={product.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-slate-600 hover:text-blue-600 font-medium py-1"
+                  >
+                    {product.title}
                   </Link>
                 ))}
               </div>

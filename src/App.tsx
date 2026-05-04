@@ -4,12 +4,16 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import ServicesLayout from './layouts/ServicesLayout'
+import ProductsLayout from './layouts/ProductsLayout'
 import AIAddonServices from './pages/AIAddonServices'
 import AIAgentTalkTime from './pages/AIAgentTalkTime'
 import AIBusinessAutomation from './pages/AIBusinessAutomation'
 import AIBusinessPromotion from './pages/AIBusinessPromotion'
 import AIAutomatedChatbot from './pages/AIAutomatedChatbot'
 import IndustrySpecificAI from './pages/IndustrySpecificAI'
+import FunnelBuilder from './pages/FunnelBuilder'
+import EDCRM from './pages/EDCRM'
+import AIBuilder from './pages/AIBuilder'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 import ScrollToTop from './components/ScrollToTop'
@@ -32,6 +36,13 @@ function App() {
           <Route path="ai-automated-chatbot" element={<AIAutomatedChatbot />} />
           <Route path="ai-addon-services" element={<AIAddonServices />} />
           <Route path="industry-specific" element={<IndustrySpecificAI />} />
+        </Route>
+
+        {/* Products with Nested Routes */}
+        <Route path="/products" element={<ProductsLayout />}>
+          <Route path="funnel-builder" element={<FunnelBuilder />} />
+          <Route path="edcrm" element={<EDCRM />} />
+          <Route path="ai-builder" element={<AIBuilder />} />
         </Route>
 
         {/* Legal Pages */}

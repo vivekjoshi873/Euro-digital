@@ -165,6 +165,32 @@ export const serviceFAQs: ServiceFAQ[] = [
         answer: "Deployment time varies based on complexity, but most industry-specific solutions can be implemented within 4-12 weeks. This includes assessment, customization, integration, testing, training, and go-live support. We work efficiently while ensuring quality and thorough testing."
       }
     ]
+  },
+  {
+    serviceId: "edcrm",
+    subtitle: "Everything your sales team needs to manage leads, follow-ups, and customer relationships in one place.",
+    faqs: [
+      {
+        question: "What is ED-CRM?",
+        answer: "ED-CRM is EuroDigital's customer relationship management platform for tracking leads, contacts, deals, follow-ups, and sales activity from one organized workspace."
+      },
+      {
+        question: "Can ED-CRM help my team follow up faster?",
+        answer: "Yes. ED-CRM centralizes lead information, tasks, and reminders so your team can see what needs attention and act before opportunities go cold."
+      },
+      {
+        question: "Does ED-CRM support automation?",
+        answer: "Yes. ED-CRM can support automated reminders, workflow triggers, lead routing, and follow-up actions depending on your plan and setup."
+      },
+      {
+        question: "Can ED-CRM integrate with my existing tools?",
+        answer: "ED-CRM can be connected with common business tools and custom workflows. For advanced systems, our team can plan integrations around your current sales process."
+      },
+      {
+        question: "Is ED-CRM suitable for growing teams?",
+        answer: "Yes. ED-CRM is designed to scale from small sales teams to larger operations with multiple pipelines, user roles, and reporting needs."
+      }
+    ]
   }
 ];
 

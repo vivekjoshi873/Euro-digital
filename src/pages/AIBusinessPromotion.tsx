@@ -27,7 +27,8 @@ function AIBusinessPromotion() {
     <>
       <ServiceHeroVideo
         videoUrl={videoUrl}
-          overlayTitle="Ready to Automate Your Business?"
+        poster={serviceData.image}
+        overlayTitle="Ready to Automate Your Business?"
         ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
       />
       {/* Service Content */}
