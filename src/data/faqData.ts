@@ -172,23 +172,75 @@ export const serviceFAQs: ServiceFAQ[] = [
     faqs: [
       {
         question: "What is ED-CRM?",
-        answer: "ED-CRM is EuroDigital's customer relationship management platform for tracking leads, contacts, deals, follow-ups, and sales activity from one organized workspace."
+        answer: "ED-CRM is EuroDigital's CRM system for managing leads, contacts, deals, follow-ups, and sales activity from one organized, GHL-powered workspace."
       },
       {
         question: "Can ED-CRM help my team follow up faster?",
-        answer: "Yes. ED-CRM centralizes lead information, tasks, and reminders so your team can see what needs attention and act before opportunities go cold."
+        answer: "Yes. ED-CRM keeps lead details, tasks, reminders, and pipeline activity in one place so your team can respond faster and stay on top of every opportunity."
       },
       {
         question: "Does ED-CRM support automation?",
-        answer: "Yes. ED-CRM can support automated reminders, workflow triggers, lead routing, and follow-up actions depending on your plan and setup."
+        answer: "Yes. ED-CRM can support reminders, workflow triggers, lead routing, and follow-up automations based on the setup and package your business needs."
       },
       {
         question: "Can ED-CRM integrate with my existing tools?",
-        answer: "ED-CRM can be connected with common business tools and custom workflows. For advanced systems, our team can plan integrations around your current sales process."
+        answer: "Yes. ED-CRM can connect with common business tools and custom workflows, and our team can plan integrations around the systems you already use."
       },
       {
         question: "Is ED-CRM suitable for growing teams?",
         answer: "Yes. ED-CRM is designed to scale from small sales teams to larger operations with multiple pipelines, user roles, and reporting needs."
+      }
+    ]
+  },
+  {
+    serviceId: "funnel-builder",
+    subtitle: "Launch landing pages, lead flows, and conversion journeys faster with one connected funnel system.",
+    faqs: [
+      {
+        question: "What is AI Funnel Builder?",
+        answer: "AI Funnel Builder is EuroDigital's funnel platform for creating landing pages, lead capture flows, booking journeys, and campaign paths that help turn visitors into qualified leads."
+      },
+      {
+        question: "Can I build funnels without coding?",
+        answer: "Yes. AI Funnel Builder is designed so teams can create and update pages, forms, and funnel steps without depending on custom development for every change."
+      },
+      {
+        question: "Does AI Funnel Builder support lead capture and bookings?",
+        answer: "Yes. It can handle lead forms, consultation requests, booking flows, and handoff steps so inquiries move smoothly into your follow-up process."
+      },
+      {
+        question: "Can I track funnel performance?",
+        answer: "Yes. AI Funnel Builder can help you monitor conversions, step performance, campaign results, and drop-off points so you can improve outcomes over time."
+      },
+      {
+        question: "Is AI Funnel Builder suitable for multiple campaigns?",
+        answer: "Yes. It works well for businesses running multiple offers, landing pages, and conversion paths while keeping campaign structure more organized."
+      }
+    ]
+  },
+  {
+    serviceId: "ai-builder",
+    subtitle: "Build practical AI assistants and workflows that support your team, customers, and operations.",
+    faqs: [
+      {
+        question: "What is Emotion AI?",
+        answer: "Emotion AI is EuroDigital's AI builder for creating assistants, workflows, and business-specific AI systems that support customer conversations, team productivity, and repeatable tasks."
+      },
+      {
+        question: "Can Emotion AI be customized for my business?",
+        answer: "Yes. Emotion AI can be tailored around your business goals, knowledge base, workflows, and customer journey instead of forcing you into a one-size-fits-all setup."
+      },
+      {
+        question: "What can I build with Emotion AI?",
+        answer: "You can build AI assistants for customer support, lead qualification, internal knowledge access, workflow automation, and other connected business processes."
+      },
+      {
+        question: "Can Emotion AI connect with my website or CRM?",
+        answer: "Yes. Emotion AI can be connected to your website, CRM, and other business tools depending on the workflow, data, and implementation plan."
+      },
+      {
+        question: "Is Emotion AI only for technical teams?",
+        answer: "No. Emotion AI is built to be useful for business teams as well, with EuroDigital helping with setup, logic, and integration where needed."
       }
     ]
   }
