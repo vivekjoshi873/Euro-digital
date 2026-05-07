@@ -193,7 +193,7 @@ export const serviceFAQs: ServiceFAQ[] = [
     ]
   },
   {
-    serviceId: "funnel-builder",
+    serviceId: "website-builder",
     subtitle: "Launch landing pages, lead flows, and conversion journeys faster with one connected funnel system.",
     faqs: [
       {

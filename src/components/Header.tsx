@@ -12,7 +12,7 @@ const services = [
 ];
 
 const products = [
-  { id: "funnel-builder", title: "AI Funnel Builder", path: "/products/funnel-builder" },
+  { id: "website-builder", title: "AI Website Builder", path: "/products/website-builder" },
   { id: "edcrm", title: "ED-CRM", path: "/products/edcrm" },
   { id: "ai-builder", title: "Emotion AI", path: "/products/ai-builder" },
 ];

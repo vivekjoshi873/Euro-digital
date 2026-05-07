@@ -40,7 +40,7 @@ function App() {
 
         {/* Products with Nested Routes */}
         <Route path="/products" element={<ProductsLayout />}>
-          <Route path="funnel-builder" element={<FunnelBuilder />} />
+          <Route path="website-builder" element={<FunnelBuilder />} />
           <Route path="edcrm" element={<EDCRM />} />
           <Route path="ai-builder" element={<AIBuilder />} />
         </Route>

@@ -3,12 +3,12 @@ import ProductPage from "./ProductPage";
 function FunnelBuilder() {
   return (
     <ProductPage
-      id="funnel-builder"
-      title="AI Funnel Builder"
+      id="website-builder"
+      title="AI Website Builder"
       description="Build high-converting landing pages, lead flows, booking journeys, and offer funnels without stitching together a stack of disconnected tools."
       image="/servicesImages/ai-funnel.png"
       video="https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4"
-      overlayTitle="Ready to Build Your Funnel?"
+      overlayTitle="Ready to Build Your Website?"
       showFAQs
       features={[
         "Drag-and-drop landing pages",
@@ -16,7 +16,7 @@ function FunnelBuilder() {
         "Booking and consultation flows",
         "Campaign tracking and conversion insights",
       ]}
-      detailedDescription="AI Funnel Builder helps teams launch campaigns faster while keeping every lead, click, and follow-up connected."
+      detailedDescription="AI Website Builder helps teams launch high-converting websites faster while keeping every lead, click, and follow-up connected."
       plans={[
         {
           name: "Starter",
