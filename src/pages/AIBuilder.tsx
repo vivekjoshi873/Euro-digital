@@ -8,7 +8,6 @@ function AIBuilder() {
       description="Create AI assistants, automation flows, and business-specific agents that can support customers, qualify leads, and handle repeatable work."
       image="/servicesImages/emotion_ai.png"
       video="https://2c3wn7zfav.ucarecd.net/89c0b95c-c651-42a0-a61e-4b22c91f3a3b/irfan5.mp4"
-      poster="/servicesImages/emotion_ai.png"
       overlayTitle="Ready to Build Your AI Assistant?"
       showFAQs
       features={[

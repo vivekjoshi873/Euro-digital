@@ -7,7 +7,6 @@ interface Card {
   desc: string;
   video?: string;
   image?: string;
-  poster?: string;
   link: string;
 }
 
@@ -16,14 +15,12 @@ const cards: Card[] = [
     title: "AI Business Automation",
     desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
     video: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
-    poster: "/servicesImages/Ai-business-automation.png",
     link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
     desc: "Smarter Marketing Powered by AI. Leverage data-driven insights to create personalized campaigns that convert and engage your audience effectively.",
     video: "https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4",
-    poster: "/servicesImages/Ai-business-promotion.png",
     link: "/services/ai-business-promotion",
   },
   {
@@ -36,21 +33,18 @@ const cards: Card[] = [
     title: "AI Automated Chatbot",
     desc: "Always-on support with human-like responses. Deliver instant, 24/7 customer service with intelligent chatbots that understand context and intent.",
     video: "https://48yfcqwona.ucarecd.net/21cd7b64-9315-44bb-b375-d304d389e96e/Irfan3.mp4",
-    poster: "/backgroundImages/ai-automation.png",
     link: "/services/ai-automated-chatbot",
   },
   {
     title: "AI add-on Services",
     desc: "Extend capabilities with modular AI services. Integrate powerful AI tools into your existing systems to enhance functionality and performance.",
     video: "https://48yfcqwona.ucarecd.net/2f627cbe-b460-4c59-a853-f2752b5e6f97/Irfan4.mp4",
-    poster: "/servicesImages/ai_addon.png",
     link: "/services/ai-addon-services",
   },
   {
     title: "Industry Specific AI Use Cases",
     desc: "Tailored accelerators for your vertical. Industry-specific solutions designed to address unique challenges and accelerate growth in your sector.",
-    video: "https://2c3wn7zfav.ucarecd.net/89c0b95c-c651-42a0-a61e-4b22c91f3a3b/irfan5.mp4",
-    poster: "/backgroundImages/ai_users.png",
+    video: "https://2c3wn7zfav.ucarecd.net/7b40ea73-32de-4736-8f80-00c3c1523fea/irfan5.mp4",
     link: "/services/industry-specific",
   },
 ];
@@ -82,6 +76,16 @@ function Sections() {
   const [bufferingVideoIndex, setBufferingVideoIndex] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
+  const warmVideo = (index: number) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
+
+    if (video.preload !== "auto") {
+      video.preload = "auto";
+      video.load();
+    }
+  };
+
   const pauseAllVideos = () => {
     videoRefs.current.forEach((video) => {
       if (video && !video.paused) {
@@ -102,6 +106,7 @@ function Sections() {
     } else {
       // Pause all videos first, then play the selected one
       pauseAllVideos();
+      warmVideo(index);
       video.muted = false;
       setBufferingVideoIndex(index);
       video.play().then(() => {
@@ -150,10 +155,12 @@ function Sections() {
                       <video
                         ref={(el) => { videoRefs.current[index] = el; }}
                         src={card.video}
-                        poster={card.poster}
                         muted
                         playsInline
-                        preload="none"
+                        preload={isPlaying || isBuffering ? "auto" : "metadata"}
+                        className="relative z-10 h-full w-full object-cover"
+                        onMouseEnter={() => warmVideo(index)}
+                        onTouchStart={() => warmVideo(index)}
                         onCanPlay={() => {
                           if (bufferingVideoIndex === index) {
                             setBufferingVideoIndex(null);
@@ -169,11 +176,10 @@ function Sections() {
                           setCurrentlyPlayingIndex(null);
                           setBufferingVideoIndex(null);
                         }}
-                        className="w-full h-full object-cover"
                       />
                       <div
                         onClick={() => handleVideoPlay(index)}
-                        className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all duration-300 cursor-pointer"
+                        className="absolute inset-0 z-20 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all duration-300 cursor-pointer"
                       >
                         <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full border border-white/30 transform transition-transform group-hover:scale-110">
                           {isBuffering ? (
@@ -193,9 +199,13 @@ function Sections() {
                       </div>
                     </>
                   ) : card.image ? (
-                    <div
-                      className="w-full h-full bg-center bg-cover"
-                      style={{ backgroundImage: `url('${card.image}')` }}
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      sizes="(min-width: 768px) 50vw, 100vw"
                     />
                   ) : null}
                 </div>
@@ -254,9 +264,13 @@ function Sections() {
               style={{ borderWidth: '1px', borderColor: 'rgba(24, 182, 227, 0.2)' }}
             >
               {/* Fixed Image Height: h-64 md:h-72 ensures level alignment */}
-              <div
-                className="h-64 md:h-72 w-full bg-center bg-cover shrink-0"
-                style={{ backgroundImage: `url('${industry.image}')` }}
+              <img
+                src={industry.image}
+                alt={industry.title}
+                className="h-64 md:h-72 w-full object-cover shrink-0"
+                loading="lazy"
+                decoding="async"
+                sizes="(min-width: 768px) 33vw, 100vw"
               />
               <div
                 className="py-6 px-8 text-center flex-grow flex items-center justify-center"

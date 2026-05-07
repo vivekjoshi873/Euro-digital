@@ -84,7 +84,7 @@ const industryDetails: Record<string, IndustryContent> = {
     title: "Modern Banking with AI",
     description: "Securing and enhancing financial operations with intelligent automation.",
     details: (
-      <div className="space-y-4">
+      <div className="space-y-4"> 
         <p>Our Banking AI solutions include:</p>
         <ul className="list-disc pl-5 space-y-2">
           <li><strong>WhatsApp Chatbot</strong> - For day-to-day conversation with customers</li>
@@ -125,8 +125,7 @@ function IndustrySpecificAI() {
   return (
     <>
       <ServiceHeroVideo
-        videoUrl="https://2c3wn7zfav.ucarecd.net/89c0b95c-c651-42a0-a61e-4b22c91f3a3b/irfan5.mp4"
-        poster="/backgroundImages/ai_users.png"
+        videoUrl="https://2c3wn7zfav.ucarecd.net/7b40ea73-32de-4736-8f80-00c3c1523fea/irfan5.mp4"
         overlayTitle="Ready to Explore Industry Specific AI?"
         ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
       />

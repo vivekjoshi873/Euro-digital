@@ -19,13 +19,12 @@ type ProductPageProps = {
   description: string;
   image: string;
   video: string;
-  poster: string;
   features: string[];
   detailedDescription: string;
   overlayTitle: string;
   plans: ProductPlan[];
   showFAQs?: boolean;
-  pricingVariant?: "grid" | "stacked";
+  pricingVariant?: "grid" | "stacked" | "spotlight";
   pricingTitle?: string;
   pricingSubtitle?: string;
 };
@@ -45,7 +44,6 @@ function ProductPage({
   description,
   image,
   video,
-  poster,
   features,
   detailedDescription,
   overlayTitle,
@@ -61,7 +59,6 @@ function ProductPage({
     <>
       <ServiceHeroVideo
         videoUrl={video}
-        poster={poster}
         overlayTitle={overlayTitle}
         ctaLink={bookingUrl}
       />
@@ -120,6 +117,9 @@ function ProductPage({
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
+                loading="lazy"
+                decoding="async"
+                sizes="(min-width: 1024px) 40vw, 100vw"
               />
             </div>
           </motion.div>
@@ -203,11 +203,100 @@ function ProductPage({
                         src={plan.image ?? "/backgroundImages/GHL.png"}
                         alt={`${plan.name} visual`}
                         className="h-full w-full object-cover object-center"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(min-width: 768px) 50vw, 100vw"
                       />
                     </div>
                   </div>
                 </motion.div>
               ))}
+            </div>
+          ) : pricingVariant === "spotlight" ? (
+            <div className="relative rounded-[44px] bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.16),_transparent_58%)] px-5 pb-8 pt-12 md:px-8 md:pb-10 md:pt-14 lg:px-10">
+              <div className="grid gap-8 lg:grid-cols-3 lg:items-stretch">
+                {plans.map((plan) => {
+                  const isHighlighted = !!plan.highlighted;
+
+                  return (
+                    <motion.div
+                      key={plan.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5 }}
+                      className={`relative flex h-full flex-col overflow-hidden rounded-[30px] border shadow-[0_24px_80px_rgba(15,23,42,0.10)] ${isHighlighted
+                        ? "border-[#1d8fff] bg-[#102b47] text-white"
+                        : "border-[#d8e2ef] bg-white text-slate-900"
+                        }`}
+                    >
+                      {isHighlighted && (
+                        <div className="absolute left-1/2 top-5 -translate-x-1/2 rounded-full bg-[#1d8fff] px-10 py-3 text-sm font-extrabold uppercase tracking-[0.26em] text-white shadow-lg">
+                          Popular
+                        </div>
+                      )}
+
+                      <div className={`flex h-full flex-col px-8 pb-8 ${isHighlighted ? "pt-24 md:pt-28" : "pt-12 md:pt-14"} md:px-10 md:pb-10`}>
+                        <div className="mb-8 flex justify-center">
+                          <span className={`rounded-[18px] px-7 py-3 text-xl font-bold ${isHighlighted
+                            ? "bg-white/10 text-white"
+                            : "bg-slate-100 text-slate-800"
+                            }`}>
+                            {plan.name}
+                          </span>
+                        </div>
+
+                        <div className="mb-5 text-center">
+                          <div className="flex items-end justify-center gap-2 md:gap-3">
+                            <span className={`text-6xl font-black leading-none md:text-7xl ${isHighlighted ? "text-white" : "text-slate-950"}`}>
+                              {plan.price}
+                            </span>
+                            {plan.price !== "Custom" && (
+                              <span className={`pb-1.5 text-xl font-medium md:text-2xl ${isHighlighted ? "text-white/90" : "text-slate-700"}`}>
+                                /Month
+                              </span>
+                            )}
+                          </div>
+                          {plan.subprice && (
+                            <p className={`mt-4 text-sm font-medium ${isHighlighted ? "text-white/70" : "text-slate-500"}`}>
+                              {plan.subprice}
+                            </p>
+                          )}
+                        </div>
+
+                        <p className={`mx-auto mb-8 max-w-[18rem] text-center text-lg leading-8 font-medium ${isHighlighted ? "text-white/90" : "text-slate-700"}`}>
+                          {plan.description}
+                        </p>
+
+                        <div className="mb-10 space-y-0">
+                          {plan.features.map((feature) => (
+                            <div
+                              key={feature}
+                              className={`border-t px-4 py-6 text-center text-[20px] leading-8 font-semibold ${isHighlighted
+                                ? "border-white/10 text-white"
+                                : "border-slate-200 text-slate-900"
+                                }`}
+                            >
+                              {feature}
+                            </div>
+                          ))}
+                        </div>
+
+                        <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-auto block">
+                          <button
+                            className={`w-full rounded-2xl px-6 py-4 text-lg font-bold transition-colors cursor-pointer ${isHighlighted
+                              ? "bg-white text-[#1d8fff] hover:bg-slate-100"
+                              : "bg-[#1d8fff] text-white hover:bg-[#0f7ce0]"
+                              }`}
+                          >
+                            {plan.price === "Custom" ? "Contact Sales" : "Start Your Trial"}
+                          </button>
+                        </a>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           ) : (
             <div className="grid md:grid-cols-3 gap-6">

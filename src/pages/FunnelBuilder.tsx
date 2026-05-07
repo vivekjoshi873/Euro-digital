@@ -8,7 +8,6 @@ function FunnelBuilder() {
       description="Build high-converting landing pages, lead flows, booking journeys, and offer funnels without stitching together a stack of disconnected tools."
       image="/servicesImages/ai-funnel.png"
       video="https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4"
-      poster="/servicesImages/ai-funnel.png"
       overlayTitle="Ready to Build Your Funnel?"
       showFAQs
       features={[

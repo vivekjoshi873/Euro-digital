@@ -4,12 +4,11 @@ import { RotateCcw, Play, Pause } from "lucide-react";
 
 interface ServiceHeroVideoProps {
     videoUrl: string;
-    poster?: string;
     overlayTitle: string;
     ctaLink: string;
 }
 
-const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHeroVideoProps) => {
+const ServiceHeroVideo = ({ videoUrl, overlayTitle, ctaLink }: ServiceHeroVideoProps) => {
     const [hasEnded, setHasEnded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isBuffering, setIsBuffering] = useState(false);
@@ -56,15 +55,14 @@ const ServiceHeroVideo = ({ videoUrl, poster, overlayTitle, ctaLink }: ServiceHe
             <motion.video
                 ref={videoRef}
                 src={videoUrl}
-                className="w-full h-auto object-cover"
+                className="relative z-10 w-full h-auto object-cover"
                 style={{ maxHeight: '800px', width: '100%' }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 controls={isPlaying}
                 playsInline
-                poster={poster}
-                preload="metadata"
+                preload={isPlaying || isBuffering ? "auto" : "metadata"}
                 onEnded={() => {
                     setHasEnded(true);
                     setIsPlaying(false);
