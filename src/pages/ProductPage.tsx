@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { Check, ChevronRight, DollarSign, Funnel, MessageCircle, RotateCcw, Trophy } from "lucide-react";
 import FAQ from "../components/FAQ";
 import ServiceHeroVideo from "../components/ServiceHeroVideo";
 import { getFAQsByServiceId } from "../data/faqData";
@@ -24,7 +26,8 @@ type ProductPageProps = {
   overlayTitle: string;
   plans: ProductPlan[];
   showFAQs?: boolean;
-  pricingVariant?: "grid" | "stacked" | "spotlight";
+  showWebsiteShowcase?: boolean;
+  pricingVariant?: "grid" | "stacked" | "spotlight" | "ghl";
   pricingTitle?: string;
   pricingSubtitle?: string;
 };
@@ -37,7 +40,480 @@ const stackedCardThemes = [
   "from-orange-50 to-amber-100",
 ];
 const stackedTopOffsets = ["md:top-24", "md:top-32", "md:top-40", "md:top-48"];
+const ghlRows = [
+  { feature: "CRM & PIPELINE MANAGEMENT", replaces: ["HS", ">",], otherTools: "$99/MONTHLY" },
+  { feature: "UNLIMITED SALES FUNNELS", replaces: ["CF", "CL"], otherTools: "$297/MONTHLY" },
+  { feature: "WEBSITE BUILDER", replaces: ["WP", "WIX", "SS"], otherTools: "$29/MONTHLY" },
+  { feature: "SURVEYS & FORMS", replaces: ["SG", "T", "WF", "TF"], otherTools: "$49/MONTHLY" },
+  { feature: "EMAIL MARKETING", replaces: [">", "MC", "HS", "CC"], otherTools: "$99/MONTHLY" },
+  { feature: "2-WAY SMS MARKETING", replaces: ["AC", "TW", "SM"], otherTools: "$99/MONTHLY" },
+  { feature: "BOOKING & APPOINTMENTS", replaces: ["CA", "GC", "A"], otherTools: "$29/MONTHLY" },
+  { feature: "WORKFLOW AUTOMATIONS", replaces: [">", "HS", "K"], otherTools: "$169/MONTHLY" },
+  { feature: "COURSES/PRODUCTS", replaces: ["KA", "T"], otherTools: "$99/MONTHLY" },
+  { feature: "CALL TRACKING", replaces: ["CT", "WC"], otherTools: "$49/MONTHLY" },
+  { feature: "REPUTATION MANAGEMENT", replaces: ["BI", "SM", "BR"], otherTools: "$159/MONTHLY" },
+  { feature: "TRACKING & ANALYTICS", replaces: ["GA"], otherTools: "$299/MONTHLY" },
+  { feature: "COMMUNITIES", replaces: ["SK", "M", "C"], otherTools: "$89/MONTHLY" },
+  { feature: "DOCUMENT SIGNING", replaces: ["ED", "DS"], otherTools: "$47/MONTHLY" },
+  { feature: "GRAY-LABELED MOBILE APP", replaces: [], otherTools: "UNIQUE TO HIGHLEVEL" },
+];
+const ghlIconColors = [
+  "bg-orange-500",
+  "bg-blue-500",
+  "bg-cyan-500",
+  "bg-indigo-500",
+  "bg-sky-500",
+  "bg-zinc-900",
+  "bg-purple-500",
+  "bg-amber-500",
+  "bg-red-500",
+  "bg-stone-700",
+  "bg-emerald-500",
+  "bg-pink-500",
+  "bg-teal-600",
+  "bg-slate-700",
+  "bg-lime-500",
+  "bg-blue-700",
+];
+const growthTabs = [
+  {
+    name: "Capture",
+    color: "yellow",
+    icon: "funnel",
+    title: "Get more leads in the door",
+    description: "Attract the right people, turn interest into leads and keep your pipeline full.",
+    tools: [
+      "CRM",
+      "Voice AI",
+      "Forms, Surveys & Quizzes",
+      "Websites, Funnels & Landing Pages",
+      "Webinar Funnels",
+      "Chat Widget / Conversation AI",
+      "Call Tracking",
+      "Inbound SMS & Social DMs",
+      "Social Planner",
+      "Missed Call Text-Back",
+      "AI Biz Card Scanner",
+      "QR Codes",
+      "Prospecting Tool",
+      "Ad Manager (Google/FB/Insta Ads)",
+    ],
+  },
+  {
+    name: "Nurture",
+    color: "blue",
+    icon: "message",
+    title: "Build relationships that convert",
+    description: "The tools you need to follow up, stay relevant and build trust.",
+    tools: [
+      "Conversation AI",
+      "Consolidated conversation stream (SMS, Messenger, Instagram DM, Whatsapp, Livechat)",
+      "Sales Pipelines",
+      "Workflows & Automations",
+      "CalendarsText Snippets",
+      "Appointment Reminders",
+      "Ringless Voicemail",
+      "Mobile App (with video messages)",
+      "Automated Outbound Call Connect",
+    ],
+  },
+  {
+    name: "Close",
+    color: "green",
+    icon: "dollar",
+    title: "Close deals with less back-and-forth",
+    description: "Remove friction and turn conversations into paying customers.",
+    tools: [
+      "Lead Scoring",
+      "Estimate & Proposals",
+      "Invoicing",
+      "Payment Integrations",
+      "Paid Calendars",
+      "Order Forms / Upsells / Downsells",
+      "Membership Offers / Courses (paid content access)",
+      "One-click Upsell Funnels",
+      "Text-2-Pay",
+      "Tap-2-Pay",
+      "Gift Cards",
+      "Loyalty programs",
+    ],
+  },
+  {
+    name: "Evangelize",
+    color: "cyan",
+    icon: "trophy",
+    title: "Create fans, not just customers",
+    description: "Everything you need to turn happy customers into reviews, referrals and buzz.",
+    tools: [
+      "Reputation Management",
+      "Automated Review Requests",
+      "Affiliate Manager (for referral tracking)",
+      "Website Review Widgets",
+      "Video Review Capture",
+      "Video Review Widgets",
+      "Workflow Automations for Recommendation Requests",
+      "AI Review Reply",
+      "Social Planner Auto-Review Posts",
+      "Communities",
+      "Loyalty Programs",
+    ],
+  },
+  {
+    name: "Reactivate",
+    color: "yellow",
+    icon: "reactivate",
+    title: "Get back on their radar",
+    description: "Re-engage past leads and customers with timely messages that drive repeat sales.",
+    tools: [
+      "Broadcast Campaigns - Email/SMS/Whatsapp/Messenger",
+      "Smart Lists / Segmentation",
+      "Automated Birthday Campaigns",
+      "Automated Seasonal Campaigns",
+      "Database Reactivation Templates",
+      "Newsletter Automation",
+      "Content AI",
+      "Loyalty Programs",
+    ],
+  },
+];
 
+function GrowthSolutionSection() {
+  const [activeTab, setActiveTab] = useState(growthTabs[0]);
+
+  const activeClass =
+    activeTab.color === "blue"
+      ? "border-[#26a8ff] bg-[#4ab2f2] shadow-[0_0_34px_rgba(74,178,242,0.45)]"
+      : activeTab.color === "green"
+        ? "border-[#1fcf5b] bg-[#35d962] shadow-[0_0_34px_rgba(53,217,98,0.42)]"
+        : activeTab.color === "cyan"
+          ? "border-[#46c6ff] bg-[#a7e3ff] shadow-[0_0_34px_rgba(70,198,255,0.35)]"
+          : "border-yellow-400 bg-yellow-300 shadow-[0_0_34px_rgba(250,204,21,0.62)]";
+
+  const iconClass =
+    activeTab.color === "blue"
+      ? "bg-[#2f9af4] text-white"
+      : activeTab.color === "green"
+        ? "bg-[#18d84d] text-white"
+        : activeTab.color === "cyan"
+          ? "bg-[#79d5ff] text-slate-950"
+          : "bg-yellow-300 text-slate-950";
+
+  const renderIcon = () => {
+    if (activeTab.icon === "message") return <MessageCircle className="h-5 w-5 stroke-[2.5]" />;
+    if (activeTab.icon === "dollar") return <DollarSign className="h-6 w-6 stroke-[2.5]" />;
+    if (activeTab.icon === "trophy") return <Trophy className="h-5 w-5 stroke-[2.5]" />;
+    if (activeTab.icon === "reactivate") return <RotateCcw className="h-5 w-5 stroke-[2.5]" />;
+    return <Funnel className="h-5 w-5 stroke-[2.5]" />;
+  };
+
+  const renderVisual = () => {
+    if (activeTab.name === "Nurture") {
+      return (
+        <div className="absolute left-[8%] top-[32%] flex w-[86%] items-start gap-3">
+          <div className="rounded-lg border border-slate-200 bg-white px-5 py-4 text-sm font-black text-blue-500 shadow-sm">
+            Contact Created
+            <div className="text-xs text-slate-500">New Lead Added</div>
+          </div>
+          <div className="rounded-lg border border-dashed border-blue-200 bg-blue-50 px-7 py-5 text-sm font-black text-blue-500">
+            Add New Trigger
+          </div>
+        </div>
+      );
+    }
+
+    if (activeTab.name === "Close") {
+      return (
+        <div className="absolute left-[36%] top-[35%] w-48 rounded-xl bg-white text-slate-900 shadow-xl">
+          <div className="grid grid-cols-2 border-b border-slate-200 px-5 py-3 text-xs font-black text-slate-400">
+            <span>Amount</span>
+            <span>Status</span>
+          </div>
+          <div className="grid grid-cols-2 items-center px-5 py-6">
+            <span className="text-base font-black">$435.00</span>
+            <span className="w-fit rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-sm font-black text-emerald-500">
+              Paid
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+    if (activeTab.name === "Evangelize") {
+      return (
+        <div className="absolute left-[42%] top-[20%] flex w-48 flex-col items-center">
+          <div className="w-full rounded-md border border-slate-200 bg-white px-4 py-3 text-xs font-black text-slate-500 shadow-sm">
+            Payment Received
+          </div>
+          <div className="h-9 w-px bg-slate-200" />
+          <div className="w-full rounded-md border border-slate-200 bg-white px-4 py-3 text-xs font-black text-slate-500 shadow-sm">
+            Wait <span className="ml-2 text-[10px] text-slate-400">30 mins</span>
+          </div>
+        </div>
+      );
+    }
+
+    if (activeTab.name === "Reactivate") {
+      return (
+        <div className="absolute left-[34%] top-[18%] flex w-48 flex-col items-center">
+          <div className="w-full rounded-md border border-slate-200 bg-white px-4 py-3 text-xs font-black text-slate-500 shadow-sm">
+            <span className="text-blue-500">Trigger</span>
+            <br />
+            Contact Tag
+          </div>
+          <div className="h-12 w-px bg-slate-200" />
+          <div className="w-full rounded-md border border-slate-200 bg-white px-4 py-3 text-xs font-black text-slate-500 shadow-sm">
+            Free Whitening Offer
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
+  return (
+    <section className="bg-white px-6 py-16 md:px-12 md:py-20">
+      <div className="mx-auto max-w-6xl text-center">
+        <h2 className="mx-auto max-w-4xl text-4xl font-black leading-tight text-slate-900 md:text-5xl">
+          Your all-in-one solution for
+          <span className="block text-slate-700">business growth</span>
+        </h2>
+        <p className="mt-4 text-lg font-medium text-slate-500">
+          All the tools you need in one AI-powered platform
+        </p>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-5">
+          {growthTabs.map((tab) => (
+            <button
+              key={tab.name}
+              type="button"
+              onClick={() => setActiveTab(tab)}
+              className={`min-w-[132px] rounded-md border px-8 py-3 text-sm font-black text-slate-900 transition-all ${
+                activeTab.name === tab.name ? activeClass : "border-slate-200 bg-slate-50 hover:bg-white"
+              }`}
+            >
+              {tab.name}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-9 rounded-[24px] border border-slate-200 bg-[#f7f7f8] px-7 py-8 text-left md:px-14 md:py-12">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <div className={`mb-7 flex h-11 w-11 items-center justify-center rounded-full ${iconClass}`}>
+                {renderIcon()}
+              </div>
+              <h3 className="max-w-xl text-3xl font-black leading-tight text-slate-900 md:text-[28px]">
+                {activeTab.title}
+              </h3>
+              <p className="mt-6 max-w-lg text-base font-medium leading-snug text-slate-600">
+                {activeTab.description}
+              </p>
+
+              <div className="mt-6 grid gap-x-10 gap-y-1 text-sm font-medium text-slate-600 sm:grid-cols-2">
+                {activeTab.tools.map((tool) => (
+                  <div key={tool} className="flex items-start gap-2">
+                    <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white">
+                      <Check className="h-2.5 w-2.5 stroke-[4]" />
+                    </span>
+                    <span className="min-w-0 leading-snug">{tool}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex">
+                <button className="inline-flex items-center gap-1 rounded-lg bg-[#06233d] px-10 py-4 text-sm font-black text-white transition-colors hover:bg-[#0b3154]">
+                  Start 14 Day Free Trial
+                  <ChevronRight className="h-4 w-4 stroke-[3]" />
+                </button>
+              </a>
+            </div>
+
+            <div className="relative min-h-[315px] overflow-hidden bg-gradient-to-r from-transparent via-white/40 to-transparent">
+              {activeTab.name === "Capture" ? (
+                <>
+              <div className="absolute left-[11%] top-[25%] flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-white text-xl shadow-sm">
+                  ↑↑
+                </span>
+                <div className="rounded-lg bg-[#315ee8] px-4 py-3 text-sm font-bold leading-snug text-white shadow-lg">
+                  Sorry we missed your call!
+                  <br />
+                  Want to book an appointment?
+                </div>
+              </div>
+
+              <div className="absolute right-[5%] top-[47%] flex items-center gap-3">
+                <div className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow-sm">
+                  Yes, is 2 PM next Tuesday free?
+                </div>
+                <img
+                  src="/backgroundImages/avatar.png"
+                  alt=""
+                  className="h-10 w-10 rounded-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="absolute left-[11%] top-[64%] flex items-start gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-white text-xl shadow-sm">
+                  ↑↑
+                </span>
+                <div className="rounded-lg bg-[#315ee8] px-4 py-3 text-sm font-bold leading-snug text-white shadow-lg">
+                  Yes! You're all set for 2 PM
+                  <br />
+                  next Tuesday. Thank you!
+                </div>
+              </div>
+                </>
+              ) : (
+                renderVisual()
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GhlPricingTable() {
+  return (
+    <div className="mx-auto max-w-5xl overflow-hidden rounded-b-2xl border-t-[7px] border-[#0f8bd8] bg-[#061421] px-4 pb-14 pt-8 text-white shadow-2xl md:px-12 md:pb-16">
+      <h2 className="mb-8 text-center text-3xl font-black tracking-wide text-slate-100 md:text-[34px]">
+        What's included with HighLevel
+      </h2>
+
+      <div className="min-w-[760px]">
+        <div className="grid grid-cols-[1.45fr_1.05fr_1.1fr_0.65fr] items-center px-5 pb-4 text-lg font-black tracking-wide text-slate-100">
+          <div>Features</div>
+          <div>Replaces</div>
+          <div>Other tools</div>
+          <div className="text-right text-sm font-black">
+            <span className="text-yellow-300">↑</span><span className="text-cyan-300">↑</span><span className="text-green-400">↑</span>HighLevel
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          {ghlRows.map((row, rowIndex) => (
+            <div
+              key={row.feature}
+              className="grid min-h-[38px] grid-cols-[1.45fr_1.05fr_1.1fr_0.65fr] items-center rounded-[9px] border border-white/7 bg-[#121f2b] px-5 text-[11px] font-black tracking-wide text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+            >
+              <div className="border-r border-white/8 pr-4">{row.feature}</div>
+              <div className="flex items-center gap-2 border-r border-white/8 px-5">
+                {row.replaces.map((logo, logoIndex) => (
+                  <span
+                    key={`${row.feature}-${logo}-${logoIndex}`}
+                    className={`flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-[9px] font-black leading-none text-white shadow-md ${ghlIconColors[(rowIndex + logoIndex) % ghlIconColors.length]}`}
+                  >
+                    {logo}
+                  </span>
+                ))}
+              </div>
+              <div className="border-r border-white/8 px-7">{row.otherTools}</div>
+              <div className="flex justify-end">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#162a34] text-[#1fc2ee] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
+                  <Check className="h-4 w-4 stroke-[3]" />
+                </span>
+              </div>
+            </div>
+          ))}
+
+          <div className="grid min-h-[42px] grid-cols-[1.45fr_1.05fr_1.1fr_0.65fr] items-center rounded-[9px] border border-white/7 bg-[#121f2b] px-5 text-[12px] font-black tracking-wide text-slate-100">
+            <div className="border-r border-white/8 pr-4" />
+            <div className="border-r border-white/8 px-5 text-center text-[#1fc2ee]">OVERALL PRICE</div>
+            <div className="border-r border-white/8 px-7">$1,600+ PER MONTH</div>
+            <div className="flex items-end justify-end gap-1 text-[#1fc2ee]">
+              <span className="pb-3 text-[10px]">$</span>
+              <span className="text-3xl leading-none">97</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+          <button className="inline-flex items-center gap-1 rounded-md bg-white px-8 py-4 text-xs font-bold text-slate-950 transition-colors hover:bg-slate-100">
+            Start 14 Day Free Trial
+            <ChevronRight className="h-4 w-4 stroke-[3]" />
+          </button>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+const websiteShowcases = [
+  {
+    label: "Business Coaching",
+    image: "/servicesImages/website-builder-coaching.svg",
+    description: "High-ticket coaching landing page",
+  },
+  {
+    label: "Creative Agency",
+    image: "/servicesImages/website-builder-agency.svg",
+    description: "Bold brand and agency website",
+  },
+  {
+    label: "Dental Growth",
+    image: "/servicesImages/website-builder-dental.svg",
+    description: "Local service growth website",
+  },
+];
+
+function WebsiteBuilderShowcase() {
+  return (
+    <section className="bg-white px-6 py-16 md:px-12 md:py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <span className="inline-flex rounded-full bg-sky-100 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-sky-700">
+            AI Website Builder
+          </span>
+          <h2 className="mt-5 text-4xl font-black leading-tight text-slate-950 md:text-5xl">
+            One platform. Completely different websites.
+          </h2>
+          <p className="mt-4 text-lg font-medium leading-8 text-slate-600">
+            Show clients that the builder can create polished pages for coaching, agencies, local services, and niche industries without starting from scratch.
+          </p>
+        </div>
+
+        <div className="grid gap-7 lg:grid-cols-3">
+          {websiteShowcases.map((site) => (
+            <motion.div
+              key={site.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
+            >
+              <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">
+                <span>{site.label}</span>
+                <span>Built by AI</span>
+              </div>
+
+              <div className="bg-slate-100">
+                <img
+                  src={site.image}
+                  alt={`${site.label} website example`}
+                  className="h-[360px] w-full object-cover object-top md:h-[440px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="px-5 py-5">
+                <p className="text-sm font-bold text-slate-900">{site.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 function ProductPage({
   id,
   title,
@@ -49,6 +525,7 @@ function ProductPage({
   overlayTitle,
   plans,
   showFAQs = false,
+  showWebsiteShowcase = false,
   pricingVariant = "grid",
   pricingTitle = "Pricing",
   pricingSubtitle,
@@ -126,20 +603,30 @@ function ProductPage({
         </div>
       </section>
 
+      {showWebsiteShowcase && <WebsiteBuilderShowcase />}
+
+      {pricingVariant === "ghl" && <GrowthSolutionSection />}
+
       <section id="pricing" className="py-16 md:py-24 bg-white scroll-mt-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-              {pricingTitle}
-            </h2>
-            {pricingSubtitle && (
-              <p className="text-lg text-slate-600 max-w-3xl mt-4">
-                {pricingSubtitle}
-              </p>
-            )}
-          </div>
+          {pricingVariant !== "ghl" && (
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                {pricingTitle}
+              </h2>
+              {pricingSubtitle && (
+                <p className="text-lg text-slate-600 max-w-3xl mt-4">
+                  {pricingSubtitle}
+                </p>
+              )}
+            </div>
+          )}
 
-          {pricingVariant === "stacked" ? (
+          {pricingVariant === "ghl" ? (
+            <div className="-mx-6 overflow-x-auto px-6 pb-2 md:mx-0 md:px-0">
+              <GhlPricingTable />
+            </div>
+          ) : pricingVariant === "stacked" ? (
             <div className="space-y-8">
               {plans.map((plan, index) => (
                 <motion.div

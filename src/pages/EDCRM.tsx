@@ -17,7 +17,7 @@ function EDCRM() {
         "Sales activity reporting",
       ]}
       detailedDescription="ED-CRM keeps your sales operation calm, searchable, and accountable with a GHL setup that helps teams respond faster and close more consistently."
-      pricingVariant="spotlight"
+      pricingVariant="ghl"
       pricingTitle="GHL Pricing"
       pricingSubtitle="Choose the CRM package that fits your team size, automation needs, and reporting depth."
       plans={[

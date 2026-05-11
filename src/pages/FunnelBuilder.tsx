@@ -10,6 +10,7 @@ function FunnelBuilder() {
       video="https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4"
       overlayTitle="Ready to Build Your Website?"
       showFAQs
+      showWebsiteShowcase
       features={[
         "Drag-and-drop landing pages",
         "Lead capture and form automation",

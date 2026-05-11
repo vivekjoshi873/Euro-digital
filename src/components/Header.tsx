@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, LogIn, Menu, X } from "lucide-react";
 
 const services = [
   { id: "ai-business-automation", title: "AI Business Automation", path: "/services/ai-business-automation" },
@@ -170,7 +170,15 @@ function Header() {
           </Link>
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-2 rounded-md border px-5 py-2.5 font-semibold transition-all hover:bg-slate-50 active:scale-95"
+            style={{ borderColor: "var(--primary-blue)", color: "var(--primary-navy)" }}
+          >
+            <LogIn className="h-4 w-4" />
+            Login
+          </Link>
           <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
             <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95 cursor-pointer"
               style={{ backgroundColor: 'var(--primary-blue)' }}>
@@ -257,6 +265,16 @@ function Header() {
               style={{ color: 'var(--primary-navy)' }}
             >
               Contact
+            </Link>
+
+            <Link
+              to="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-base font-semibold text-white shadow-lg"
+              style={{ backgroundColor: 'var(--primary-blue)' }}
+            >
+              <LogIn className="h-5 w-5" />
+              Login
             </Link>
           </nav>
         </div>

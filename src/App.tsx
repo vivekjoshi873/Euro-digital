@@ -17,6 +17,7 @@ import AIBuilder from './pages/AIBuilder'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 import ScrollToTop from './components/ScrollToTop'
+import LoginRedirect from './pages/LoginRedirect'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/why-choose-us" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<LoginRedirect />} />
 
         {/* Services with Nested Routes */}
         <Route path="/services" element={<ServicesLayout />}>
