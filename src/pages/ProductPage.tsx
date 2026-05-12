@@ -623,8 +623,81 @@ function ProductPage({
           )}
 
           {pricingVariant === "ghl" ? (
-            <div className="-mx-6 overflow-x-auto px-6 pb-2 md:mx-0 md:px-0">
-              <GhlPricingTable />
+            <div className="space-y-12">
+              <div className="-mx-6 overflow-x-auto px-6 pb-2 md:mx-0 md:px-0">
+                <GhlPricingTable />
+              </div>
+
+              <div className="mx-auto max-w-3xl text-center">
+                <h2 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl">
+                  {pricingTitle}
+                </h2>
+                {pricingSubtitle && (
+                  <p className="mt-4 text-lg leading-8 text-slate-600">
+                    {pricingSubtitle}
+                  </p>
+                )}
+              </div>
+
+              <div className="grid gap-6 lg:grid-cols-3">
+                {plans.map((plan) => (
+                  <motion.div
+                    key={plan.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className={`flex h-full flex-col rounded-2xl border bg-white p-7 shadow-sm transition-all ${
+                      plan.highlighted
+                        ? "border-[#18b6e3] shadow-[0_20px_70px_rgba(24,182,227,0.18)]"
+                        : "border-slate-200 hover:shadow-md"
+                    }`}
+                  >
+                    {plan.highlighted && (
+                      <span className="mb-5 w-fit rounded-full bg-[#18b6e3] px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white">
+                        Popular
+                      </span>
+                    )}
+                    <h3 className="text-2xl font-black text-slate-950">{plan.name}</h3>
+                    <p className="mt-3 min-h-[56px] text-sm leading-7 text-slate-600">
+                      {plan.description}
+                    </p>
+
+                    <div className="mt-6">
+                      <span className="text-5xl font-black text-slate-950">{plan.price}</span>
+                      {plan.subprice ? (
+                        <p className="mt-2 text-sm font-medium text-slate-500">{plan.subprice}</p>
+                      ) : plan.price !== "Custom" ? (
+                        <p className="mt-2 text-sm font-medium text-slate-500">per month, paid yearly</p>
+                      ) : null}
+                    </div>
+
+                    <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-7">
+                      <button
+                        className={`w-full rounded-lg px-5 py-3 text-sm font-bold transition-colors cursor-pointer ${
+                          plan.highlighted
+                            ? "bg-[#18b6e3] text-white hover:bg-[#109dca]"
+                            : "border border-slate-300 bg-white text-slate-950 hover:bg-slate-50"
+                        }`}
+                      >
+                        {plan.price === "Custom" ? "Contact Sales" : "Buy now"}
+                      </button>
+                    </a>
+
+                    <div className="mt-7 border-t border-slate-200 pt-6">
+                      <p className="mb-4 text-sm font-black text-slate-900">Plan highlights:</p>
+                      <ul className="space-y-3">
+                        {plan.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-slate-600">
+                            <Check className="mt-1 h-4 w-4 shrink-0 text-[#18b6e3] stroke-[3]" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           ) : pricingVariant === "stacked" ? (
             <div className="space-y-8">
