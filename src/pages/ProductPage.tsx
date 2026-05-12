@@ -274,7 +274,7 @@ function GrowthSolutionSection() {
   return (
     <section className="bg-white px-6 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-6xl text-center">
-        <h2 className="mx-auto max-w-4xl text-4xl font-black leading-tight text-slate-900 md:text-5xl">
+        <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
           Your all-in-one solution for
           <span className="block text-slate-700">business growth</span>
         </h2>
@@ -658,13 +658,13 @@ function ProductPage({
                         Popular
                       </span>
                     )}
-                    <h3 className="text-2xl font-black text-slate-950">{plan.name}</h3>
-                    <p className="mt-3 min-h-[56px] text-sm leading-7 text-slate-600">
+                    <h3 className="text-2xl font-bold text-slate-900">{plan.name}</h3>
+                    <p className="mt-3 min-h-[56px] text-[15px] leading-6 text-slate-600">
                       {plan.description}
                     </p>
 
                     <div className="mt-6">
-                      <span className="text-5xl font-black text-slate-950">{plan.price}</span>
+                      <span className="text-4xl font-bold text-slate-900">{plan.price}</span>
                       {plan.subprice ? (
                         <p className="mt-2 text-sm font-medium text-slate-500">{plan.subprice}</p>
                       ) : plan.price !== "Custom" ? (
@@ -685,7 +685,7 @@ function ProductPage({
                     </a>
 
                     <div className="mt-7 border-t border-slate-200 pt-6">
-                      <p className="mb-4 text-sm font-black text-slate-900">Plan highlights:</p>
+                      <p className="mb-4 text-sm font-bold text-slate-900">Plan highlights:</p>
                       <ul className="space-y-3">
                         {plan.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-slate-600">
