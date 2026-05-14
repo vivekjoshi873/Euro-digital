@@ -3,7 +3,7 @@ import ProductPage from "./ProductPage";
 function AIBuilder() {
   return (
     <ProductPage
-      id="ai-builder"
+      id="emotionai"
       title="Emotion AI"
       description="Create AI assistants, automation flows, and business-specific agents that can support customers, qualify leads, and handle repeatable work."
       image="/servicesImages/emotion_ai.png"

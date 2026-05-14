@@ -219,7 +219,7 @@ export const serviceFAQs: ServiceFAQ[] = [
     ]
   },
   {
-    serviceId: "ai-builder",
+    serviceId: "emotionai",
     subtitle: "Build practical AI assistants and workflows that support your team, customers, and operations.",
     faqs: [
       {

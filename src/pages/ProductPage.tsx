@@ -448,17 +448,17 @@ function GhlPricingTable() {
 const websiteShowcases = [
   {
     label: "Business Coaching",
-    image: "/servicesImages/website-builder-coaching.svg",
+    image: "/servicesImages/image.png",
     description: "High-ticket coaching landing page",
   },
   {
     label: "Creative Agency",
-    image: "/servicesImages/website-builder-agency.svg",
+    image: "/servicesImages/ai-builder.png",
     description: "Bold brand and agency website",
   },
   {
     label: "Dental Growth",
-    image: "/servicesImages/website-builder-dental.svg",
+    image: "/servicesImages/ai-website-builder.png",
     description: "Local service growth website",
   },
 ];
@@ -476,7 +476,7 @@ function WebsiteBuilderShowcase() {
           </h2>
           <p className="mt-4 text-lg font-medium leading-8 text-slate-600">
             Show clients that the builder can create polished pages for coaching, agencies, local services, and niche industries without starting from scratch.
-          </p>
+          </p>  
         </div>
 
         <div className="grid gap-7 lg:grid-cols-3">

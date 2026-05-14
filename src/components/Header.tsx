@@ -14,7 +14,7 @@ const services = [
 const products = [
   { id: "website-builder", title: "AI Website Builder", path: "/products/website-builder" },
   { id: "edcrm", title: "ED-CRM", path: "/products/edcrm" },
-  { id: "ai-builder", title: "Emotion AI", path: "/products/ai-builder" },
+  { id: "emotionai", title: "Emotion AI", path: "/products/emotionai" },
 ];
 
 function Header() {
