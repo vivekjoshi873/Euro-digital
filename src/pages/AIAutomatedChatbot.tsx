@@ -22,7 +22,7 @@ function AIAutomatedChatbot() {
   };
 
 
-  const videoUrl = "https://48yfcqwona.ucarecd.net/21cd7b64-9315-44bb-b375-d304d389e96e/Irfan3.mp4";
+  const videoUrl = "https://player.mediadelivery.net/play/661416/c564b724-82f9-4426-b62e-079b3a1b8fb4";
 
   return (
     <>

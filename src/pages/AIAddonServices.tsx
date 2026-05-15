@@ -19,7 +19,7 @@ function AIAddonServices() {
     ],
     detailedDescription: "EuroDigital ensures every add-on integrates smoothly into your current ecosystem.",
     primaryButtonText: "Talk to Sales",
-    video: "https://48yfcqwona.ucarecd.net/2f627cbe-b460-4c59-a853-f2752b5e6f97/Irfan4.mp4",
+    video: "https://player.mediadelivery.net/play/661416/0547118b-9fd8-4aae-864f-77f5f0690710",
   };
 
 

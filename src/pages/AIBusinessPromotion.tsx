@@ -21,7 +21,7 @@ function AIBusinessPromotion() {
     primaryButtonText: "Try To Sales",
   };
 
-  const videoUrl = "https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4";
+  const videoUrl = "https://player.mediadelivery.net/play/661416/02126d15-3c9d-4d94-a8ac-1d8bbc37332e";
 
   return (
     <>

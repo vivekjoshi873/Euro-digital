@@ -125,7 +125,7 @@ function IndustrySpecificAI() {
   return (
     <>
       <ServiceHeroVideo
-        videoUrl="https://2c3wn7zfav.ucarecd.net/7b40ea73-32de-4736-8f80-00c3c1523fea/irfan5.mp4"
+        videoUrl="https://player.mediadelivery.net/play/661416/78158008-7515-443f-a183-a54a8d3b3a3f"
         overlayTitle="Ready to Explore Industry Specific AI?"
         ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
       />

@@ -194,27 +194,27 @@ export const serviceFAQs: ServiceFAQ[] = [
   },
   {
     serviceId: "website-builder",
-    subtitle: "Launch landing pages, lead flows, and conversion journeys faster with one connected funnel system.",
+    subtitle: "Create high-converting websites, multi-page flows, and CRM-ready pages in minutes—no coding required.",
     faqs: [
       {
-        question: "What is AI Funnel Builder?",
-        answer: "AI Funnel Builder is EuroDigital's funnel platform for creating landing pages, lead capture flows, booking journeys, and campaign paths that help turn visitors into qualified leads."
+        question: "What is AI Website Builder?",
+        answer: "AI Website Builder is EuroDigital's platform for generating landing pages, supporting site pages, and conversion-focused layouts from prompts—so teams can launch faster without custom development."
       },
       {
-        question: "Can I build funnels without coding?",
-        answer: "Yes. AI Funnel Builder is designed so teams can create and update pages, forms, and funnel steps without depending on custom development for every change."
+        question: "Can I build websites without coding?",
+        answer: "Yes. You can generate complete pages, choose from proven templates, or create custom designs—all through prompts and visual editing, with no developer required for everyday changes."
       },
       {
-        question: "Does AI Funnel Builder support lead capture and bookings?",
-        answer: "Yes. It can handle lead forms, consultation requests, booking flows, and handoff steps so inquiries move smoothly into your follow-up process."
+        question: "Can I create multiple pages at once?",
+        answer: "Yes. From a single prompt you can generate connected pages such as pricing, privacy policy, and terms & conditions, all with consistent branding across your site."
       },
       {
-        question: "Can I track funnel performance?",
-        answer: "Yes. AI Funnel Builder can help you monitor conversions, step performance, campaign results, and drop-off points so you can improve outcomes over time."
+        question: "Can I edit content without breaking the design?",
+        answer: "Yes. Update headlines, sections, and copy with simple prompts while your layout, styling, and structure stay intact."
       },
       {
-        question: "Is AI Funnel Builder suitable for multiple campaigns?",
-        answer: "Yes. It works well for businesses running multiple offers, landing pages, and conversion paths while keeping campaign structure more organized."
+        question: "Does AI Website Builder work with my CRM?",
+        answer: "Yes. Pages are built CRM-integration-ready, so leads and form submissions can flow into your marketing and sales systems without extra setup."
       }
     ]
   },

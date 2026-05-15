@@ -469,13 +469,13 @@ function WebsiteBuilderShowcase() {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <span className="inline-flex rounded-full bg-sky-100 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-sky-700">
-            AI Website Builder
+            Features &amp; Benefits
           </span>
           <h2 className="mt-5 text-4xl font-black leading-tight text-slate-950 md:text-5xl">
-            One platform. Completely different websites.
+            Build faster. Launch smarter. Convert more.
           </h2>
           <p className="mt-4 text-lg font-medium leading-8 text-slate-600">
-            Show clients that the builder can create polished pages for coaching, agencies, local services, and niche industries without starting from scratch.
+            From a single prompt to a full, branded site—templates, multi-page flows, prompt-based edits, and CRM-ready handoff are built in, so you spend less time building and more time growing.
           </p>  
         </div>
 

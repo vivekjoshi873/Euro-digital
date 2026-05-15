@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Play } from "lucide-react";
 import { useState, useRef } from "react";
+import BunnyStreamPlayer from "./BunnyStreamPlayer";
+import { isBunnyStreamUrl } from "../utils/bunnyStream";
 
 interface Card {
   title: string;
@@ -14,13 +16,13 @@ const cards: Card[] = [
   {
     title: "AI Business Automation",
     desc: "Streamline Operations. Reduce Manual Work. Scale Faster. Automate repetitive tasks and optimize workflows to drive efficiency across your entire organization.",
-    video: "https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4",
+    video: "https://player.mediadelivery.net/play/661416/aba8e1cb-c5df-4c8e-8d47-a8bf6d066411",
     link: "/services/ai-business-automation",
   },
   {
     title: "AI Business Promotion",
     desc: "Smarter Marketing Powered by AI. Leverage data-driven insights to create personalized campaigns that convert and engage your audience effectively.",
-    video: "https://48yfcqwona.ucarecd.net/6cc782ca-d65c-42ef-8ce2-cfae21e8e7e4/Irfan2.mp4",
+    video: "https://player.mediadelivery.net/play/661416/02126d15-3c9d-4d94-a8ac-1d8bbc37332e",
     link: "/services/ai-business-promotion",
   },
   {
@@ -32,19 +34,19 @@ const cards: Card[] = [
   {
     title: "AI Automated Chatbot",
     desc: "Always-on support with human-like responses. Deliver instant, 24/7 customer service with intelligent chatbots that understand context and intent.",
-    video: "https://48yfcqwona.ucarecd.net/21cd7b64-9315-44bb-b375-d304d389e96e/Irfan3.mp4",
+    video: "https://player.mediadelivery.net/play/661416/c564b724-82f9-4426-b62e-079b3a1b8fb4",
     link: "/services/ai-automated-chatbot",
   },
   {
     title: "AI add-on Services",
     desc: "Extend capabilities with modular AI services. Integrate powerful AI tools into your existing systems to enhance functionality and performance.",
-    video: "https://48yfcqwona.ucarecd.net/2f627cbe-b460-4c59-a853-f2752b5e6f97/Irfan4.mp4",
+    video: "https://player.mediadelivery.net/play/661416/0547118b-9fd8-4aae-864f-77f5f0690710",
     link: "/services/ai-addon-services",
   },
   {
     title: "Industry Specific AI Use Cases",
     desc: "Tailored accelerators for your vertical. Industry-specific solutions designed to address unique challenges and accelerate growth in your sector.",
-    video: "https://2c3wn7zfav.ucarecd.net/7b40ea73-32de-4736-8f80-00c3c1523fea/irfan5.mp4",
+    video: "https://player.mediadelivery.net/play/661416/78158008-7515-443f-a183-a54a8d3b3a3f",
     link: "/services/industry-specific",
   },
 ];
@@ -151,6 +153,14 @@ function Sections() {
                 {/* Media Area: Supports both Images and Videos */}
                 <div className="relative w-full h-72 md:h-80 rounded-xl shadow-lg shrink-0 overflow-hidden">
                   {card.video ? (
+                    isBunnyStreamUrl(card.video) ? (
+                      <BunnyStreamPlayer
+                        sourceUrl={card.video}
+                        title={card.title}
+                        className="h-full rounded-xl"
+                        aspectClassName="h-full min-h-[18rem] md:min-h-[20rem]"
+                      />
+                    ) : (
                     <>
                       <video
                         ref={(el) => { videoRefs.current[index] = el; }}
@@ -198,6 +208,7 @@ function Sections() {
                         </div>
                       </div>
                     </>
+                    )
                   ) : card.image ? (
                     <img
                       src={card.image}
