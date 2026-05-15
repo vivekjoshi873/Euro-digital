@@ -549,7 +549,7 @@ function ProductPage({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-12 items-center"
+            className="grid md:grid-cols-[0.75fr_1.25fr] gap-10 lg:gap-14 items-center"
           >
             <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl font-semibold" style={{ color: "var(--primary-navy)" }}>
@@ -586,19 +586,17 @@ function ProductPage({
               </div>
             </div>
 
-            <div className="relative">
-              <motion.img
+            <motion.img
                 src={image}
                 alt={title}
-                className="w-full h-[280px] rounded-2xl object-cover shadow-2xl md:h-[360px] lg:h-[440px]"
+                className="mx-auto block h-auto w-full max-h-[480px] rounded-2xl object-contain object-center shadow-2xl sm:max-h-[540px] md:max-h-[640px] lg:max-h-[720px] xl:max-h-[780px]"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 loading="lazy"
                 decoding="async"
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes="(min-width: 1280px) 55vw, (min-width: 768px) 50vw, 100vw"
               />
-            </div>
           </motion.div>
         </div>
       </section>

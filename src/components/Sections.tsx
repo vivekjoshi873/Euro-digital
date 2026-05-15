@@ -49,6 +49,24 @@ const cards: Card[] = [
     video: "https://player.mediadelivery.net/play/661416/78158008-7515-443f-a183-a54a8d3b3a3f",
     link: "/services/industry-specific",
   },
+  {
+    title: "AI Website Builder",
+    desc: "Launch polished, high-converting websites in minutes—not weeks. Generate landing pages, supporting pages, and offer flows from simple prompts without writing code.",
+    video: "https://player.mediadelivery.net/play/661416/02126d15-3c9d-4d94-a8ac-1d8bbc37332e",
+    link: "/products/website-builder",
+  },
+  {
+    title: "ED-CRM",
+    desc: "One platform to attract leads, automate follow-up, and grow revenue. Bring funnels, workflows, AI agents, and real-time reporting together in a single CRM.",
+    video: "https://player.mediadelivery.net/play/661416/aba8e1cb-c5df-4c8e-8d47-a8bf6d066411",
+    link: "/products/edcrm",
+  },
+  {
+    title: "Emotion AI",
+    desc: "Connect with customers in a personal, empathetic way. Emotion AI senses tone and intent in real time so every reply feels timely, human, and built to convert.",
+    video: "https://player.mediadelivery.net/play/661416/78158008-7515-443f-a183-a54a8d3b3a3f",
+    link: "/products/emotionai",
+  },
 ];
 
 

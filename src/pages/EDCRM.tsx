@@ -5,18 +5,18 @@ function EDCRM() {
     <ProductPage
       id="edcrm"
       title="ED-CRM"
-      description="Manage leads, conversations, sales activity, and customer relationships in a GHL-powered workspace built for follow-up speed and visibility."
+      description="One platform to attract leads, automate follow-up, and grow revenue. ED-CRM brings funnels, workflows, AI agents, and real-time reporting together—so your team can sell smarter around the clock."
       image="/servicesImages/ed-Crm.png"
       video="https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4"
       overlayTitle="Ready to Organize Your Sales Pipeline?"
       showFAQs
       features={[
-        "Lead and contact management",
-        "Pipeline tracking",
-        "Task reminders and follow-up automation",
-        "Sales activity reporting",
+        "Build high-converting landing pages and funnels that capture leads and guide them through nurturing—without the manual grind",
+        "Automate end-to-end workflows across social channels with instant replies, scheduled follow-ups, reminders, and ongoing lead nurturing on autopilot",
+        "Integrate AI agents—including voice assistants—for real-time customer conversations that qualify leads, resolve support issues, and deliver a consistently excellent experience",
+        "Run your business from unified dashboards and pipelines with live insights—manage deals, appointments, and Google and Facebook ad performance in one place, 24/7",
       ]}
-      detailedDescription="ED-CRM keeps your sales operation calm, searchable, and accountable with a GHL setup that helps teams respond faster and close more consistently."
+      detailedDescription="ED-CRM is built for teams that want fewer missed opportunities and more closed deals—from first click to final conversion, everything stays connected, visible, and working while you sleep."
       pricingVariant="ghl"
       pricingTitle="GHL Pricing"
       pricingSubtitle="Choose the CRM package that fits your team size, automation needs, and reporting depth."

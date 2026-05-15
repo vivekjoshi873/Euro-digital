@@ -11,11 +11,7 @@ interface ServiceHeroVideoProps {
 const ServiceHeroVideo = ({ videoUrl, overlayTitle, ctaLink }: ServiceHeroVideoProps) => {
   if (isBunnyStreamUrl(videoUrl)) {
     return (
-      <ServiceHeroBunny
-        videoUrl={videoUrl}
-        overlayTitle={overlayTitle}
-        ctaLink={ctaLink}
-      />
+      <ServiceHeroBunny videoUrl={videoUrl} overlayTitle={overlayTitle} />
     );
   }
 

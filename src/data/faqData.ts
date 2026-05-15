@@ -168,27 +168,27 @@ export const serviceFAQs: ServiceFAQ[] = [
   },
   {
     serviceId: "edcrm",
-    subtitle: "Everything your sales team needs to manage leads, follow-ups, and customer relationships in one place.",
+    subtitle: "Funnels, automation, AI agents, and real-time dashboards—everything your sales engine needs in one CRM.",
     faqs: [
       {
         question: "What is ED-CRM?",
-        answer: "ED-CRM is EuroDigital's CRM system for managing leads, contacts, deals, follow-ups, and sales activity from one organized, GHL-powered workspace."
+        answer: "ED-CRM is EuroDigital's all-in-one CRM for building landing pages and funnels, automating workflows, deploying AI agents, and managing your pipeline—with live visibility into performance."
       },
       {
-        question: "Can ED-CRM help my team follow up faster?",
-        answer: "Yes. ED-CRM keeps lead details, tasks, reminders, and pipeline activity in one place so your team can respond faster and stay on top of every opportunity."
+        question: "Can ED-CRM build landing pages and funnels?",
+        answer: "Yes. You can create high-converting pages and funnel paths that capture leads and nurture them through follow-up—without stitching together separate tools."
       },
       {
-        question: "Does ED-CRM support automation?",
-        answer: "Yes. ED-CRM can support reminders, workflow triggers, lead routing, and follow-up automations based on the setup and package your business needs."
+        question: "Does ED-CRM automate social media and follow-ups?",
+        answer: "Yes. Smart automation handles instant replies, scheduled follow-ups, reminders, and lead nurturing across your social channels—reducing manual work for your team."
       },
       {
-        question: "Can ED-CRM integrate with my existing tools?",
-        answer: "Yes. ED-CRM can connect with common business tools and custom workflows, and our team can plan integrations around the systems you already use."
+        question: "Does ED-CRM include AI voice agents?",
+        answer: "Yes. Advanced AI agents—including voice assistants—can manage real-time conversations, nurture leads, support customers technically, and maintain a high-quality experience at scale."
       },
       {
-        question: "Is ED-CRM suitable for growing teams?",
-        answer: "Yes. ED-CRM is designed to scale from small sales teams to larger operations with multiple pipelines, user roles, and reporting needs."
+        question: "Can I track deals, bookings, and ad campaigns in one place?",
+        answer: "Yes. Dashboards and pipelines give you real-time insights—manage deals, appointment calendars, and Google and Facebook ad performance from a single hub, so opportunities are never missed."
       }
     ]
   },
@@ -220,27 +220,27 @@ export const serviceFAQs: ServiceFAQ[] = [
   },
   {
     serviceId: "emotionai",
-    subtitle: "Build practical AI assistants and workflows that support your team, customers, and operations.",
+    subtitle: "Emotion-aware AI conversations, multilingual voice, and intelligent calling—built to feel human and convert better.",
     faqs: [
       {
         question: "What is Emotion AI?",
-        answer: "Emotion AI is EuroDigital's AI builder for creating assistants, workflows, and business-specific AI systems that support customer conversations, team productivity, and repeatable tasks."
+        answer: "Emotion AI is EuroDigital's conversational platform that reads tone and context in real time, so your business can respond with empathy, clarity, and trust—not generic, one-size-fits-all replies."
       },
       {
-        question: "Can Emotion AI be customized for my business?",
-        answer: "Yes. Emotion AI can be tailored around your business goals, knowledge base, workflows, and customer journey instead of forcing you into a one-size-fits-all setup."
+        question: "Does Emotion AI support regional languages and accents?",
+        answer: "Yes. You can add a voice widget to your website for natural, human-like interactions in Gujarati, Hindi, Marathi, and English—with authentic regional accents that help customers feel understood."
       },
       {
-        question: "What can I build with Emotion AI?",
-        answer: "You can build AI assistants for customer support, lead qualification, internal knowledge access, workflow automation, and other connected business processes."
+        question: "Can Emotion AI handle phone calls automatically?",
+        answer: "Yes. Intelligent AI-powered calling manages live conversations dynamically—adapting to what the caller says instead of relying on rigid, scripted responses."
       },
       {
-        question: "Can Emotion AI connect with my website or CRM?",
-        answer: "Yes. Emotion AI can be connected to your website, CRM, and other business tools depending on the workflow, data, and implementation plan."
+        question: "How does Emotion AI improve customer experience?",
+        answer: "By adjusting to how customers feel in the moment, Emotion AI creates warmer, more relevant interactions that boost engagement, strengthen trust, and support higher conversion rates."
       },
       {
-        question: "Is Emotion AI only for technical teams?",
-        answer: "No. Emotion AI is built to be useful for business teams as well, with EuroDigital helping with setup, logic, and integration where needed."
+        question: "Can Emotion AI work on my website?",
+        answer: "Yes. The AI voice widget embeds on your site so visitors can speak or chat naturally, while conversations can also connect to your CRM and follow-up workflows where needed."
       }
     ]
   }
