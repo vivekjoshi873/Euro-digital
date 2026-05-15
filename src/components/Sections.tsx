@@ -76,17 +76,17 @@ const industries = [
   {
     title: "Real Estate",
     image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
+      "https://2c3wn7zfav.ucarecd.net/11ba89c6-4554-4254-a8e6-6193565067df/photo1505693416388ac5ce068fe85.avif",
   },
   {
     title: "E-commerce",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+      "https://2c3wn7zfav.ucarecd.net/0782a6d2-94ea-413a-b1b1-8094d5ed55b4/photo1498050108023c5249f4df085.avif",
   },
   {
     title: "Financial Services",
     image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80",
+      "https://2c3wn7zfav.ucarecd.net/f478ef6d-d78c-469b-9285-3deb12d29e98/photo152060716251377705c0f0d4a.avif",
   },
 ];
 
