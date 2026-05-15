@@ -41,21 +41,21 @@ const stackedCardThemes = [
 ];
 const stackedTopOffsets = ["md:top-24", "md:top-32", "md:top-40", "md:top-48"];
 const ghlRows = [
-  { feature: "CRM & PIPELINE MANAGEMENT", replaces: ["HS", ">",], otherTools: "$99/MONTHLY" },
-  { feature: "UNLIMITED SALES FUNNELS", replaces: ["CF", "CL"], otherTools: "$297/MONTHLY" },
-  { feature: "WEBSITE BUILDER", replaces: ["WP", "WIX", "SS"], otherTools: "$29/MONTHLY" },
-  { feature: "SURVEYS & FORMS", replaces: ["SG", "T", "WF", "TF"], otherTools: "$49/MONTHLY" },
-  { feature: "EMAIL MARKETING", replaces: [">", "MC", "HS", "CC"], otherTools: "$99/MONTHLY" },
-  { feature: "2-WAY SMS MARKETING", replaces: ["AC", "TW", "SM"], otherTools: "$99/MONTHLY" },
-  { feature: "BOOKING & APPOINTMENTS", replaces: ["CA", "GC", "A"], otherTools: "$29/MONTHLY" },
-  { feature: "WORKFLOW AUTOMATIONS", replaces: [">", "HS", "K"], otherTools: "$169/MONTHLY" },
-  { feature: "COURSES/PRODUCTS", replaces: ["KA", "T"], otherTools: "$99/MONTHLY" },
-  { feature: "CALL TRACKING", replaces: ["CT", "WC"], otherTools: "$49/MONTHLY" },
-  { feature: "REPUTATION MANAGEMENT", replaces: ["BI", "SM", "BR"], otherTools: "$159/MONTHLY" },
-  { feature: "TRACKING & ANALYTICS", replaces: ["GA"], otherTools: "$299/MONTHLY" },
-  { feature: "COMMUNITIES", replaces: ["SK", "M", "C"], otherTools: "$89/MONTHLY" },
-  { feature: "DOCUMENT SIGNING", replaces: ["ED", "DS"], otherTools: "$47/MONTHLY" },
-  { feature: "GRAY-LABELED MOBILE APP", replaces: [], otherTools: "UNIQUE TO HIGHLEVEL" },
+  { feature: "CRM & PIPELINE MANAGEMENT", replaces: ["HS", ">"], otherTools: "$99/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "UNLIMITED SALES FUNNELS", replaces: ["CF", "CL"], otherTools: "$297/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "WEBSITE BUILDER", replaces: ["WP", "WIX", "SS"], otherTools: "$29/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "SURVEYS & FORMS", replaces: ["SG", "T", "WF", "TF"], otherTools: "$49/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "EMAIL MARKETING", replaces: [">", "MC", "HS", "CC"], otherTools: "$99/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "2-WAY SMS MARKETING", replaces: ["AC", "TW", "SM"], otherTools: "$99/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "BOOKING & APPOINTMENTS", replaces: ["CA", "GC", "A"], otherTools: "$29/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "WORKFLOW AUTOMATIONS", replaces: [">", "HS", "K"], otherTools: "$169/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "COURSES/PRODUCTS", replaces: ["KA", "T"], otherTools: "$99/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "CALL TRACKING", replaces: ["CT", "WC"], otherTools: "$49/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "REPUTATION MANAGEMENT", replaces: ["BI", "SM", "BR"], otherTools: "$159/MONTHLY", edcrmPrice: "$29", edcrmTier: "Growth Essentials" },
+  { feature: "TRACKING & ANALYTICS", replaces: ["GA"], otherTools: "$299/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "COMMUNITIES", replaces: ["SK", "M", "C"], otherTools: "$89/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "DOCUMENT SIGNING", replaces: ["ED", "DS"], otherTools: "$47/MONTHLY", edcrmPrice: "$49", edcrmTier: "AI Business Suite" },
+  { feature: "GRAY-LABELED MOBILE APP", replaces: [], otherTools: "UNIQUE TO HIGHLEVEL", edcrmPrice: "Included", edcrmTier: "All plans" },
 ];
 const ghlIconColors = [
   "bg-orange-500",
@@ -380,29 +380,30 @@ function GrowthSolutionSection() {
 
 function GhlPricingTable() {
   return (
-    <div className="mx-auto max-w-5xl overflow-hidden rounded-b-2xl border-t-[7px] border-[#0f8bd8] bg-[#061421] px-4 pb-14 pt-8 text-white shadow-2xl md:px-12 md:pb-16">
-      <h2 className="mb-8 text-center text-3xl font-black tracking-wide text-slate-100 md:text-[34px]">
-        What's included with HighLevel
+    <div className="mx-auto w-full max-w-7xl overflow-hidden rounded-b-2xl border-t-[7px] border-[#0f8bd8] bg-[#061421] px-5 pb-14 pt-8 text-white shadow-2xl md:px-14 md:pb-16">
+      <h2 className="mb-8 text-center text-3xl font-black tracking-wide text-slate-100 md:text-[36px]">
+        What&apos;s included with ED-CRM
       </h2>
 
-      <div className="min-w-[760px]">
-        <div className="grid grid-cols-[1.45fr_1.05fr_1.1fr_0.65fr] items-center px-5 pb-4 text-lg font-black tracking-wide text-slate-100">
+      <div className="min-w-[920px]">
+        <div className="grid grid-cols-[1.35fr_1fr_1fr_1.15fr_0.55fr] items-center px-5 pb-4 text-base font-black tracking-wide text-slate-100 md:text-lg">
           <div>Features</div>
           <div>Replaces</div>
           <div>Other tools</div>
+          <div className="text-[#18b6e3]">ED-CRM</div>
           <div className="text-right text-sm font-black">
-            <span className="text-yellow-300">↑</span><span className="text-cyan-300">↑</span><span className="text-green-400">↑</span>HighLevel
+            <span className="text-yellow-300">↑</span><span className="text-cyan-300">↑</span><span className="text-green-400">↑</span>
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           {ghlRows.map((row, rowIndex) => (
             <div
               key={row.feature}
-              className="grid min-h-[38px] grid-cols-[1.45fr_1.05fr_1.1fr_0.65fr] items-center rounded-[9px] border border-white/7 bg-[#121f2b] px-5 text-[11px] font-black tracking-wide text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+              className="grid min-h-[44px] grid-cols-[1.35fr_1fr_1fr_1.15fr_0.55fr] items-center rounded-[9px] border border-white/7 bg-[#121f2b] px-5 text-[11px] font-black tracking-wide text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] md:text-xs"
             >
               <div className="border-r border-white/8 pr-4">{row.feature}</div>
-              <div className="flex items-center gap-2 border-r border-white/8 px-5">
+              <div className="flex items-center gap-2 border-r border-white/8 px-4">
                 {row.replaces.map((logo, logoIndex) => (
                   <span
                     key={`${row.feature}-${logo}-${logoIndex}`}
@@ -412,7 +413,20 @@ function GhlPricingTable() {
                   </span>
                 ))}
               </div>
-              <div className="border-r border-white/8 px-7">{row.otherTools}</div>
+              <div className="border-r border-white/8 px-5 text-slate-300">{row.otherTools}</div>
+              <div className="border-r border-white/8 px-4">
+                <div className="inline-flex flex-col gap-0.5 rounded-md bg-[#0a1a28] px-3 py-1.5 ring-1 ring-[#18b6e3]/25">
+                  <span className="text-sm leading-none text-[#1fc2ee] md:text-base">
+                    {row.edcrmPrice}
+                    {row.edcrmPrice.startsWith("$") && (
+                      <span className="ml-1 text-[9px] font-bold uppercase text-slate-400">/mo</span>
+                    )}
+                  </span>
+                  <span className="text-[8px] font-bold uppercase tracking-wider text-slate-500">
+                    {row.edcrmTier}
+                  </span>
+                </div>
+              </div>
               <div className="flex justify-end">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#162a34] text-[#1fc2ee] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
                   <Check className="h-4 w-4 stroke-[3]" />
@@ -421,13 +435,21 @@ function GhlPricingTable() {
             </div>
           ))}
 
-          <div className="grid min-h-[42px] grid-cols-[1.45fr_1.05fr_1.1fr_0.65fr] items-center rounded-[9px] border border-white/7 bg-[#121f2b] px-5 text-[12px] font-black tracking-wide text-slate-100">
+          <div className="grid min-h-[48px] grid-cols-[1.35fr_1fr_1fr_1.15fr_0.55fr] items-center rounded-[9px] border border-white/7 bg-[#121f2b] px-5 text-[12px] font-black tracking-wide text-slate-100">
             <div className="border-r border-white/8 pr-4" />
-            <div className="border-r border-white/8 px-5 text-center text-[#1fc2ee]">OVERALL PRICE</div>
-            <div className="border-r border-white/8 px-7">$1,600+ PER MONTH</div>
+            <div className="border-r border-white/8 px-4 text-center text-[#1fc2ee]">OVERALL PRICE</div>
+            <div className="border-r border-white/8 px-5 text-slate-300">$1,600+ PER MONTH</div>
+            <div className="border-r border-white/8 px-4">
+              <div className="inline-flex flex-col gap-0.5 rounded-md bg-[#0a1a28] px-3 py-1.5 ring-1 ring-[#18b6e3]/35">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">From</span>
+                <span className="text-lg leading-none text-[#1fc2ee] md:text-xl">
+                  $29<span className="ml-1 text-[9px] font-bold uppercase text-slate-400">/mo</span>
+                </span>
+              </div>
+            </div>
             <div className="flex items-end justify-end gap-1 text-[#1fc2ee]">
               <span className="pb-3 text-[10px]">$</span>
-              <span className="text-3xl leading-none">97</span>
+              <span className="text-3xl leading-none">29</span>
             </div>
           </div>
         </div>
