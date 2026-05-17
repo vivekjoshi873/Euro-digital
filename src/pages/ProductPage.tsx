@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { Check, ChevronRight, DollarSign, Funnel, MessageCircle, RotateCcw, Trophy } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Check, ChevronRight, DollarSign, Eye, Funnel, MessageCircle, RotateCcw, Trophy, X } from "lucide-react";
 import FAQ from "../components/FAQ";
 import ServiceHeroVideo from "../components/ServiceHeroVideo";
 import { getFAQsByServiceId } from "../data/faqData";
@@ -469,23 +469,39 @@ function GhlPricingTable() {
 
 const websiteShowcases = [
   {
-    label: "Business Coaching",
-    image: "/servicesImages/image.png",
-    description: "High-ticket coaching landing page",
+    label: "Gaming Website",
+    image: "/servicesImages/gaming2.png",
+    description: "Esports portal with hero banner, featured games, and live tournament CTAs",
   },
   {
-    label: "Creative Agency",
+    label: "AI Marketing Agency Funnel",
     image: "/servicesImages/ai-builder.png",
-    description: "Bold brand and agency website",
+    description: "Bold brand and agency website built to convert leads",
   },
   {
-    label: "Dental Growth",
+    label: "Cinematic SaaS",
     image: "/servicesImages/ai-website-builder.png",
-    description: "Local service growth website",
+    description: "Modern SaaS product site with cinematic storytelling",
   },
 ];
 
 function WebsiteBuilderShowcase() {
+  const [preview, setPreview] = useState<(typeof websiteShowcases)[number] | null>(null);
+
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPreview(null);
+    };
+    if (preview) {
+      document.addEventListener("keydown", handleEsc);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "unset";
+    };
+  }, [preview]);
+
   return (
     <section className="bg-white px-6 py-16 md:px-12 md:py-24">
       <div className="mx-auto max-w-7xl">
@@ -516,7 +532,7 @@ function WebsiteBuilderShowcase() {
                 <span>Built by AI</span>
               </div>
 
-              <div className="bg-slate-100">
+              <div className="group relative bg-slate-100">
                 <img
                   src={site.image}
                   alt={`${site.label} website example`}
@@ -524,6 +540,14 @@ function WebsiteBuilderShowcase() {
                   loading="lazy"
                   decoding="async"
                 />
+                <button
+                  type="button"
+                  onClick={() => setPreview(site)}
+                  className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-slate-900/70 text-white shadow-lg backdrop-blur-sm transition-all hover:scale-105 hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                  aria-label={`Preview ${site.label} website`}
+                >
+                  <Eye className="h-5 w-5" />
+                </button>
               </div>
 
               <div className="px-5 py-5">
@@ -533,6 +557,64 @@ function WebsiteBuilderShowcase() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {preview && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setPreview(null)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+              aria-label="Close preview"
+            />
+
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="website-preview-title"
+              initial={{ opacity: 0, scale: 0.94, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 16 }}
+              transition={{ duration: 0.25 }}
+              className="relative z-10 w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-2xl"
+            >
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4 md:px-6">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-sky-600">
+                    Website Preview
+                  </p>
+                  <h3 id="website-preview-title" className="text-lg font-bold text-slate-900 md:text-xl">
+                    {preview.label}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setPreview(null)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-200 hover:text-slate-900"
+                  aria-label="Close preview"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="max-h-[75vh] overflow-y-auto bg-slate-100">
+                <img
+                  src={preview.image}
+                  alt={`${preview.label} full preview`}
+                  className="w-full object-cover object-top"
+                />
+              </div>
+
+              <div className="border-t border-slate-200 px-5 py-4 md:px-6">
+                <p className="text-sm font-medium text-slate-600">{preview.description}</p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
