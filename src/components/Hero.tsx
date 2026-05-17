@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Slide = {
   title: string;
@@ -15,13 +15,13 @@ const slides: Slide[] = [
     description:
       "We help brands unlock growth with tailored strategies, innovative design, and data-driven insights that deliver real results.",
     image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=75&fm=webp",
   },
   {
     title: "AI Business Automation",
     description:
       "EuroDigital’s AI Business Automation solutions are built to eliminate repetitive tasks and optimize your internal workflows. We analyze your business processes and design automation systems that save time, reduce errors, and allow your team to focus on high-value work.",
-    image: "/servicesImages/Ai-business-automation.png",
+    image: "/servicesImages/Ai-business-automation1.png",
     link: "/services/ai-business-automation",
   },
   {
@@ -35,14 +35,14 @@ const slides: Slide[] = [
     title: "AI Agent Talk Time",
     description:
       "Our AI-powered chatbots are designed to handle customer interactions accurately and professionally, around the clock. These chatbots are trained using your business data, ensuring responses remain relevant, reliable, and aligned with your brand voice.",
-    image: "/backgroundImages/aitalktime.png",
+    image: "/backgroundImages/aitalk-time.png",
     link: "/services/ai-agent-talk-time",
   },
   {
     title: "AI Automated Chatbot",
     description:
       "EuroDigital’s AI Voice Agents manage real conversations with customers using natural, human-like speech. These agents can handle calls efficiently while maintaining a professional tone and consistency.",
-    image: "/backgroundImages/ai_bussiness.png",
+    image: "/backgroundImages/ai-automation.png",
     link: "/services/ai-automated-chatbot",
   },
   {
@@ -57,13 +57,20 @@ const slides: Slide[] = [
     description:
       "We understand that every industry has unique challenges. That’s why EuroDigital delivers AI solutions specifically designed for different business domains, ensuring practical and measurable impact.",
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=75&fm=webp",
     link: "/services/industry-specific",
   },
 ];
 
 function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    slides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -75,23 +82,24 @@ function Hero() {
 
   return (
     <section className="relative min-h-[75vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden text-white">
-      {/* Background Image */}
+      {/* All backgrounds mounted + preloaded — slide changes stay instant */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
+        {slides.map((slide, index) => (
           <motion.img
-            key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            key={slide.image}
+            src={slide.image}
+            alt=""
+            aria-hidden={index !== currentSlide}
+            initial={false}
+            animate={{ opacity: index === currentSlide ? 1 : 0 }}
             transition={{ duration: 0.8 }}
-            src={slides[currentSlide].image}
-            alt={slides[currentSlide].title}
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="eager"
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "low"}
             decoding="async"
             sizes="100vw"
           />
-        </AnimatePresence>
+        ))}
 
         {/* Overlays */}
         <div className="absolute inset-0 bg-black/30" />
