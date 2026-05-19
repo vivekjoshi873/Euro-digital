@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getBunnyStreamMp4Url,
   getBunnyStreamThumbnailUrl,
@@ -11,6 +11,10 @@ interface BunnyStreamPlayerProps {
   title?: string;
   className?: string;
   aspectClassName?: string;
+  /** When false, playback is paused (e.g. another player became active). Defaults to true. */
+  isActive?: boolean;
+  onActivate?: () => void;
+  onDeactivate?: () => void;
 }
 
 function BunnyStreamPlayer({
@@ -18,6 +22,9 @@ function BunnyStreamPlayer({
   title = "Video",
   className = "",
   aspectClassName = "aspect-video",
+  isActive = true,
+  onActivate,
+  onDeactivate,
 }: BunnyStreamPlayerProps) {
   const mp4Url = getBunnyStreamMp4Url(sourceUrl);
   const posterUrl = getBunnyStreamThumbnailUrl(sourceUrl);
@@ -25,12 +32,23 @@ function BunnyStreamPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
 
+  useEffect(() => {
+    if (isActive) return;
+    const video = videoRef.current;
+    if (video && !video.paused) {
+      video.pause();
+    }
+    setIsPlaying(false);
+    setIsBuffering(false);
+  }, [isActive]);
+
   if (!mp4Url) return null;
 
   const handleResume = () => {
     const video = videoRef.current;
     if (!video) return;
 
+    onActivate?.();
     setIsBuffering(true);
     video.muted = false;
     video
@@ -46,6 +64,7 @@ function BunnyStreamPlayer({
     videoRef.current?.pause();
     setIsPlaying(false);
     setIsBuffering(false);
+    onDeactivate?.();
   };
 
   return (
@@ -86,6 +105,7 @@ function BunnyStreamPlayer({
           onEnded={() => {
             setIsPlaying(false);
             setIsBuffering(false);
+            onDeactivate?.();
           }}
         />
 

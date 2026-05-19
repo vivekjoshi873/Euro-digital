@@ -322,7 +322,7 @@ function GrowthSolutionSection() {
               </div>
 
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex">
-                <button className="inline-flex items-center gap-1 rounded-lg bg-[#06233d] px-10 py-4 text-sm font-black text-white transition-colors hover:bg-[#0b3154]">
+                <button className="cursor-pointer inline-flex items-center gap-1 rounded-lg bg-[#06233d] px-10 py-4 text-sm font-black text-white transition-colors hover:bg-[#0b3154] ">
                   Start 14 Day Free Trial
                   <ChevronRight className="h-4 w-4 stroke-[3]" />
                 </button>
@@ -457,7 +457,7 @@ function GhlPricingTable() {
 
       <div className="mt-10 flex justify-center">
         <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-          <button className="inline-flex items-center gap-1 rounded-md bg-white px-8 py-4 text-xs font-bold text-slate-950 transition-colors hover:bg-slate-100">
+          <button className="inline-flex items-center gap-1 rounded-md bg-white px-8 py-4 text-xs font-bold text-slate-950 transition-colors hover:bg-slate-100 cursor-pointer">
             Start 14 Day Free Trial
             <ChevronRight className="h-4 w-4 stroke-[3]" />
           </button>

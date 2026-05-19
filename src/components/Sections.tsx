@@ -114,6 +114,21 @@ function Sections() {
     });
   };
 
+  const handleBunnyVideoActivate = (index: number) => {
+    pauseAllVideos();
+    setCurrentlyPlayingIndex(index);
+    setBufferingVideoIndex(index);
+  };
+
+  const handleBunnyVideoDeactivate = (index: number) => {
+    if (currentlyPlayingIndex === index) {
+      setCurrentlyPlayingIndex(null);
+    }
+    if (bufferingVideoIndex === index) {
+      setBufferingVideoIndex(null);
+    }
+  };
+
   const handleVideoPlay = (index: number) => {
     const video = videoRefs.current[index];
     if (!video) return;
@@ -177,6 +192,9 @@ function Sections() {
                         title={card.title}
                         className="h-full rounded-xl"
                         aspectClassName="h-full min-h-[18rem] md:min-h-[20rem]"
+                        isActive={currentlyPlayingIndex === null || currentlyPlayingIndex === index}
+                        onActivate={() => handleBunnyVideoActivate(index)}
+                        onDeactivate={() => handleBunnyVideoDeactivate(index)}
                       />
                     ) : (
                     <>
