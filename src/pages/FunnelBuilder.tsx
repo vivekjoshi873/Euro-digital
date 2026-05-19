@@ -19,25 +19,56 @@ function FunnelBuilder() {
         "Go live with CRM-ready pages that connect straight to your marketing and sales tools—no extra wiring",
       ]}
       detailedDescription="Whether you are launching a new offer or refreshing an existing site, AI Website Builder keeps speed, design quality, and lead capture in one place—so your team can publish faster and convert more visitors into customers."
+      pricingTitle="Website Build Pricing"
+      pricingSubtitle="Choose the build that fits your goals—from a fast launch to a fully custom site."
       plans={[
         {
-          name: "Starter",
-          price: "$99",
-          description: "For simple campaign pages and lead capture.",
-          features: ["5 funnels", "Lead forms", "Basic analytics", "Email support"],
+          name: "Basic Build",
+          price: "$300",
+          subprice: "one-time project fee",
+          description: "Perfect for startups and solo founders who need a polished site live fast.",
+          features: [
+            "Single-page AI-built landing site",
+            "Mobile-responsive layout",
+            "Lead capture form",
+            "Basic SEO setup",
+            "Privacy & terms page included",
+            "1 round of revisions",
+            "Delivery in 5–7 business days",
+          ],
         },
         {
-          name: "Growth",
-          price: "$199",
-          description: "For teams running multiple campaigns.",
+          name: "Premium Build",
+          price: "$500",
+          subprice: "one-time project fee",
+          description: "Best for growing brands that need more pages, polish, and conversions.",
           highlighted: true,
-          features: ["Unlimited funnels", "A/B testing", "CRM handoff", "Priority support"],
+          features: [
+            "Everything in Basic Build",
+            "Up to 5 custom pages",
+            "Blog or resources section",
+            "CRM & form integrations",
+            "Custom branding & color system",
+            "Advanced SEO & speed optimization",
+            "2 rounds of revisions",
+            "Priority support",
+          ],
         },
         {
-          name: "Enterprise",
+          name: "Custom Build",
           price: "Custom",
-          description: "For custom funnel systems and advanced teams.",
-          features: ["Custom workflows", "Advanced integrations", "Team permissions", "Dedicated support"],
+          subprice: "tailored scope & quote",
+          description: "For businesses that need unique layouts, integrations, and ongoing flexibility.",
+          features: [
+            "Fully custom site architecture",
+            "Unlimited pages & sections",
+            "E-commerce or membership flows",
+            "Custom API & tool integrations",
+            "Dedicated project manager",
+            "Multi-language support",
+            "Unlimited revision rounds (scoped)",
+            "Ongoing optimization & support options",
+          ],
         },
       ]}
     />
