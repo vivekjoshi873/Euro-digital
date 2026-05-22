@@ -472,21 +472,773 @@ const websiteShowcases = [
     label: "Gaming Website",
     image: "/servicesImages/gaming2.png",
     description: "Esports portal with hero banner, featured games, and live tournament CTAs",
+    preview: "gaming",
   },
   {
     label: "AI Marketing Agency Funnel",
     image: "/servicesImages/ai-builder.png",
     description: "Bold brand and agency website built to convert leads",
+    preview: "agency",
   },
   {
     label: "Cinematic SaaS",
     image: "/servicesImages/ai-website-builder.png",
     description: "Modern SaaS product site with cinematic storytelling",
+    preview: "saas",
   },
 ];
 
+type WebsiteShowcase = (typeof websiteShowcases)[number];
+
+function WebsitePreviewSite({ preview }: { preview: WebsiteShowcase }) {
+  if (preview.preview === "gaming") {
+    return (
+      <div className="bg-[#070913] text-white">
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 md:px-8">
+          <div className="text-lg font-black uppercase tracking-[0.22em] text-cyan-300">Nexus Arena</div>
+          <div className="hidden items-center gap-6 text-xs font-bold uppercase tracking-[0.16em] text-white/70 md:flex">
+            <span>Games</span>
+            <span>Teams</span>
+            <span>Tournaments</span>
+            <span>Store</span>
+          </div>
+          <button className="rounded-md bg-cyan-300 px-4 py-2 text-xs font-black text-slate-950">Join Match</button>
+        </div>
+
+        <div className="grid min-h-[560px] items-center gap-8 px-5 py-12 md:grid-cols-[0.95fr_1.05fr] md:px-8 lg:px-12">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-pink-400">Live season 08</p>
+            <h4 className="mt-4 text-5xl font-black leading-none md:text-7xl">Compete where legends are made.</h4>
+            <p className="mt-6 max-w-xl text-base font-medium leading-7 text-white/70">
+              Daily ladders, creator-hosted events, team rankings, and instant tournament registration for competitive players.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <button className="rounded-md bg-cyan-300 px-6 py-3 text-sm font-black text-slate-950">Enter Tournament</button>
+              <button className="rounded-md border border-white/20 px-6 py-3 text-sm font-black text-white">Watch Live</button>
+            </div>
+          </div>
+          <img src={preview.image} alt="" className="h-full max-h-[470px] w-full rounded-2xl object-cover object-top shadow-[0_30px_90px_rgba(34,211,238,0.24)]" />
+        </div>
+
+        <div className="grid border-y border-white/10 md:grid-cols-4">
+          {["48K Players", "124 Teams", "$80K Prizes", "24/7 Streams"].map((stat) => (
+            <div key={stat} className="border-white/10 px-6 py-7 md:border-r">
+              <div className="text-2xl font-black text-cyan-300">{stat.split(" ")[0]}</div>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">{stat.split(" ").slice(1).join(" ")}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="px-5 py-14 md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.24em] text-pink-400">Tonight's Matches</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Live brackets, team rooms, and instant score sync.</h5>
+              <p className="mt-4 text-base leading-7 text-white/60">
+                Players join the lobby, check their bracket, verify their roster, and stream their match without leaving the arena dashboard.
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {[
+                ["21:00", "Shadow Pulse", "Neon Vortex", "Semi Final"],
+                ["22:15", "Cyber Kings", "Astra Unit", "Lower Bracket"],
+                ["23:30", "Nova Crew", "Zero Signal", "Grand Final"],
+              ].map(([time, teamA, teamB, round]) => (
+                <div key={`${teamA}-${teamB}`} className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_18px_70px_rgba(0,0,0,0.18)] md:grid-cols-[90px_1fr_120px] md:items-center">
+                  <div className="text-2xl font-black text-cyan-300">{time}</div>
+                  <div>
+                    <div className="flex items-center justify-between gap-3 text-lg font-black">
+                      <span>{teamA}</span>
+                      <span className="text-sm text-white/35">VS</span>
+                      <span>{teamB}</span>
+                    </div>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-white/40">{round}</p>
+                  </div>
+                  <button className="rounded-md border border-cyan-300/30 px-4 py-3 text-xs font-black text-cyan-200">Watch</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white/[0.03] px-5 py-14 md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.24em] text-cyan-300">Leaderboard</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight">Season rankings update after every verified match.</h5>
+              <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
+                {[
+                  ["01", "Astra Unit", "18W", "2940 XP"],
+                  ["02", "Shadow Pulse", "16W", "2715 XP"],
+                  ["03", "Neon Vortex", "15W", "2520 XP"],
+                  ["04", "Cyber Kings", "14W", "2380 XP"],
+                ].map(([rank, team, wins, xp]) => (
+                  <div key={team} className="grid grid-cols-[60px_1fr_80px_90px] items-center border-b border-white/10 px-5 py-4 last:border-b-0">
+                    <span className="text-lg font-black text-cyan-300">{rank}</span>
+                    <span className="font-black">{team}</span>
+                    <span className="text-sm font-bold text-white/55">{wins}</span>
+                    <span className="text-sm font-bold text-white/55">{xp}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl border border-cyan-300/20 bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.22),_transparent_55%),#0b1020] p-7">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-pink-300">Season Pass</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight">Unlock premium scrims and creator cups.</h5>
+              <p className="mt-4 text-sm leading-6 text-white/60">
+                Premium players get priority queue, advanced match history, private scrim invites, and exclusive cosmetic drops.
+              </p>
+              <div className="mt-6 grid gap-3">
+                {["Priority tournament entry", "Private team channels", "Advanced stat tracking", "Exclusive stream overlays"].map((item) => (
+                  <div key={item} className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm font-bold text-white/70">
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <button className="mt-7 w-full rounded-md bg-cyan-300 px-5 py-4 text-sm font-black text-slate-950">Upgrade Pass</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="px-5 py-14 md:px-8 lg:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-black uppercase tracking-[0.24em] text-pink-400">Arena Features</p>
+            <h5 className="mt-3 text-4xl font-black leading-tight">Everything a competitive community needs in one place.</h5>
+          </div>
+          <div className="mt-9 grid gap-5 md:grid-cols-3">
+            {[
+              ["Team Hub", "Roster invites, roles, private comms, and team availability."],
+              ["Match Center", "Brackets, reporting, dispute handling, and stream links."],
+              ["Creator Events", "Influencer-hosted cups with featured streams and rewards."],
+              ["Stats Engine", "Win rate, MVP tracking, match history, and seasonal XP."],
+              ["Prize Wallet", "Transparent prize pools, payouts, and sponsor bonuses."],
+              ["Community Feed", "Clips, announcements, match recaps, and player updates."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <h6 className="text-xl font-black text-white">{title}</h6>
+                <p className="mt-3 text-sm leading-6 text-white/55">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-[#050713] px-5 py-14 md:px-8 lg:px-12">
+          <div className="grid gap-8 rounded-3xl border border-white/10 bg-[linear-gradient(135deg,rgba(34,211,238,0.18),rgba(236,72,153,0.14),rgba(255,255,255,0.03))] p-8 md:p-10 lg:grid-cols-[1fr_0.75fr] lg:items-center">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.24em] text-cyan-200">Ready Queue</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Build your squad and enter the next bracket.</h5>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-white/60">
+                Create a profile, invite your team, pick your game, and register for the next live tournament in minutes.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/25 p-6">
+              <div className="grid gap-3">
+                {["Choose Game", "Add Roster", "Verify Region", "Join Bracket"].map((step, index) => (
+                  <div key={step} className="flex items-center gap-3 rounded-lg bg-white/5 px-4 py-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-300 text-xs font-black text-slate-950">{index + 1}</span>
+                    <span className="text-sm font-black text-white/80">{step}</span>
+                  </div>
+                ))}
+              </div>
+              <button className="mt-5 w-full rounded-md bg-white px-5 py-4 text-sm font-black text-slate-950">Create Player Profile</button>
+            </div>
+          </div>
+        </div>
+
+        <footer className="border-t border-white/10 bg-black/25 px-5 py-10 md:px-8 lg:px-12">
+          <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
+            <div>
+              <div className="text-xl font-black uppercase tracking-[0.22em] text-cyan-300">Nexus Arena</div>
+              <p className="mt-4 max-w-sm text-sm leading-6 text-white/55">
+                Competitive events, ranked ladders, and live community matches for players ready to climb.
+              </p>
+            </div>
+            <div>
+              <h6 className="text-sm font-black uppercase tracking-[0.18em] text-white">Play</h6>
+              <div className="mt-4 space-y-2 text-sm font-semibold text-white/55">
+                <p>Open Cups</p>
+                <p>Ranked Arena</p>
+                <p>Team Finder</p>
+              </div>
+            </div>
+            <div>
+              <h6 className="text-sm font-black uppercase tracking-[0.18em] text-white">Watch</h6>
+              <div className="mt-4 space-y-2 text-sm font-semibold text-white/55">
+                <p>Live Streams</p>
+                <p>Finals</p>
+                <p>Highlights</p>
+              </div>
+            </div>
+            <div>
+              <h6 className="text-sm font-black uppercase tracking-[0.18em] text-white">Social</h6>
+              <div className="mt-4 flex gap-2">
+                {["TW", "YT", "DC"].map((item) => (
+                  <span key={item} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs font-black text-cyan-200">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs font-bold uppercase tracking-[0.16em] text-white/35 md:flex-row md:items-center md:justify-between">
+            <span>© 2026 Nexus Arena</span>
+            <span>Privacy · Terms · Fair Play</span>
+          </div>
+        </footer>
+      </div>
+    );
+  }
+
+  if (preview.preview === "agency") {
+    return (
+      <div className="bg-[#f8fafc] text-slate-950">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white/90 px-5 py-4 backdrop-blur md:px-8">
+          <div className="text-xl font-black">ScaleForge AI</div>
+          <div className="hidden items-center gap-6 text-sm font-bold text-slate-600 md:flex">
+            <span>Funnels</span>
+            <span>Automation</span>
+            <span>Case Studies</span>
+            <span>Pricing</span>
+          </div>
+          <button className="rounded-md bg-slate-950 px-4 py-2 text-xs font-black text-white">Book Audit</button>
+        </div>
+
+        <div className="grid gap-10 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.16),_transparent_38%),linear-gradient(135deg,#ffffff_0%,#f8fafc_55%,#e0f2fe_100%)] px-5 py-16 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:py-20 lg:px-12">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-600">AI funnel builder</p>
+            <h4 className="mt-4 text-5xl font-black leading-tight md:text-7xl">A modern funnel that turns traffic into booked calls.</h4>
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              Capture leads, qualify intent, present the right offer, and trigger automated follow-up from one clean conversion journey.
+            </p>
+            <div className="mt-7 grid gap-3 sm:grid-cols-3">
+              {["Audit offer", "Smart form", "Auto follow-up"].map((item) => (
+                <div key={item} className="rounded-xl border border-slate-200 bg-white/80 px-4 py-3 text-sm font-black text-slate-700 shadow-sm">
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <button className="rounded-md bg-sky-500 px-6 py-3 text-sm font-black text-white">Get Free Audit</button>
+              <button className="rounded-md border border-slate-300 px-6 py-3 text-sm font-black text-slate-950">See Funnel</button>
+            </div>
+          </div>
+          <img src={preview.image} alt="" className="h-full max-h-[460px] w-full rounded-2xl object-cover object-top shadow-2xl" />
+        </div>
+
+        <div className="border-y border-slate-200 bg-slate-50 px-5 py-12 md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-600">Funnel Flow</p>
+              <h5 className="mt-3 text-3xl font-black leading-tight md:text-4xl">From click to booked call without losing momentum.</h5>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                Each step is built to move the visitor forward: clear offer, simple opt-in, proof, qualification, and booked appointment.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                ["01", "Traffic", "Ads, social posts, and outbound messages send prospects to one focused landing page."],
+                ["02", "Lead Magnet", "A free growth audit captures name, email, phone, and business goal."],
+                ["03", "Qualification", "Smart questions segment hot, warm, and nurture-only leads."],
+                ["04", "Booking", "Qualified prospects are pushed to calendar booking and CRM pipeline."],
+                ["05", "Follow-up", "Email and SMS sequences recover missed bookings automatically."],
+              ].map(([step, title, text]) => (
+                <div key={step} className="grid grid-cols-[64px_1fr] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                  <div className="flex items-center justify-center bg-sky-500 text-lg font-black text-white">{step}</div>
+                  <div className="p-4">
+                    <h6 className="text-lg font-black text-slate-950">{title}</h6>
+                    <p className="mt-1 text-sm leading-6 text-slate-600">{text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="px-5 py-12 md:px-8 lg:px-12">
+          <div className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl lg:grid-cols-[1fr_0.85fr]">
+            <div className="p-7 md:p-10">
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-600">Lead Capture Page</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight">Claim your free AI growth audit.</h5>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                Visitors get a strong reason to opt in before they ever reach the calendar. The funnel sells the next step, not everything at once.
+              </p>
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                {["Personalized funnel score", "Automation gap report", "CRM handoff map", "30-minute strategy call"].map((item) => (
+                  <div key={item} className="rounded-lg border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-slate-950 p-7 text-white md:p-10">
+              <h6 className="text-2xl font-black">Get the audit</h6>
+              <div className="mt-6 space-y-3">
+                {["Full name", "Business email", "Phone number", "Monthly ad spend"].map((field) => (
+                  <div key={field} className="rounded-md border border-white/10 bg-white/10 px-4 py-3 text-sm font-semibold text-white/55">
+                    {field}
+                  </div>
+                ))}
+              </div>
+              <button className="mt-5 w-full rounded-md bg-sky-400 px-5 py-3 text-sm font-black text-slate-950">Unlock My Funnel Plan</button>
+              <p className="mt-4 text-xs font-medium leading-5 text-white/45">No spam. Just a clear funnel plan and the next best action.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-slate-950 px-5 py-10 text-white md:px-8 lg:px-12">
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              ["Landing page", "A single offer, clean proof, and one clear opt-in action."],
+              ["Nurture sequence", "Email and SMS messages that handle objections and push booking."],
+              ["Sales pipeline", "Hot leads move into CRM with tasks, tags, and deal stages."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <h5 className="text-xl font-black">{title}</h5>
+                <p className="mt-3 text-sm leading-6 text-white/65">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="px-5 py-14 md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div className="lg:sticky lg:top-24">
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-600">Why It Converts</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight">Built around the buyer's decision path.</h5>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                A long funnel page gives every visitor the next reason to continue, from quick scanners to serious buyers who need proof.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["Clear promise", "The headline tells visitors exactly what outcome the funnel creates."],
+                ["Offer stack", "The audit feels valuable before the visitor gives contact details."],
+                ["Proof blocks", "Metrics, testimonials, and case snapshots lower risk."],
+                ["Objection handling", "Common hesitations are answered before the booking step."],
+                ["CRM tagging", "Every lead is segmented by budget, need, and urgency."],
+                ["Recovery automations", "Missed bookings get SMS and email reminders automatically."],
+              ].map(([title, text]) => (
+                <div key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h6 className="text-xl font-black text-slate-950">{title}</h6>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white px-5 py-14 md:px-8 lg:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-600">Automation Timeline</p>
+            <h5 className="mt-3 text-4xl font-black leading-tight">The follow-up starts the second they opt in.</h5>
+          </div>
+          <div className="mx-auto mt-10 max-w-5xl">
+            {[
+              ["Minute 0", "Instant audit confirmation", "Lead gets a confirmation message and the CRM creates a new opportunity."],
+              ["Minute 5", "Qualification SMS", "A short SMS asks one high-intent question to determine buying readiness."],
+              ["Hour 2", "Case study email", "The lead receives a relevant proof email based on their selected goal."],
+              ["Day 1", "Booking reminder", "Unbooked leads receive a direct calendar CTA with urgency and a simple reason to act."],
+              ["Day 3", "Final objection email", "The sequence answers pricing, timeline, and implementation concerns."],
+            ].map(([time, title, text], index) => (
+              <div key={time} className="grid gap-4 border-l-2 border-sky-200 pb-8 pl-5 last:pb-0 md:grid-cols-[150px_1fr]">
+                <div className="-ml-[30px] flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">{index + 1}</span>
+                  <span className="text-sm font-black uppercase tracking-[0.16em] text-sky-600">{time}</span>
+                </div>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <h6 className="text-xl font-black text-slate-950">{title}</h6>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="px-5 py-14 md:px-8 lg:px-12">
+          <div className="grid gap-6 lg:grid-cols-3">
+            {[
+              ["Before", "Leads arrive from ads but leave without booking because the page has too many choices."],
+              ["During", "The funnel captures intent, asks qualifying questions, and recommends the next action."],
+              ["After", "Sales sees tagged opportunities, booked calls, missed-call recovery, and follow-up tasks."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                <p className="text-sm font-black uppercase tracking-[0.2em] text-slate-400">{title}</p>
+                <p className="mt-4 text-xl font-black leading-8 text-slate-950">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="px-5 py-12 md:px-8 lg:px-12">
+          <h5 className="text-3xl font-black">Campaign Performance</h5>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {["3.8x ROAS", "41% More Leads", "62% Faster Launch"].map((metric) => (
+              <div key={metric} className="rounded-xl border border-slate-200 p-6">
+                <div className="text-3xl font-black text-sky-600">{metric.split(" ")[0]}</div>
+                <p className="mt-2 text-sm font-bold uppercase tracking-[0.16em] text-slate-500">{metric.split(" ").slice(1).join(" ")}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-slate-950 px-5 py-14 text-white md:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-300">Offer Stack</p>
+              <h5 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Everything needed to launch the funnel.</h5>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-white/60">
+                Strategy, page structure, lead capture, follow-up automation, CRM handoff, and performance tracking in one connected build.
+              </p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {["Landing page copy", "Lead magnet positioning", "Qualification form", "Calendar integration", "SMS follow-up", "Email nurture", "CRM pipeline", "Weekly reporting"].map((item) => (
+                  <div key={item} className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm font-bold text-white/75">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-sky-300/20 bg-white p-7 text-slate-950 shadow-[0_28px_90px_rgba(14,165,233,0.18)]">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-sky-600">Launch Package</p>
+              <div className="mt-4 text-5xl font-black">30 days</div>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                From funnel plan to active lead capture and automated follow-up.
+              </p>
+              <button className="mt-7 w-full rounded-md bg-sky-500 px-5 py-4 text-sm font-black text-white">Book My Funnel Build</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white px-5 py-14 md:px-8 lg:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-600">Questions</p>
+            <h5 className="mt-3 text-4xl font-black leading-tight">Common funnel objections answered.</h5>
+          </div>
+          <div className="mx-auto mt-9 grid max-w-5xl gap-4 md:grid-cols-2">
+            {[
+              ["Do I need ads first?", "No. The funnel can start with organic traffic, outbound, or paid campaigns."],
+              ["Can this connect to CRM?", "Yes. Leads can be tagged, scored, assigned, and moved through deal stages."],
+              ["Is the form too long?", "The funnel uses progressive intent. Short first step, deeper questions after commitment."],
+              ["What happens after booking?", "Confirmation, reminders, no-show recovery, and sales tasks can trigger automatically."],
+            ].map(([question, answer]) => (
+              <div key={question} className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <h6 className="text-lg font-black text-slate-950">{question}</h6>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="px-5 py-14 md:px-8 lg:px-12">
+          <div className="rounded-3xl bg-[linear-gradient(135deg,#0f172a,#075985)] p-8 text-white md:p-12">
+            <div className="grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-center">
+              <div>
+                <p className="text-sm font-black uppercase tracking-[0.2em] text-sky-200">Final Step</p>
+                <h5 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Turn your next campaign into a complete funnel.</h5>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-white/65">
+                  Get the offer, page, form, automation, and sales handoff working together before the next traffic push.
+                </p>
+              </div>
+              <button className="rounded-md bg-white px-7 py-4 text-sm font-black text-slate-950">Start With A Free Audit</button>
+            </div>
+          </div>
+        </div>
+
+        <footer className="border-t border-slate-200 bg-slate-50 px-5 py-10 md:px-8 lg:px-12">
+          <div className="grid gap-8 md:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr]">
+            <div>
+              <div className="text-2xl font-black text-slate-950">ScaleForge AI</div>
+              <p className="mt-4 max-w-md text-sm leading-6 text-slate-600">
+                Funnel strategy, AI automation, and CRM-ready campaigns built for predictable lead generation.
+              </p>
+              <button className="mt-5 rounded-md bg-sky-500 px-5 py-3 text-sm font-black text-white">Book Growth Audit</button>
+            </div>
+            <div>
+              <h6 className="text-sm font-black uppercase tracking-[0.16em] text-slate-950">Services</h6>
+              <div className="mt-4 space-y-2 text-sm font-semibold text-slate-500">
+                <p>Landing Pages</p>
+                <p>Email Funnels</p>
+                <p>CRM Setup</p>
+              </div>
+            </div>
+            <div>
+              <h6 className="text-sm font-black uppercase tracking-[0.16em] text-slate-950">Company</h6>
+              <div className="mt-4 space-y-2 text-sm font-semibold text-slate-500">
+                <p>Case Studies</p>
+                <p>Process</p>
+                <p>Pricing</p>
+              </div>
+            </div>
+            <div>
+              <h6 className="text-sm font-black uppercase tracking-[0.16em] text-slate-950">Contact</h6>
+              <div className="mt-4 space-y-2 text-sm font-semibold text-slate-500">
+                <p>hello@scaleforge.ai</p>
+                <p>Dubai, UAE</p>
+                <p>Mon-Fri</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-5 text-xs font-bold uppercase tracking-[0.16em] text-slate-400 md:flex-row md:items-center md:justify-between">
+            <span>© 2026 ScaleForge AI</span>
+            <span>Privacy · Terms · Cookies</span>
+          </div>
+        </footer>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-[#0a0f1f] text-white">
+      <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 md:px-8">
+        <div className="text-xl font-black">OrbitOS</div>
+        <div className="hidden items-center gap-6 text-sm font-bold text-white/60 md:flex">
+          <span>Platform</span>
+          <span>Insights</span>
+          <span>Security</span>
+          <span>Docs</span>
+        </div>
+        <button className="rounded-md bg-white px-4 py-2 text-xs font-black text-slate-950">Try Free</button>
+      </div>
+
+      <div className="px-5 py-14 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-black uppercase tracking-[0.24em] text-teal-300">Cinematic product system</p>
+          <h4 className="mt-4 text-5xl font-black leading-tight md:text-7xl">Turn complex data into a product story people understand.</h4>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/65">
+            A polished SaaS website experience with sharp positioning, interactive product sections, trust cues, and conversion-ready pricing.
+          </p>
+        </div>
+        <img src={preview.image} alt="" className="mt-10 max-h-[520px] w-full rounded-2xl object-cover object-top shadow-[0_35px_100px_rgba(45,212,191,0.20)]" />
+      </div>
+
+      <div className="grid border-y border-white/10 md:grid-cols-3">
+        {[
+          ["Realtime dashboards", "Track team performance and revenue signals in one place."],
+          ["Smart workflows", "Automate repetitive tasks with human approval where it matters."],
+          ["Enterprise ready", "Permissions, audit trails, and secure workspace controls."],
+        ].map(([title, text]) => (
+          <div key={title} className="border-white/10 px-6 py-8 md:border-r">
+            <h5 className="text-xl font-black">{title}</h5>
+            <p className="mt-3 text-sm leading-6 text-white/60">{text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="px-5 py-14 md:px-8 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div className="lg:sticky lg:top-24">
+            <p className="text-sm font-black uppercase tracking-[0.24em] text-teal-300">Product Modules</p>
+            <h5 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Everything your product story needs after the hero.</h5>
+            <p className="mt-4 text-base leading-7 text-white/60">
+              OrbitOS structures the page around feature education, proof, conversion paths, and clear next steps for trial or demo traffic.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              ["Command Center", "A unified overview of pipeline, revenue, onboarding, and product adoption."],
+              ["Insight Cards", "Turn dense metrics into compact cards teams can understand quickly."],
+              ["Workflow Builder", "Automate handoffs between sales, success, and operations."],
+              ["Account Timeline", "See every touchpoint, task, note, and risk signal in one stream."],
+              ["Experiment Lab", "Compare campaigns, onboarding variants, and offer performance."],
+              ["Executive Reports", "Package traction, churn, revenue, and expansion into board-ready views."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <h6 className="text-xl font-black text-white">{title}</h6>
+                <p className="mt-3 text-sm leading-6 text-white/55">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white px-5 py-14 text-slate-950 md:px-8 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 p-5 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 text-white">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-teal-300">Live Workspace</p>
+                <h5 className="mt-1 text-2xl font-black">Revenue Intelligence</h5>
+              </div>
+              <span className="rounded-full bg-teal-400 px-3 py-1 text-xs font-black text-slate-950">Live</span>
+            </div>
+            <div className="mt-5 grid gap-4 sm:grid-cols-3">
+              {["$428K ARR", "18% Expansion", "92 Health Score"].map((metric) => (
+                <div key={metric} className="rounded-xl bg-white/8 p-4 text-white">
+                  <div className="text-2xl font-black text-teal-300">{metric.split(" ")[0]}</div>
+                  <div className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-white/45">{metric.split(" ").slice(1).join(" ")}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 space-y-3">
+              {[
+                ["Enterprise plan expansion", "78%", "bg-teal-400"],
+                ["Onboarding completion", "64%", "bg-sky-400"],
+                ["Churn risk reduction", "41%", "bg-violet-400"],
+              ].map(([label, value, color]) => (
+                <div key={label} className="rounded-xl bg-white/8 p-4">
+                  <div className="flex justify-between text-sm font-bold text-white/70">
+                    <span>{label}</span>
+                    <span>{value}</span>
+                  </div>
+                  <div className="mt-3 h-2 rounded-full bg-white/10">
+                    <div className={`h-2 rounded-full ${color}`} style={{ width: value }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-teal-600">Analytics Storytelling</p>
+            <h5 className="mt-3 text-4xl font-black leading-tight">Make every metric explain what to do next.</h5>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              The page can show product value with live-style dashboards, progress indicators, and outcome-based messaging instead of static feature claims.
+            </p>
+            <div className="mt-6 grid gap-3">
+              {["Explain value faster", "Reduce sales calls friction", "Create stronger trial intent"].map((item) => (
+                <div key={item} className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-black text-slate-700">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-5 py-14 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-black uppercase tracking-[0.24em] text-teal-300">Integrations</p>
+          <h5 className="mt-3 text-4xl font-black leading-tight">Connect the systems your team already uses.</h5>
+          <p className="mt-4 text-base leading-7 text-white/60">
+            Position integrations as part of the product narrative, from CRM sync to reporting and team communication.
+          </p>
+        </div>
+        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {["Salesforce", "HubSpot", "Stripe", "Slack", "Google Analytics", "Segment", "Intercom", "Notion"].map((tool) => (
+            <div key={tool} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-6 text-center text-sm font-black text-white/75">
+              {tool}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-[#070b17] px-5 py-14 md:px-8 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.24em] text-teal-300">Trust Layer</p>
+            <h5 className="mt-3 text-4xl font-black leading-tight md:text-5xl">Security and governance without slowing teams down.</h5>
+            <p className="mt-4 text-base leading-7 text-white/60">
+              Give enterprise buyers the confidence they need with a dedicated security story, role controls, audit trails, and data protection cues.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              ["SSO & SAML", "Centralized login and workspace access control."],
+              ["Audit Logs", "Track sensitive changes and admin actions."],
+              ["Role Permissions", "Keep every team focused on the right data."],
+              ["Data Controls", "Retention, exports, and secure reporting workflows."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <h6 className="text-xl font-black text-white">{title}</h6>
+                <p className="mt-3 text-sm leading-6 text-white/55">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="px-5 py-14 md:px-8 lg:px-12">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {[
+            ["Starter", "$49", "For early teams validating product messaging.", "3 dashboards"],
+            ["Growth", "$149", "For teams scaling demos, trials, and revenue reporting.", "Unlimited workflows"],
+            ["Enterprise", "Custom", "For advanced security, governance, and sales-led expansion.", "Dedicated success"],
+          ].map(([name, price, text, feature]) => (
+            <div key={name} className="rounded-3xl border border-white/10 bg-white/5 p-7">
+              <h6 className="text-2xl font-black text-white">{name}</h6>
+              <div className="mt-5 text-5xl font-black text-teal-300">{price}</div>
+              <p className="mt-4 min-h-[72px] text-sm leading-6 text-white/60">{text}</p>
+              <div className="mt-5 rounded-lg border border-white/10 bg-black/20 px-4 py-3 text-sm font-bold text-white/70">{feature}</div>
+              <button className="mt-6 w-full rounded-md bg-white px-5 py-3 text-sm font-black text-slate-950">Choose Plan</button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="px-5 py-12 md:px-8 lg:px-12">
+        <div className="rounded-2xl bg-white p-7 text-slate-950 md:p-10">
+          <div className="grid gap-8 md:grid-cols-[1fr_0.7fr] md:items-center">
+            <div>
+              <h5 className="text-3xl font-black">Launch a product site that feels premium from the first scroll.</h5>
+              <p className="mt-4 text-base leading-7 text-slate-600">Built for demos, trials, paid plans, and sales-led conversations.</p>
+            </div>
+            <button className="rounded-md bg-teal-400 px-6 py-4 text-sm font-black text-slate-950">Start Trial</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white px-5 py-14 text-slate-950 md:px-8 lg:px-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-teal-600">Questions</p>
+          <h5 className="mt-3 text-4xl font-black leading-tight">Built for product-led and sales-led funnels.</h5>
+        </div>
+        <div className="mx-auto mt-9 grid max-w-5xl gap-4 md:grid-cols-2">
+          {[
+            ["Can this support trial signups?", "Yes. The flow can prioritize trial creation, demo booking, or both."],
+            ["Can it explain complex features?", "Yes. Feature sections can use visual dashboards, comparisons, and use-case blocks."],
+            ["Is it ready for enterprise buyers?", "Yes. Add security, governance, integrations, and procurement-friendly proof."],
+            ["Can pricing be included?", "Yes. Pricing cards can be placed before or after final proof depending on the sales motion."],
+          ].map(([question, answer]) => (
+            <div key={question} className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h6 className="text-lg font-black text-slate-950">{question}</h6>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <footer className="border-t border-white/10 bg-[#070b17] px-5 py-10 md:px-8 lg:px-12">
+        <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
+          <div>
+            <div className="text-2xl font-black text-white">OrbitOS</div>
+            <p className="mt-4 max-w-sm text-sm leading-6 text-white/55">
+              Product storytelling, analytics, and workflow automation for modern SaaS teams.
+            </p>
+          </div>
+          <div>
+            <h6 className="text-sm font-black uppercase tracking-[0.16em] text-white">Product</h6>
+            <div className="mt-4 space-y-2 text-sm font-semibold text-white/50">
+              <p>Platform</p>
+              <p>Integrations</p>
+              <p>Security</p>
+            </div>
+          </div>
+          <div>
+            <h6 className="text-sm font-black uppercase tracking-[0.16em] text-white">Resources</h6>
+            <div className="mt-4 space-y-2 text-sm font-semibold text-white/50">
+              <p>Docs</p>
+              <p>Guides</p>
+              <p>Changelog</p>
+            </div>
+          </div>
+          <div>
+            <h6 className="text-sm font-black uppercase tracking-[0.16em] text-white">Newsletter</h6>
+            <div className="mt-4 flex overflow-hidden rounded-md border border-white/10 bg-white/5">
+              <div className="min-w-0 flex-1 px-3 py-3 text-sm font-semibold text-white/35">Email address</div>
+              <button className="bg-teal-400 px-4 text-xs font-black text-slate-950">Join</button>
+            </div>
+          </div>
+        </div>
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs font-bold uppercase tracking-[0.16em] text-white/35 md:flex-row md:items-center md:justify-between">
+          <span>© 2026 OrbitOS</span>
+          <span>Status · Privacy · Terms</span>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
 function WebsiteBuilderShowcase() {
-  const [preview, setPreview] = useState<(typeof websiteShowcases)[number] | null>(null);
+  const [preview, setPreview] = useState<WebsiteShowcase | null>(null);
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -560,7 +1312,7 @@ function WebsiteBuilderShowcase() {
 
       <AnimatePresence>
         {preview && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6">
             <motion.button
               type="button"
               initial={{ opacity: 0 }}
@@ -579,37 +1331,22 @@ function WebsiteBuilderShowcase() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 16 }}
               transition={{ duration: 0.25 }}
-              className="relative z-10 w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-2xl"
+              className="relative z-10 h-[92vh] w-full max-w-7xl overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl"
             >
-              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4 md:px-6">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-sky-600">
-                    Website Preview
-                  </p>
-                  <h3 id="website-preview-title" className="text-lg font-bold text-slate-900 md:text-xl">
-                    {preview.label}
-                  </h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setPreview(null)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-200 hover:text-slate-900"
-                  aria-label="Close preview"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
+              <h3 id="website-preview-title" className="sr-only">
+                {preview.label}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setPreview(null)}
+                className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/75 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-slate-950"
+                aria-label="Close preview"
+              >
+                <X className="h-5 w-5" />
+              </button>
 
-              <div className="max-h-[75vh] overflow-y-auto bg-slate-100">
-                <img
-                  src={preview.image}
-                  alt={`${preview.label} full preview`}
-                  className="w-full object-cover object-top"
-                />
-              </div>
-
-              <div className="border-t border-slate-200 px-5 py-4 md:px-6">
-                <p className="text-sm font-medium text-slate-600">{preview.description}</p>
+              <div className="h-full overflow-y-auto">
+                <WebsitePreviewSite preview={preview} />
               </div>
             </motion.div>
           </div>
