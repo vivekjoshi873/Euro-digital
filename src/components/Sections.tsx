@@ -184,7 +184,7 @@ function Sections() {
                 style={{ backgroundColor: 'var(--bg-secondary)' }}
               >
                 {/* Media Area: Supports both Images and Videos */}
-                <div className="relative w-full h-72 md:h-80 rounded-xl shadow-lg shrink-0 overflow-hidden">
+                <div className="relative w-full h-72 md:h-80 rounded-xl shrink-0 overflow-hidden">
                   {card.video ? (
                     isBunnyStreamUrl(card.video) ? (
                       <BunnyStreamPlayer

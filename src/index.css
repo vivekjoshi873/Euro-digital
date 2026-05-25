@@ -54,3 +54,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

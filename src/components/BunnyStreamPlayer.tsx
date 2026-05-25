@@ -157,7 +157,7 @@ function BunnyStreamPlayer({
               <motion.span
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="rounded-full border border-white/30 bg-white/20 p-4 backdrop-blur-sm"
+                className="rounded-full bg-white/20 p-4 backdrop-blur-sm"
               >
                 <Play className="h-10 w-10 fill-white text-white" />
               </motion.span>
@@ -172,7 +172,7 @@ function BunnyStreamPlayer({
             className="absolute inset-0 z-20 flex cursor-pointer items-center justify-center bg-black/10 opacity-0 transition-opacity group-hover:opacity-100"
             aria-label={`Pause ${title}`}
           >
-            <span className="flex gap-1.5 rounded-full border border-white/30 bg-white/20 px-5 py-4 backdrop-blur-sm">
+            <span className="flex gap-1.5 rounded-full bg-white/20 px-5 py-4 backdrop-blur-sm">
               <span className="h-8 w-2 rounded-full bg-white md:h-10" />
               <span className="h-8 w-2 rounded-full bg-white md:h-10" />
             </span>
