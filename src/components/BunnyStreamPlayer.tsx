@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
+  getBunnyStreamEmbedUrl,
   getBunnyStreamMp4Url,
   getBunnyStreamThumbnailUrl,
+  buildBunnyEmbedSrc,
 } from "../utils/bunnyStream";
 
 interface BunnyStreamPlayerProps {
@@ -42,7 +44,36 @@ function BunnyStreamPlayer({
     setIsBuffering(false);
   }, [isActive]);
 
-  if (!mp4Url) return null;
+  if (!mp4Url) {
+    const embedBase = getBunnyStreamEmbedUrl(sourceUrl);
+    if (!embedBase) return null;
+    const embedSrc = buildBunnyEmbedSrc(embedBase, { autoplay: false, preload: true });
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className={`group relative w-full overflow-hidden bg-black ${className}`}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className={`relative w-full ${aspectClassName}`}
+        >
+          <iframe
+            src={embedSrc}
+            title={title}
+            className="absolute inset-0 z-10 h-full w-full border-0"
+            style={{ border: "none" }}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        </motion.div>
+      </motion.div>
+    );
+  }
 
   const handleResume = () => {
     const video = videoRef.current;

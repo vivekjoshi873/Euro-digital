@@ -7,7 +7,7 @@ function EDCRM() {
       title="ED-CRM"
       description="One platform to attract leads, automate follow-up, and grow revenue. ED-CRM brings funnels, workflows, AI agents, and real-time reporting together—so your team can sell smarter around the clock."
       image="/servicesImages/ed-Crm.png"
-      video="https://48yfcqwona.ucarecd.net/fa36c224-8dc7-4a7c-b9ee-dea56a9ddb94/irfan1.mp4"
+      video="https://player.mediadelivery.net/play/667434/9498cecf-b56b-403f-a713-3551b8f7cf8c"
       overlayTitle="Ready to Organize Your Sales Pipeline?"
       showFAQs
       features={[

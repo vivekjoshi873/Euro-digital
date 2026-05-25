@@ -58,7 +58,7 @@ const cards: Card[] = [
   {
     title: "ED-CRM",
     desc: "One platform to attract leads, automate follow-up, and grow revenue. Bring funnels, workflows, AI agents, and real-time reporting together in a single CRM.",
-    video: "https://player.mediadelivery.net/play/661416/aba8e1cb-c5df-4c8e-8d47-a8bf6d066411",
+    video: "https://player.mediadelivery.net/play/667434/9498cecf-b56b-403f-a713-3551b8f7cf8c",
     link: "/products/edcrm",
   },
   {

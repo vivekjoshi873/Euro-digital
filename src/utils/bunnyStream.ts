@@ -1,6 +1,8 @@
-/** Pull zone hostname for library 661416 (from Bunny embed metadata) */
-const BUNNY_STREAM_CDN_HOST =
-  import.meta.env.VITE_BUNNY_STREAM_CDN_HOST ?? "vz-70709547-6b5.b-cdn.net";
+/** Map of Bunny library IDs → their pull-zone CDN hostnames */
+const BUNNY_CDN_HOSTS: Record<string, string> = {
+  "661416": import.meta.env.VITE_BUNNY_STREAM_CDN_HOST ?? "vz-70709547-6b5.b-cdn.net",
+  "667434": import.meta.env.VITE_BUNNY_STREAM_CDN_HOST_667434 ?? "vz-a8afae03-850.b-cdn.net",
+};
 
 export interface BunnyStreamIds {
   libraryId: string;
@@ -41,13 +43,17 @@ export function getBunnyStreamMp4Url(
 ): string | null {
   const ids = getBunnyStreamIds(url);
   if (!ids) return null;
-  return `https://${BUNNY_STREAM_CDN_HOST}/${ids.videoId}/play_${resolution}.mp4`;
+  const cdnHost = BUNNY_CDN_HOSTS[ids.libraryId];
+  if (!cdnHost) return null;
+  return `https://${cdnHost}/${ids.videoId}/play_${resolution}.mp4`;
 }
 
 export function getBunnyStreamThumbnailUrl(url: string): string | null {
   const ids = getBunnyStreamIds(url);
   if (!ids) return null;
-  return `https://${BUNNY_STREAM_CDN_HOST}/${ids.videoId}/thumbnail.jpg`;
+  const cdnHost = BUNNY_CDN_HOSTS[ids.libraryId];
+  if (!cdnHost) return null;
+  return `https://${cdnHost}/${ids.videoId}/thumbnail.jpg`;
 }
 
 export function buildBunnyEmbedSrc(
