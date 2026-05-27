@@ -4,6 +4,7 @@ import { Check, ChevronRight, DollarSign, Eye, Funnel, MessageCircle, RotateCcw,
 import FAQ from "../components/FAQ";
 import ServiceHeroVideo from "../components/ServiceHeroVideo";
 import { getFAQsByServiceId } from "../data/faqData";
+import { BOOKING_URL as bookingUrl } from "../constants/booking";
 
 type ProductPlan = {
   name: string;
@@ -32,7 +33,6 @@ type ProductPageProps = {
   pricingSubtitle?: string;
 };
 
-const bookingUrl = "https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj";
 const stackedCardThemes = [
   "from-cyan-50 to-blue-100",
   "from-purple-50 to-pink-100",

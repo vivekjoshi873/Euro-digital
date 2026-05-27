@@ -29,7 +29,7 @@ function AIBusinessAutomation() {
       <ServiceHeroVideo
         videoUrl={serviceData.video}
         overlayTitle="Ready to Automate Your Business?"
-        ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+        ctaLink="https://link.quickadpro.com/widget/bookings/web-booking-euro"
       />
 
       <section className="py-16 md:py-28" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>
@@ -133,7 +133,7 @@ function AIBusinessAutomation() {
                   <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer">
                     Buy now
                   </button>
-                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                  <a href="https://link.quickadpro.com/widget/bookings/web-booking-euro" target="_blank" rel="noopener noreferrer">
                     <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
                       Request a Demo
                     </button>
@@ -188,7 +188,7 @@ function AIBusinessAutomation() {
                   <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm  transition-colors cursor-pointer">
                     Buy now
                   </button>
-                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                  <a href="https://link.quickadpro.com/widget/bookings/web-booking-euro" target="_blank" rel="noopener noreferrer">
                     <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
                       Request a Demo
                     </button>
@@ -240,7 +240,7 @@ function AIBusinessAutomation() {
                   <button className="bg-[#18b6e3] text-white px-5 py-2 rounded font-semibold text-sm transition-colors cursor-pointer">
                     Contact Sales
                   </button>
-                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                  <a href="https://link.quickadpro.com/widget/bookings/web-booking-euro" target="_blank" rel="noopener noreferrer">
                     <button className="bg-white text-slate-900 border border-slate-300 px-5 py-2 rounded font-semibold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
                       Request a Demo
                     </button>
@@ -324,7 +324,7 @@ function AIBusinessAutomation() {
                   <button className="bg-[#18b6e3] text-white py-2 px-4 rounded font-bold text-sm  transition-colors cursor-pointer">
                     {plan.name === "AI Enterprise" ? "Contact Sales" : "Buy now"}
                   </button>
-                  <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+                  <a href="https://link.quickadpro.com/widget/bookings/web-booking-euro" target="_blank" rel="noopener noreferrer">
                     <button className="bg-white text-slate-900 border border-slate-300 py-2 px-4 rounded font-bold text-sm hover:bg-slate-50 transition-colors cursor-pointer">
                       Request a Demo
                     </button>

@@ -29,7 +29,7 @@ function AIAutomatedChatbot() {
       <ServiceHeroVideo
         videoUrl={videoUrl}
         overlayTitle="Ready to Automate Your Business?"
-        ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+        ctaLink="https://link.quickadpro.com/widget/bookings/web-booking-euro"
       />
       {/* Service Content */}
       <section className="py-16 md:py-24" style={{ background: 'linear-gradient(to right, white 50%, rgba(224, 242, 254, 0.6) 50%)' }}>

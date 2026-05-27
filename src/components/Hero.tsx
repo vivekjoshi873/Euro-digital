@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { BOOKING_URL } from "../constants/booking";
 
 type Slide = {
   title: string;
@@ -179,7 +180,7 @@ function Hero() {
 
         {/* Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
-          <Link to="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj">
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
             <button
               className="rounded-2xl font-semibold px-9 py-4 shadow-[0_14px_40px_rgba(0,0,0,0.25)] transition-colors text-lg cursor-pointer"
               style={{
@@ -199,7 +200,7 @@ function Hero() {
             >
               Book A Demo
             </button>
-          </Link>
+          </a>
 
           {/* ✅ Fix #1: Only render Explore if link exists */}
           {slides[currentSlide].link && (

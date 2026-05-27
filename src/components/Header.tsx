@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, LogIn, Menu, X } from "lucide-react";
+import { BOOKING_URL } from "../constants/booking";
 
 const services = [
   { id: "ai-business-automation", title: "AI Business Automation", path: "/services/ai-business-automation" },
@@ -179,7 +180,7 @@ function Header() {
             <LogIn className="h-4 w-4" />
             Login
           </Link>
-          <a href="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj" target="_blank" rel="noopener noreferrer">
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
             <button className="rounded-md text-white font-semibold px-6 py-2.5 shadow-lg transition-all hover:brightness-110 active:scale-95 cursor-pointer"
               style={{ backgroundColor: 'var(--primary-blue)' }}>
               Book Consultation

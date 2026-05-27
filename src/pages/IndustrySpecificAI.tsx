@@ -127,7 +127,7 @@ function IndustrySpecificAI() {
       <ServiceHeroVideo
         videoUrl="https://player.mediadelivery.net/play/661416/78158008-7515-443f-a183-a54a8d3b3a3f"
         overlayTitle="Ready to Explore Industry Specific AI?"
-        ctaLink="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+        ctaLink="https://link.quickadpro.com/widget/bookings/web-booking-euro"
       />
 
       {/* Industry Use Cases Section */}
@@ -357,7 +357,7 @@ function IndustrySpecificAI() {
         isOpen={!!selectedIndustry}
         onClose={closeModal}
         title={selectedIndustry ? industryDetails[selectedIndustry].title : ""}
-        ctaUrl="https://link.quickadpro.com/widget/booking/56bGknArJkPUj93VXRrj"
+        ctaUrl="https://link.quickadpro.com/widget/bookings/web-booking-euro"
         ctaText="Contact Sale"
       >
         {selectedIndustry && (
