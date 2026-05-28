@@ -56,14 +56,11 @@ function ServiceHeroNativeVideo({
 
   return (
     <section className="group relative mx-auto mt-10 w-full max-w-[1425px] cursor-pointer overflow-hidden rounded-3xl shadow-xl">
-      <motion.video
+      <video
         ref={videoRef}
         src={videoUrl}
         className="relative z-10 h-auto w-full object-cover"
         style={{ maxHeight: "800px", width: "100%" }}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
         controls={isPlaying}
         playsInline
         preload={isPlaying || isBuffering ? "auto" : "metadata"}

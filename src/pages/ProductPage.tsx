@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { Check, ChevronRight, DollarSign, Eye, Funnel, MessageCircle, RotateCcw, Trophy, X } from "lucide-react";
 import FAQ from "../components/FAQ";
 import ServiceHeroVideo from "../components/ServiceHeroVideo";
@@ -177,7 +177,7 @@ const growthTabs = [
   },
 ];
 
-function GrowthSolutionSection() {
+const GrowthSolutionSection = memo(function GrowthSolutionSection() {
   const [activeTab, setActiveTab] = useState(growthTabs[0]);
 
   const activeClass =
@@ -376,7 +376,7 @@ function GrowthSolutionSection() {
       </div>
     </section>
   );
-}
+});
 
 function GhlPricingTable() {
   return (
@@ -1008,7 +1008,7 @@ function WebsitePreviewSite({ preview }: { preview: WebsiteShowcase }) {
             A polished SaaS website experience with sharp positioning, interactive product sections, trust cues, and conversion-ready pricing.
           </p>
         </div>
-        <img src={preview.image} alt="" className="mt-10 max-h-[520px] w-full rounded-2xl object-cover object-top shadow-[0_35px_100px_rgba(45,212,191,0.20)]" />
+        {/* <img src={preview.image} alt="" className="mt-10 max-h-[520px] w-full rounded-2xl object-cover object-top shadow-[0_35px_100px_rgba(45,212,191,0.20)]" /> */}
       </div>
 
       <div className="grid border-y border-white/10 md:grid-cols-3">
@@ -1237,7 +1237,7 @@ function WebsitePreviewSite({ preview }: { preview: WebsiteShowcase }) {
   );
 }
 
-function WebsiteBuilderShowcase() {
+const WebsiteBuilderShowcase = memo(function WebsiteBuilderShowcase() {
   const [preview, setPreview] = useState<WebsiteShowcase | null>(null);
 
   useEffect(() => {
@@ -1271,13 +1271,9 @@ function WebsiteBuilderShowcase() {
 
         <div className="grid gap-7 lg:grid-cols-3">
           {websiteShowcases.map((site) => (
-            <motion.div
+            <div
               key={site.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-              className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.12)]"
+              className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.12)] transition-all duration-300 hover:shadow-xl"
             >
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">
                 <span>{site.label}</span>
@@ -1305,7 +1301,7 @@ function WebsiteBuilderShowcase() {
               <div className="px-5 py-5">
                 <p className="text-sm font-bold text-slate-900">{site.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -1354,7 +1350,7 @@ function WebsiteBuilderShowcase() {
       </AnimatePresence>
     </section>
   );
-}
+});
 function ProductPage({
   id,
   title,
@@ -1371,7 +1367,7 @@ function ProductPage({
   pricingTitle = "Pricing",
   pricingSubtitle,
 }: ProductPageProps) {
-  const faqs = showFAQs ? getFAQsByServiceId(id) : undefined;
+  const faqs = useMemo(() => (showFAQs ? getFAQsByServiceId(id) : undefined), [showFAQs, id]);
 
   return (
     <>
@@ -1427,13 +1423,10 @@ function ProductPage({
               </div>
             </div>
 
-            <motion.img
+              <img
                 src={image}
                 alt={title}
-                className="mx-auto block h-auto w-full max-h-[480px] rounded-2xl object-contain object-center shadow-2xl sm:max-h-[540px] md:max-h-[640px] lg:max-h-[720px] xl:max-h-[780px]"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
+                className="mx-auto block h-auto w-full max-h-[480px] rounded-2xl object-contain object-center shadow-2xl sm:max-h-[540px] md:max-h-[640px] lg:max-h-[720px] xl:max-h-[780px] transition-opacity duration-500 ease-out"
                 loading="lazy"
                 decoding="async"
                 sizes="(min-width: 1280px) 55vw, (min-width: 768px) 50vw, 100vw"
@@ -1480,12 +1473,8 @@ function ProductPage({
 
               <div className="grid gap-6 lg:grid-cols-3">
                 {plans.map((plan) => (
-                  <motion.div
+                  <div
                     key={plan.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
                     className={`flex h-full flex-col rounded-2xl border bg-white p-7 shadow-sm transition-all ${
                       plan.highlighted
                         ? "border-[#18b6e3] shadow-[0_20px_70px_rgba(24,182,227,0.18)]"
@@ -1534,19 +1523,15 @@ function ProductPage({
                         ))}
                       </ul>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
           ) : pricingVariant === "stacked" ? (
             <div className="space-y-8">
               {plans.map((plan, index) => (
-                <motion.div
+                <div
                   key={plan.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
                   className={`md:sticky ${stackedTopOffsets[index] ?? "md:top-24"} bg-gradient-to-br ${stackedCardThemes[index % stackedCardThemes.length]} rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300`}
                   style={{ zIndex: 10 + index * 10 }}
                 >
@@ -1608,7 +1593,7 @@ function ProductPage({
                       />
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           ) : pricingVariant === "spotlight" ? (
@@ -1618,12 +1603,8 @@ function ProductPage({
                   const isHighlighted = !!plan.highlighted;
 
                   return (
-                    <motion.div
+                    <div
                       key={plan.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
                       className={`relative flex h-full flex-col overflow-hidden rounded-[30px] border shadow-[0_24px_80px_rgba(15,23,42,0.10)] ${isHighlighted
                         ? "border-[#1d8fff] bg-[#102b47] text-white"
                         : "border-[#d8e2ef] bg-white text-slate-900"
@@ -1692,7 +1673,7 @@ function ProductPage({
                           </button>
                         </a>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
@@ -1700,12 +1681,8 @@ function ProductPage({
           ) : (
             <div className="grid md:grid-cols-3 gap-6">
               {plans.map((plan) => (
-                <motion.div
+                <div
                   key={plan.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
                   className={`bg-white rounded-xl border border-gray-200 transition-all flex flex-col overflow-hidden ${plan.highlighted ? "shadow-lg hover:shadow-xl relative" : "shadow-sm hover:shadow-md"}`}
                 >
                   {plan.highlighted && (
@@ -1753,7 +1730,7 @@ function ProductPage({
                       ))}
                     </ul>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
