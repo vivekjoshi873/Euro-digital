@@ -118,6 +118,7 @@ function Hero() {
 
         {/* Overlays */}
         <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute left-1/2 top-1/2 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0b1538]/45 blur-3xl" />
         <div className="absolute inset-0 bg-linear-to-t from-[#0b1233]/90 via-transparent to-[#0b1233]/30" />
       </div>
 
@@ -172,6 +173,7 @@ function Hero() {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
+            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight drop-shadow-[0_10px_40px_rgba(0,0,0,0.35)] mt-20">
               {slides[currentSlide].title.includes(
                 "Transform Your Business"

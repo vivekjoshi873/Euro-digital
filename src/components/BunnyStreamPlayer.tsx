@@ -13,14 +13,17 @@ interface BunnyStreamPlayerProps {
   title?: string;
   className?: string;
   aspectClassName?: string;
-    isActive?: boolean;
+  isActive?: boolean;
   onActivate?: () => void;
   onDeactivate?: () => void;
 }
 
 function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds)) return "0:00";
+
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
+
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
@@ -37,6 +40,8 @@ function BunnyStreamPlayer({
   const posterUrl = getBunnyStreamThumbnailUrl(sourceUrl);
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const hideControlsTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -44,68 +49,91 @@ function BunnyStreamPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showControls, setShowControls] = useState(false);
-  const hideControlsTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
   useEffect(() => {
     if (isActive) return;
+
     const video = videoRef.current;
+
     if (video && !video.paused) {
       video.pause();
     }
+
     setIsPlaying(false);
     setIsBuffering(false);
+    setShowControls(false);
   }, [isActive]);
 
-  const resetHideTimer = useCallback(() => {
-    if (hideControlsTimer.current) clearTimeout(hideControlsTimer.current);
-    setShowControls(true);
+  const hideControlsAfterDelay = useCallback(() => {
+    if (hideControlsTimer.current) {
+      clearTimeout(hideControlsTimer.current);
+    }
+
     hideControlsTimer.current = setTimeout(() => {
       setShowControls(false);
-    }, 3000);
+    }, 3200);
   }, []);
+
+  const revealControls = useCallback(() => {
+    setShowControls(true);
+    hideControlsAfterDelay();
+  }, [hideControlsAfterDelay]);
 
   useEffect(() => {
     return () => {
-      if (hideControlsTimer.current) clearTimeout(hideControlsTimer.current);
+      if (hideControlsTimer.current) {
+        clearTimeout(hideControlsTimer.current);
+      }
     };
   }, []);
 
   if (!mp4Url) {
     const embedBase = getBunnyStreamEmbedUrl(sourceUrl);
+
     if (!embedBase) return null;
-    const embedSrc = buildBunnyEmbedSrc(embedBase, { autoplay: false, preload: true });
+
+    const embedSrc = buildBunnyEmbedSrc(embedBase, {
+      autoplay: false,
+      preload: false,
+    });
+
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`group relative w-full overflow-hidden rounded-2xl bg-black shadow-[0_8px_30px_rgba(0,0,0,0.3)] ${className}`}
+      <div
+        className={`relative w-full overflow-hidden rounded-2xl bg-black shadow-[0_8px_30px_rgba(0,0,0,0.22)] ${className}`}
       >
         <div className={`relative w-full ${aspectClassName}`}>
           <iframe
             src={embedSrc}
             title={title}
-            className="absolute inset-0 z-10 h-full w-full border-0"
+            className="absolute inset-0 h-full w-full border-0"
             style={{ border: "none" }}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             loading="lazy"
           />
         </div>
-      </motion.div>
+      </div>
     );
   }
 
   const handleResume = () => {
     const video = videoRef.current;
+
     if (!video) return;
+
     onActivate?.();
     setIsBuffering(true);
+    revealControls();
+
     video.muted = false;
     setIsMuted(false);
+
     video
       .play()
-      .then(() => setIsPlaying(true))
+      .then(() => {
+        setIsPlaying(true);
+        setIsBuffering(false);
+      })
       .catch((error) => {
         console.error("Video playback failed:", error);
         setIsBuffering(false);
@@ -114,42 +142,65 @@ function BunnyStreamPlayer({
 
   const handlePause = () => {
     videoRef.current?.pause();
+
     setIsPlaying(false);
     setIsBuffering(false);
+    setShowControls(true);
     onDeactivate?.();
   };
 
   const togglePlayPause = () => {
-    if (isPlaying) handlePause();
-    else handleResume();
+    if (isPlaying) {
+      handlePause();
+    } else {
+      handleResume();
+    }
+  };
+
+  const handleVideoTap = () => {
+    if (isPlaying) {
+      revealControls();
+      return;
+    }
+
+    handleResume();
   };
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
+
     const video = videoRef.current;
+
     if (!video) return;
+
     video.muted = !video.muted;
     setIsMuted(video.muted);
+    revealControls();
   };
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
+
     const video = videoRef.current;
     const bar = progressRef.current;
-    if (!video || !bar) return;
+
+    if (!video || !bar || !video.duration) return;
+
     const rect = bar.getBoundingClientRect();
     const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+
     video.currentTime = ratio * video.duration;
+    revealControls();
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`group relative w-full overflow-hidden rounded-2xl bg-black shadow-[0_8px_30px_rgba(0,0,0,0.3)] ${className}`}
-      onMouseMove={isPlaying ? resetHideTimer : undefined}
-      onMouseLeave={() => setShowControls(false)}
+    <div
+      className={`group relative w-full overflow-hidden rounded-2xl bg-black shadow-[0_8px_30px_rgba(0,0,0,0.22)] ${className}`}
+      onMouseMove={isPlaying ? revealControls : undefined}
+      onMouseLeave={() => {
+        if (isPlaying) setShowControls(false);
+      }}
+      onTouchStart={isPlaying ? revealControls : undefined}
     >
       <div className={`relative w-full ${aspectClassName}`}>
         <video
@@ -160,14 +211,20 @@ function BunnyStreamPlayer({
           muted
           playsInline
           preload="metadata"
+          controlsList="nodownload noplaybackrate"
+          disablePictureInPicture
           className="relative z-10 h-full w-full object-cover"
-          onClick={togglePlayPause}
+          onClick={handleVideoTap}
           onLoadedMetadata={() => {
-            if (videoRef.current) setDuration(videoRef.current.duration);
+            if (videoRef.current) {
+              setDuration(videoRef.current.duration);
+            }
           }}
           onTimeUpdate={() => {
             const video = videoRef.current;
+
             if (!video || !video.duration) return;
+
             setCurrentTime(video.currentTime);
             setProgress((video.currentTime / video.duration) * 100);
           }}
@@ -177,23 +234,26 @@ function BunnyStreamPlayer({
           onPlaying={() => {
             setIsPlaying(true);
             setIsBuffering(false);
+            revealControls();
           }}
           onWaiting={() => setIsBuffering(true)}
           onStalled={() => setIsBuffering(true)}
           onPause={() => {
             setIsPlaying(false);
             setIsBuffering(false);
+            setShowControls(true);
           }}
           onEnded={() => {
             setIsPlaying(false);
             setIsBuffering(false);
             setProgress(0);
+            setCurrentTime(0);
+            setShowControls(true);
             onDeactivate?.();
           }}
         />
 
-        {/* Cinematic gradient overlay — always visible at bottom for depth */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-36 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
 
         <AnimatePresence mode="wait">
           {!isPlaying && !isBuffering && (
@@ -204,21 +264,17 @@ function BunnyStreamPlayer({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="absolute inset-0 z-30 flex cursor-pointer items-center justify-center"
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 z-30 flex cursor-pointer items-center justify-center bg-black/10"
               aria-label={`Play ${title}`}
             >
-              <div className="relative flex items-center justify-center">
-                {/* Pulse ring */}
-                <span className="absolute h-20 w-20 animate-ping rounded-full bg-white/15 md:h-24 md:w-24" />
-                <motion.span
-                  whileHover={{ scale: 1.12 }}
-                  whileTap={{ scale: 0.92 }}
-                  className="relative flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/15 backdrop-blur-md md:h-20 md:w-20"
-                >
-                  <Play className="h-7 w-7 fill-white text-white md:h-9 md:w-9" />
-                </motion.span>
-              </div>
+              <motion.span
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.94 }}
+                className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/20 text-white shadow-[0_10px_35px_rgba(0,0,0,0.25)] backdrop-blur-md md:h-20 md:w-20"
+              >
+                <Play className="ml-1 h-7 w-7 fill-white text-white md:h-9 md:w-9" />
+              </motion.span>
             </motion.button>
           )}
 
@@ -229,28 +285,27 @@ function BunnyStreamPlayer({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0 z-30 flex items-center justify-center"
+              className="absolute inset-0 z-30 flex items-center justify-center bg-black/15"
             >
               <div className="h-12 w-12 animate-spin rounded-full border-[3px] border-white/20 border-t-white" />
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Bottom controls bar — appears on hover during playback */}
         <AnimatePresence>
-          {isPlaying && (showControls || !isPlaying) && (
+          {isPlaying && showControls && (
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-x-0 bottom-0 z-30 flex items-center gap-3 px-4 pb-3 pt-8"
+              transition={{ duration: 0.18 }}
+              className="absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 px-3 pb-3 pt-8 md:gap-3 md:px-4"
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Play / Pause */}
               <button
                 type="button"
-                onClick={(e) => { e.stopPropagation(); togglePlayPause(); }}
-                className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-transform hover:scale-110"
+                onClick={togglePlayPause}
+                className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-transform hover:scale-105"
                 aria-label={isPlaying ? "Pause" : "Play"}
               >
                 {isPlaying ? (
@@ -260,40 +315,32 @@ function BunnyStreamPlayer({
                 )}
               </button>
 
-              {/* Time */}
-              <span className="shrink-0 text-xs font-medium tabular-nums text-white/80">
+              <span className="hidden shrink-0 text-xs font-medium tabular-nums text-white/85 sm:inline">
                 {formatTime(currentTime)}
               </span>
 
-              {/* Progress bar */}
               <div
                 ref={progressRef}
                 onClick={handleProgressClick}
-                className="group/bar relative flex h-5 flex-1 cursor-pointer items-center"
+                className="group/bar relative flex h-6 flex-1 cursor-pointer items-center"
+                aria-label="Video progress"
               >
-                <div className="h-1 w-full overflow-hidden rounded-full bg-white/20 transition-all group-hover/bar:h-1.5">
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/25">
                   <div
                     className="h-full rounded-full bg-white transition-all"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                {/* Scrubber dot */}
-                <div
-                  className="absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-white opacity-0 shadow-md transition-opacity group-hover/bar:opacity-100"
-                  style={{ left: `calc(${progress}% - 6px)` }}
-                />
               </div>
 
-              {/* Duration */}
-              <span className="shrink-0 text-xs font-medium tabular-nums text-white/80">
+              <span className="hidden shrink-0 text-xs font-medium tabular-nums text-white/85 sm:inline">
                 {formatTime(duration)}
               </span>
 
-              {/* Mute toggle */}
               <button
                 type="button"
                 onClick={toggleMute}
-                className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-transform hover:scale-110"
+                className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-transform hover:scale-105"
                 aria-label={isMuted ? "Unmute" : "Mute"}
               >
                 {isMuted ? (
@@ -306,30 +353,16 @@ function BunnyStreamPlayer({
           )}
         </AnimatePresence>
 
-        {/* Thin always-visible progress line at the very bottom when controls are hidden */}
         {isPlaying && !showControls && (
           <div className="absolute inset-x-0 bottom-0 z-30 h-[3px] bg-white/10">
             <div
-              className="h-full bg-white/60 transition-all duration-200"
+              className="h-full bg-white/70 transition-all duration-200"
               style={{ width: `${progress}%` }}
             />
           </div>
         )}
-
-        {/* Hover pause overlay (center icon, only while playing and hovering) */}
-        {isPlaying && showControls && (
-          <motion.button
-            type="button"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={togglePlayPause}
-            className="absolute inset-0 z-20 cursor-pointer"
-            aria-label={`Pause ${title}`}
-          />
-        )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

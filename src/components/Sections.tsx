@@ -167,8 +167,8 @@ function Sections() {
             Everything Your Personal Secretary Should Do
           </h2>
           <p className="text-base md:text-[19px] max-w-3xl mx-auto leading-relaxed capitalize" style={{ color: 'var(--text-secondary)' }}>
-            Baseten delivers the infrastructure, tooling, and expertise needed
-            to bring great AI products to market - fast.
+           EuroDigital helps businesses automate operations, improve customer engagement,
+and launch practical AI systems that create measurable growth.
           </p>
         </div>
 
@@ -180,7 +180,7 @@ function Sections() {
             return (
               <div
                 key={card.title}
-                className="group rounded-2xl flex flex-col p-5 md:p-6 hover:shadow-2xl transition-shadow duration-300 h-full"
+                className="group rounded-3xl flex flex-col p-5 md:p-6 border border-slate-200/80 shadow-[0_10px_35px_rgba(15,31,56,0.06)] hover:shadow-[0_22px_60px_rgba(15,31,56,0.14)] hover:-translate-y-1 transition-all duration-300 h-full"
                 style={{ backgroundColor: 'var(--bg-secondary)' }}
               >
                 {/* Media Area: Supports both Images and Videos */}
