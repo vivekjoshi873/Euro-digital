@@ -10,6 +10,8 @@ type Slide = {
   link?: string;
 };
 
+const SLIDE_DURATION_MS = 6000;
+
 const slides: Slide[] = [
   {
     title: "Unlock the Power of AI to Transform Your Business",
@@ -73,12 +75,24 @@ function Hero() {
     });
   }, []);
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, SLIDE_DURATION_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [currentSlide]);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
   };
 
   return (
@@ -190,19 +204,17 @@ function Hero() {
                 borderWidth: "1px",
               }}
               onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor =
-                "var(--primary-green-dark)")
+                (e.currentTarget.style.backgroundColor =
+                  "var(--primary-green-dark)")
               }
               onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor =
-                "var(--primary-green)")
+                (e.currentTarget.style.backgroundColor = "var(--primary-green)")
               }
             >
               Book A Demo
             </button>
           </a>
 
-          {/* ✅ Fix #1: Only render Explore if link exists */}
           {slides[currentSlide].link && (
             <Link to={slides[currentSlide].link}>
               <button className="rounded-2xl border border-white/60 text-white hover:bg-white/10 font-semibold px-9 py-4 transition-all text-lg flex items-center gap-2 group bg-white/0 cursor-pointer">
@@ -225,19 +237,38 @@ function Hero() {
           )}
         </div>
 
-        {/* Slide Indicators */}
+        {/* Slide Indicators with timer progress */}
         <div className="mt-12 flex items-center justify-center gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${index === currentSlide
-                ? "bg-white w-8"
-                : "bg-white/40 hover:bg-white/60"
+          {slides.map((_, index) => {
+            const isActive = index === currentSlide;
+
+            return (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`relative h-2.5 overflow-hidden rounded-full transition-all cursor-pointer ${
+                  isActive
+                    ? "w-10 bg-white/30"
+                    : "w-2.5 bg-white/40 hover:bg-white/60"
                 }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={isActive ? "true" : undefined}
+              >
+                {isActive && (
+                  <motion.span
+                    key={currentSlide}
+                    className="absolute inset-y-0 left-0 rounded-full bg-white"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{
+                      duration: SLIDE_DURATION_MS / 1000,
+                      ease: "linear",
+                    }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
